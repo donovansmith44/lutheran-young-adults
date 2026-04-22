@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lutheran Young Adults — Flyer</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  :root {
+    --navy: #1a3353;
+    --navy-light: #2a4a70;
+    --gold: #b89552;
+    --gold-light: #d4b87a;
+    --cream: #faf6ec;
+    --ink: #1d1d1d;
+    --muted: #555;
+    --rule: #c9b97a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Georgia", "Cormorant Garamond", "Garamond", "Times New Roman", serif;
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    text-align: center;
+    border-bottom: 3px double var(--gold);
+    padding-bottom: 0.18in;
+    margin-bottom: 0.18in;
+  }
+  .eyebrow {
+    font-family: "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 7.5pt;
+    color: var(--gold);
+    margin-bottom: 4pt;
+  }
+  h1.title {
+    font-family: "Georgia", "Cormorant Garamond", "Garamond", serif;
+    font-weight: 700;
+    font-size: 34pt;
+    line-height: 1.0;
+    color: var(--navy);
+    margin: 0 0 6pt 0;
+    letter-spacing: 0.01em;
+  }
+  .subtitle {
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--navy-light);
+    margin: 0;
+  }
+
+  /* ---------- Scripture + Intro ---------- */
+  .scripture {
+    text-align: center;
+    font-style: italic;
+    font-size: 10pt;
+    color: var(--navy);
+    margin: 0 0.3in 0.12in 0.3in;
+    line-height: 1.4;
+  }
+  .scripture .cite {
+    display: block;
+    font-style: normal;
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 6pt;
+  }
+
+  .intro {
+    font-size: 9pt;
+    line-height: 1.45;
+    margin-bottom: 0.18in;
+    column-count: 2;
+    column-gap: 0.28in;
+    text-align: justify;
+  }
+  .intro .salutation {
+    display: block;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4pt;
+    font-size: 10pt;
+    column-span: all;
+    text-align: center;
+  }
+  .intro p {
+    margin: 0 0 6pt 0;
+  }
+
+  /* ---------- Schedule ---------- */
+  .schedule-header {
+    text-align: center;
+    margin: 0.08in 0 0.12in 0;
+  }
+  .schedule-header h2 {
+    font-family: "Helvetica", "Arial", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--navy);
+    font-size: 11pt;
+    margin: 0;
+    display: inline-block;
+    padding: 0 0.2in;
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+  }
+  .schedule-header::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: var(--rule);
+    position: relative;
+    top: 10pt;
+    z-index: 0;
+  }
+
+  .events {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.14in 0.18in;
+  }
+  .event {
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--navy);
+    padding: 7pt 9pt 8pt 9pt;
+    background: #fffdf6;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .event .date {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 2pt;
+  }
+  .event h3 {
+    font-size: 13pt;
+    color: var(--navy);
+    margin: 0 0 1pt 0;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+  .event .location {
+    font-size: 8.5pt;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 5pt;
+  }
+  .event table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+  }
+  .event td {
+    padding: 1.5pt 0;
+    vertical-align: top;
+  }
+  .event td.time {
+    white-space: nowrap;
+    color: var(--navy-light);
+    font-variant-numeric: tabular-nums;
+    padding-right: 8pt;
+    width: 42%;
+  }
+  .event td.activity {
+    color: var(--ink);
+  }
+  .event .note {
+    margin-top: 5pt;
+    font-size: 8pt;
+    font-style: italic;
+    color: var(--gold);
+    border-top: 1px dotted var(--rule);
+    padding-top: 4pt;
+  }
+  .event.tbd {
+    background: #f5efde;
+    border-top-color: var(--gold);
+  }
+  .event.tbd .tbd-body {
+    font-family: "Helvetica", "Arial", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 9pt;
+    color: var(--navy-light);
+    text-align: center;
+    padding: 10pt 0;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    margin-top: 0.18in;
+    border-top: 3px double var(--gold);
+    padding-top: 0.12in;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.15in;
+    text-align: center;
+  }
+  .contact .label {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 7pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3pt;
+  }
+  .contact .value {
+    font-size: 10pt;
+    color: var(--navy);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+  <div class="masthead">
+    <div class="eyebrow">Central Ohio &nbsp;·&nbsp; 2026 Schedule</div>
+    <h1 class="title">Lutheran Young Adults</h1>
+    <p class="subtitle">Connecting Confessional Lutherans in the Synod</p>
+  </div>
+
+  <p class="scripture">
+    &ldquo;And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another, and all the more as you see the Day drawing near.&rdquo;
+    <span class="cite">Hbr. 10:24-25, ESV</span>
+  </p>
+
+  <div class="intro">
+    <span class="salutation">Brothers and Sisters in Christ,</span>
+    <p>The words of Paul remind us of the importance of regular gathering within the Church. As Paul was encouraged by the faith of the Ephesians and the Philippians, we ought to be encouraged by the faith of one another. This truth is especially poignant today, now that many young adults are leaving Confessional Lutheranism in search of community and fellowship in church bodies that have more young adults than we do.</p>
+    <p>This is why this group has been organized: to serve Confessional Lutherans who desire real connection with the members of their synod. Please prayerfully consider taking part in the growth of the bond of fellowship shared by Lutherans in central Ohio.</p>
+  </div>
+
+  <div class="schedule-header"><h2>Schedule</h2></div>
+
+  <div class="events">
+
+    <div class="event">
+      <div class="date">06 june</div>
+      <h3>Personality Day</h3>
+      <div class="location">Zion</div>
+      <table>
+        <tr><td class="time">2:00 PM - 2:15 PM</td><td class="activity">Introduction</td></tr>
+        <tr><td class="time">2:15 PM - 2:45 PM</td><td class="activity">Vicar-led Devotional</td></tr>
+        <tr><td class="time">2:45 PM - 3:30 PM</td><td class="activity">Personality Test</td></tr>
+        <tr><td class="time">3:30 PM - 4:15 PM</td><td class="activity">Activity 1</td></tr>
+        <tr><td class="time">4:15 PM - 5:15 PM</td><td class="activity">Activity 2</td></tr>
+        <tr><td class="time">5:15 PM - 6:00 PM</td><td class="activity">Dinner (Zupas)</td></tr>
+        <tr><td class="time">6:00 PM - 6:30 PM</td><td class="activity">Vespers and Close</td></tr>
+      </table>
+    </div>
+
+    <div class="event">
+      <div class="date">04 july</div>
+      <h3>America&rsquo;s 250th Birthday</h3>
+      <div class="location">St. John&rsquo;s in Dublin</div>
+      <table>
+        <tr><td class="time">5:00 PM - 5:45 PM</td><td class="activity">Vicar-led Devotional</td></tr>
+        <tr><td class="time">5:45 PM - 7:00 PM</td><td class="activity">Cookout and Dinner</td></tr>
+        <tr><td class="time">7:00 PM - 7:30 PM</td><td class="activity">Compline</td></tr>
+        <tr><td class="time">7:30 PM - whenever</td><td class="activity">Bonfire and Fireworks</td></tr>
+      </table>
+    </div>
+
+    <div class="event">
+      <div class="date">01 august</div>
+      <h3>The Odyssey</h3>
+      <div class="location">AMC Dublin Village 18</div>
+      <table>
+        <tr><td class="time">3:00 PM - 6:00 PM</td><td class="activity">The Odyssey (~20&#128184;)</td></tr>
+        <tr><td class="time">6:00 PM - whenever</td><td class="activity">Pins</td></tr>
+      </table>
+    </div>
+
+    <div class="event">
+      <div class="date">06 september</div>
+      <h3>Community Service Day</h3>
+      <div class="location">Zion</div>
+      <table>
+        <tr><td class="time">11:30 AM - 12:00 PM</td><td class="activity">Vicar-led Devotional</td></tr>
+        <tr><td class="time">12:00 PM - 12:45 PM</td><td class="activity">Lunch</td></tr>
+        <tr><td class="time">1:00 PM - 4:00 PM</td><td class="activity">Community Service</td></tr>
+        <tr><td class="time">4:30 PM - 6:00 PM</td><td class="activity">Snacks and Compline</td></tr>
+      </table>
+    </div>
+
+    <div class="event">
+      <div class="date">03 october &nbsp;·&nbsp; Saturday</div>
+      <h3>Fall Cookout</h3>
+      <div class="location">TBD</div>
+      <table>
+        <tr><td class="time">5:00 PM - 6:30 PM</td><td class="activity">Cookout</td></tr>
+        <tr><td class="time">6:30 PM - 7:30 PM</td><td class="activity">Bonfire</td></tr>
+        <tr><td class="time">7:30 PM - 8:00 PM</td><td class="activity">Compline</td></tr>
+        <tr><td class="time">8:00 PM - whenever</td><td class="activity">Bonfire</td></tr>
+      </table>
+      <div class="note">Instrumentalists welcome! Bringing hymnals encouraged!</div>
+    </div>
+
+    <div class="event tbd">
+      <div class="date">07 november &nbsp;·&nbsp; Saturday</div>
+      <h3>TBD</h3>
+      <div class="location">TBD</div>
+      <div class="tbd-body">Save&nbsp;the&nbsp;date</div>
+    </div>
+
+    <div class="event tbd">
+      <div class="date">05 december &nbsp;·&nbsp; Saturday</div>
+      <h3>TBD</h3>
+      <div class="location">TBD</div>
+      <div class="tbd-body">Save&nbsp;the&nbsp;date</div>
+    </div>
+
+    <div class="event" style="background: var(--navy); color: var(--cream); border-top-color: var(--gold);">
+      <div class="date" style="color: var(--gold-light);">Get in Touch</div>
+      <h3 style="color: var(--cream);">Zion Evangelical Lutheran Church</h3>
+      <div class="location" style="color: var(--gold-light);">Event Organizer &nbsp;·&nbsp; Locations vary by event</div>
+      <div style="text-align: center; font-size: 18pt; font-weight: 700; color: var(--cream); margin-top: 10pt; letter-spacing: 0.04em;">
+        (614)&nbsp;556-0607
+      </div>
+      <div style="text-align: center; font-family: Helvetica, Arial, sans-serif; font-size: 7.5pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-top: 6pt;">
+        Contact
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
