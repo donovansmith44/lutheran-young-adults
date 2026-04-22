@@ -145,12 +145,22 @@ def render_events(events: list) -> str:
     for ev in events:
         is_tbd = not ev["times"] and ev["title"].upper() == "TBD"
         cls = "event event-tbd" if is_tbd else "event"
-        day_html = f' <span class="day">· {ev["day"]}</span>' if ev["day"] else ""
-        loc_html = f'<span class="loc">at {ev["location"]}</span>' if ev["location"] and ev["location"] != "TBD" else ""
+        # split date "06 june" into number + month spans
+        parts = ev["date"].split(None, 1)
+        if len(parts) == 2:
+            date_html = f'<span class="d-num">{parts[0]}</span><span class="d-mo">{parts[1]}</span>'
+        else:
+            date_html = f'<span class="d-num">{ev["date"]}</span>'
+        day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
+        # combined title line "Event at Location"
+        if ev["location"] and ev["location"] != "TBD":
+            title_line = f'{ev["title"]} at {ev["location"]}'
+        else:
+            title_line = ev["title"]
         times_html = ""
         if ev["times"]:
             items = "\n".join(
-                f'<li><span class="t">{t}</span><span class="dots"></span><span class="a">{a}</span></li>'
+                f'<li><span class="t">{t}</span><span class="a">{a}</span></li>'
                 for t, a in ev["times"]
             )
             times_html = f'<ul class="times">{items}</ul>'
@@ -158,9 +168,8 @@ def render_events(events: list) -> str:
         html.append(
             f'<section class="{cls}">'
             f'<div class="event-head">'
-            f'<span class="date">{ev["date"]}{day_html}</span>'
-            f'<span class="title">{ev["title"]}</span>'
-            f'{loc_html}'
+            f'<div class="date">{date_html}{day_html}</div>'
+            f'<div class="title-line">{title_line}</div>'
             f'</div>'
             f'{times_html}'
             f'{note_html}'
@@ -186,6 +195,7 @@ def main():
     html = (
         template
         .replace("{{TITLE}}", data["title"])
+        .replace("{{TITLE_UPPER}}", data["title"].upper())
         .replace("{{SUBTITLE}}", data["subtitle"])
         .replace("{{SCRIPTURE}}", data["scripture"])
         .replace("{{SCRIPTURE_CITE}}", data["scripture_cite"])
