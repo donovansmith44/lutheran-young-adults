@@ -1,0 +1,85 @@
+@layer components {
+  /* event block */
+  .event {
+    margin-bottom: 10pt;
+    break-inside: avoid;
+  }
+  .event-head {
+    text-align: center;
+    padding-bottom: 2pt;
+    margin-bottom: 3pt;
+    border-bottom: 1px solid var(--color-pink-deep);
+  }
+  .event .date {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 7.5pt;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    opacity: 0.75;
+  }
+  .event .title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14pt;
+    color: var(--color-teal);
+    line-height: 1.1;
+    margin-top: 1pt;
+  }
+  .event .loc {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 9pt;
+    color: var(--color-teal);
+    opacity: 0.75;
+    margin-top: 1pt;
+  }
+
+  .event ul.times {
+    list-style: none;
+    padding: 0;
+    margin: 4pt auto 0 auto;
+    max-width: 4.2in;
+  }
+  .event ul.times li {
+    display: flex;
+    align-items: baseline;
+    gap: 5pt;
+    font-family: var(--font-body);
+    font-size: 9pt;
+    line-height: 1.5;
+  }
+  .event ul.times .t {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 8.5pt;
+    color: var(--color-teal);
+    white-space: nowrap;
+  }
+  .event ul.times .dots {
+    flex: 1 1 auto;
+    border-bottom: 1px dotted var(--color-pink-deep);
+    transform: translateY(-2pt);
+  }
+  .event ul.times .a {
+    color: #111;
+    white-space: nowrap;
+  }
+  .event .note {
+    text-align: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 8pt;
+    color: var(--color-teal);
+    margin-top: 4pt;
+  }
+
+  .event-tbd .event-head {
+    border-bottom-style: dashed;
+  }
+}
