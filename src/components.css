@@ -10,47 +10,44 @@
   /* ================= BANNER ================= */
   .banner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.2in;
-    margin-bottom: 0.2in;
-  }
-  .banner-left {
-    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 0.14in;
-    flex: 0 0 auto;
-  }
-  .banner-left .logo {
-    width: 0.8in;
-    height: 0.8in;
-  }
-  .banner-left .rule {
-    width: 1in;
-    height: 1.5pt;
-    background: var(--color-teal);
+    margin-bottom: 0.22in;
+    text-align: center;
   }
   .banner-title {
-    text-align: right;
     line-height: 1.1;
-    flex: 0 0 auto;
-    max-width: 3.5in;
   }
   .banner-title .t1 {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: 16pt;
+    font-size: 24pt;
     color: var(--color-teal);
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
   }
   .banner-title .t2 {
     font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 12pt;
+    font-weight: 600;
+    font-size: 13pt;
     color: var(--color-teal);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    margin-top: 3pt;
+    margin-top: 6pt;
+  }
+  .banner-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.14in;
+  }
+  .banner-logo .logo {
+    width: 0.8in;
+    height: 0.8in;
+  }
+  .banner-logo .rule {
+    width: 1.4in;
+    height: 1.5pt;
+    background: var(--color-teal);
   }
 
   /* ================= BODY GRID ================= */
@@ -79,7 +76,7 @@
     color: var(--color-teal);
   }
   .event .date .d-num { font-weight: 800; }
-  .event .date .d-mo { font-weight: 300; margin-left: 2pt; }
+  .event .date .d-mo { font-weight: 300; margin-left: 2pt; text-transform: capitalize; }
   .event .date .day-suffix {
     font-family: var(--font-display);
     font-weight: 500;
@@ -92,8 +89,8 @@
   }
   .event .title-line {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 10.5pt;
+    font-weight: 800;
+    font-size: 12pt;
     color: var(--color-teal);
     line-height: 1.2;
   }
