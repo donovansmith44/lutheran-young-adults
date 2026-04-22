@@ -45,7 +45,7 @@ html, body { margin: 0; padding: 0; }
   --t-body:    10pt;     /* body text everywhere */
   --t-body-small: 9pt;   /* tight body (schedule activity rows) */
   --t-heading: 17pt;     /* section heading (panel title) */
-  --t-display: 30pt;     /* main display title (front cover) */
+  --t-display: 24pt;     /* main display title (front cover) */
   --t-subtitle: 13pt;    /* subtitle / accent italic */
   --t-scripture: 13.5pt; /* scripture quote text */
   --t-scripture-big: 16pt;
@@ -223,7 +223,8 @@ html, body { margin: 0; padding: 0; }
   .front-inner {
     align-items: center;
     text-align: center;
-    padding-top: 0.48in;
+    padding-top: 0.34in;
+    padding-bottom: 0.34in;
   }
   .front-eyebrow {
     font-weight: 500;
@@ -234,9 +235,9 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.8;
   }
   .front-logo {
-    width: 1in;
-    height: 1in;
-    margin-top: 0.14in;
+    width: 0.85in;
+    height: 0.85in;
+    margin-top: 0.1in;
   }
   .front-title {
     font-family: var(--font-display);
@@ -244,8 +245,8 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-display);
     color: var(--color-teal);
     letter-spacing: 0.04em;
-    line-height: 1.02;
-    margin: 0.14in 0 0 0;
+    line-height: 1.08;
+    margin: 0.12in 0 0 0;
   }
   .front-subtitle {
     font-family: var(--font-serif);
@@ -262,7 +263,7 @@ html, body { margin: 0; padding: 0; }
     align-items: center;
     gap: 8pt;
     width: 85%;
-    margin: 0.18in 0;
+    margin: 0.14in 0;
   }
   .front-divider .rule {
     flex: 1;
@@ -277,8 +278,8 @@ html, body { margin: 0; padding: 0; }
   }
   .front-mission {
     font-family: var(--font-body);
-    font-size: var(--t-body);
-    line-height: 1.55;
+    font-size: 9pt;
+    line-height: 1.5;
     color: var(--color-teal);
     text-align: justify;
   }
