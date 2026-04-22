@@ -15,6 +15,18 @@
   font-weight: 100 900;
   font-style: normal;
 }
+@font-face {
+  font-family: "Cormorant";
+  src: url("../assets/fonts/CormorantGaramond-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("../assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
 
 @page {
   size: letter landscape;
@@ -43,7 +55,7 @@ html, body { margin: 0; padding: 0; }
   }
   .panel:last-child { border-right: none; }
   .panel-inner {
-    padding: 0.38in 0.35in;
+    padding: 0.32in 0.3in;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -177,12 +189,12 @@ html, body { margin: 0; padding: 0; }
     margin: 0;
   }
   .front-subtitle {
-    font-family: var(--font-display);
+    font-family: "Cormorant", "Georgia", serif;
     font-style: italic;
-    font-weight: 500;
-    font-size: 10.5pt;
+    font-weight: 400;
+    font-size: 13pt;
     color: var(--color-teal);
-    line-height: 1.35;
+    line-height: 1.3;
     max-width: 2.6in;
   }
   .front-mission {
@@ -196,10 +208,10 @@ html, body { margin: 0; padding: 0; }
   .front-mission .salutation {
     display: block;
     text-align: center;
-    font-family: var(--font-display);
-    font-weight: 700;
+    font-family: "Cormorant", "Georgia", serif;
+    font-weight: 400;
     font-style: italic;
-    font-size: 10pt;
+    font-size: 13pt;
     margin-bottom: 4pt;
   }
   .front-mission p { margin: 0 0 4pt 0; }
@@ -370,11 +382,11 @@ html, body { margin: 0; padding: 0; }
     padding: 0 0.05in;
   }
   .scripture-hero .quote-text {
-    font-family: var(--font-display);
+    font-family: "Cormorant", "Georgia", serif;
     font-style: italic;
     font-weight: 400;
-    font-size: 10pt;
-    line-height: 1.5;
+    font-size: 13pt;
+    line-height: 1.4;
     margin: 0;
     color: var(--color-teal);
   }
@@ -404,10 +416,10 @@ html, body { margin: 0; padding: 0; }
   .mission .salutation {
     display: block;
     text-align: center;
-    font-family: var(--font-display);
-    font-weight: 700;
+    font-family: "Cormorant", "Georgia", serif;
+    font-weight: 400;
     font-style: italic;
-    font-size: 10.5pt;
+    font-size: 14pt;
     color: var(--color-teal);
     margin-bottom: 6pt;
   }
