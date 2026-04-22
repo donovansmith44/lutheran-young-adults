@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="flyer.css">
+</head>
+<body class="bg-pink text-teal font-body">
+
+<div class="page" style="width:8.5in; height:11in; padding:0.55in 0.65in; position:relative;">
+
+  <!-- ========== MASTHEAD ========== -->
+  <header class="text-center">
+    <img src="assets/logo.png" alt="" class="mx-auto" style="width:0.55in; height:0.55in;">
+    <div class="mt-1 font-display text-teal" style="font-size:7.5pt; letter-spacing:0.5em; text-transform:uppercase; opacity:0.8; padding-left:0.5em;">Central Ohio · 2026 Schedule</div>
+    <h1 class="font-display font-light uppercase text-teal" style="font-size:32pt; letter-spacing:0.2em; line-height:1; margin-top:6pt; padding-left:0.2em;">
+      {{TITLE}}
+    </h1>
+    <p class="font-display italic text-teal" style="font-size:11pt; margin-top:6pt;">{{SUBTITLE}}</p>
+  </header>
+
+  <div class="flex items-center justify-center gap-3" style="margin-top:0.18in; margin-bottom:0.18in;">
+    <span class="h-px flex-1 bg-teal/40" style="max-width:3in;"></span>
+    <span class="inline-block rotate-45 bg-teal" style="width:5pt; height:5pt;"></span>
+    <span class="h-px flex-1 bg-teal/40" style="max-width:3in;"></span>
+  </div>
+
+  <!-- ========== TWO-COLUMN BODY ========== -->
+  <div class="grid" style="grid-template-columns: 4.5in 2.65in; gap:0.3in;">
+
+    <!-- ======= LEFT: SCHEDULE ======= -->
+    <main>
+      <div class="text-center" style="margin-bottom:0.14in;">
+        <div class="font-display font-semibold uppercase text-teal" style="font-size:10.5pt; letter-spacing:0.65em; padding-left:0.65em;">Schedule</div>
+      </div>
+
+      {{EVENTS}}
+
+    </main>
+
+    <!-- ======= RIGHT: VERSE + MISSION + CONTACT ======= -->
+    <aside class="aside">
+
+      <blockquote class="scripture-hero">
+        <div class="mark">&ldquo;</div>
+        <p class="quote-text">{{SCRIPTURE}}</p>
+        <cite>{{SCRIPTURE_CITE}}</cite>
+      </blockquote>
+
+      <div class="flex items-center justify-center gap-2" style="margin:0.14in 0;">
+        <span class="h-px flex-1 bg-teal/40"></span>
+        <span class="inline-block rotate-45 bg-teal" style="width:4pt; height:4pt;"></span>
+        <span class="h-px flex-1 bg-teal/40"></span>
+      </div>
+
+      <div class="mission">
+        <p class="salutation">{{SALUTATION}}</p>
+        {{MISSION}}
+      </div>
+
+      <div class="flex items-center justify-center gap-2" style="margin:0.14in 0;">
+        <span class="h-px flex-1 bg-teal/40"></span>
+        <span class="inline-block rotate-45 bg-teal" style="width:4pt; height:4pt;"></span>
+        <span class="h-px flex-1 bg-teal/40"></span>
+      </div>
+
+      <div class="contact">
+        <div class="label">Event Organizer</div>
+        <div class="org">Zion Evangelical<br>Lutheran Church</div>
+        <div class="locnote">Locations vary by event</div>
+        <div class="phone">(614) 556-0607</div>
+      </div>
+
+    </aside>
+
+  </div>
+
+</div>
+
+</body>
+</html>
