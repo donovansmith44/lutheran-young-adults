@@ -6,7 +6,8 @@
   --color-cream: #fff8f2;
   --color-teal: #01404f;
   --font-display: "Montserrat", sans-serif;
-  --font-body: "Arial", sans-serif;
+  --font-body: "Montserrat", sans-serif;
+  --font-serif: "Cormorant", "Georgia", serif;
 }
 
 @font-face {
@@ -36,7 +37,32 @@
 html, body { margin: 0; padding: 0; }
 *, *::before, *::after { box-sizing: border-box; }
 
+/* ============================================================ */
+/* TYPE SCALE — consistent sizes used across the whole brochure  */
+/* ============================================================ */
+:root {
+  --t-eyebrow: 8.5pt;    /* small caps labels */
+  --t-body:    10pt;     /* body text everywhere */
+  --t-body-small: 9pt;   /* tight body (schedule activity rows) */
+  --t-heading: 17pt;     /* section heading (panel title) */
+  --t-display: 30pt;     /* main display title (front cover) */
+  --t-subtitle: 13pt;    /* subtitle / accent italic */
+  --t-scripture: 13.5pt; /* scripture quote text */
+  --t-scripture-big: 16pt;
+  --t-date-num: 22pt;    /* event date big digits */
+  --t-event-title: 12pt; /* event title line */
+  --t-phone: 22pt;       /* contact phone */
+}
+
 @layer components {
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--color-teal);
+    font-size: var(--t-body);
+    line-height: 1.5;
+  }
 
   .brochure-page {
     width: 11in;
@@ -50,379 +76,337 @@ html, body { margin: 0; padding: 0; }
 
   .panel {
     height: 100%;
-    border-right: 1px dashed rgba(1, 64, 79, 0.25);
     position: relative;
+    border-right: 1px dashed rgba(1, 64, 79, 0.2);
   }
   .panel:last-child { border-right: none; }
+
   .panel-inner {
-    padding: 0.32in 0.3in;
+    padding: 0.42in 0.38in;
     height: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  /* ============ OUTSIDE FACE ============ */
-
-  /* --- tuck panel (Hebrews verse + CTA) --- */
-  .panel-tuck .panel-inner {
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-  }
-  .tuck-ornament {
-    display: flex;
-    align-items: center;
-    gap: 0.12in;
-    width: 100%;
-  }
-  .tuck-ornament .rule {
-    flex: 1;
-    height: 1.5pt;
-    background: var(--color-teal);
-  }
-  .tuck-ornament .tuck-logo {
-    width: 0.9in;
-    height: 0.9in;
-    flex: 0 0 auto;
-  }
-  .tuck-cta .cta-eyebrow {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 22pt;
-    color: var(--color-teal);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .tuck-cta .cta-line {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 11pt;
-    color: var(--color-teal);
-    margin-top: 6pt;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  /* --- back cover (contact) --- */
-  .panel-back { background: var(--color-teal); color: var(--color-pink); }
-  .panel-back .panel-inner { align-items: center; justify-content: center; text-align: center; gap: 0.14in; }
-  .back-label {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 8pt;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--color-pink-deep);
-  }
-  .back-logo {
-    width: 1.4in;
-    height: 1.4in;
-    filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(342%) hue-rotate(316deg) brightness(98%) contrast(97%);
-  }
-  .back-church {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 17pt;
-    color: var(--color-pink);
-    line-height: 1.1;
-  }
-  .back-tagline {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 9.5pt;
-    color: var(--color-pink-deep);
-    letter-spacing: 0.05em;
-  }
-  .back-phone {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 26pt;
-    color: var(--color-pink);
-    letter-spacing: 0.02em;
-  }
-  .back-foot {
-    margin-top: 0.08in;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 7.5pt;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--color-pink-deep);
-  }
-
-  /* --- front cover --- */
-  .panel-front .panel-inner { align-items: center; text-align: center; gap: 0.1in; padding-top: 0.4in; }
-  .front-eyebrow {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 8pt;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--color-teal);
-    opacity: 0.85;
-  }
-  .front-logo { width: 1.25in; height: 1.25in; margin: 0.08in 0; }
-  .front-ornament {
-    display: flex;
-    align-items: center;
-    gap: 8pt;
-    width: 90%;
-  }
-  .front-ornament .rule {
-    flex: 1;
-    height: 1.2pt;
-    background: var(--color-teal);
-    opacity: 0.8;
-  }
-  .front-ornament .diamond {
-    width: 5pt; height: 5pt;
-    background: var(--color-teal);
-    transform: rotate(45deg);
-  }
-  .front-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 26pt;
-    color: var(--color-teal);
-    letter-spacing: 0.04em;
-    line-height: 1.05;
-    margin: 0;
-  }
-  .front-subtitle {
-    font-family: "Cormorant", "Georgia", serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 13pt;
-    color: var(--color-teal);
-    line-height: 1.3;
-    max-width: 2.6in;
-  }
-  .front-mission {
-    font-family: var(--font-body);
-    font-size: 8pt;
-    line-height: 1.5;
-    color: var(--color-teal);
-    text-align: justify;
-    margin-top: 0.1in;
-  }
-  .front-mission .salutation {
-    display: block;
-    text-align: center;
-    font-family: "Cormorant", "Georgia", serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 13pt;
-    margin-bottom: 4pt;
-  }
-  .front-mission p { margin: 0 0 4pt 0; }
-  .front-mission p:last-child { margin-bottom: 0; }
-
-  /* ============ INSIDE FACE ============ */
-
+  /* ============ shared: section heading ============ */
   .panel-heading {
     text-align: center;
-    margin-bottom: 0.12in;
-    padding-bottom: 6pt;
+    margin-bottom: 0.22in;
+    padding-bottom: 7pt;
     border-bottom: 1pt solid var(--color-teal);
   }
   .panel-heading-eyebrow {
-    font-family: var(--font-display);
     font-weight: 500;
-    font-size: 7pt;
-    letter-spacing: 0.5em;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--color-teal);
-    opacity: 0.7;
+    opacity: 0.75;
   }
   .panel-heading-title {
-    font-family: var(--font-display);
     font-weight: 800;
-    font-size: 15pt;
+    font-size: var(--t-heading);
     color: var(--color-teal);
     letter-spacing: 0.03em;
-    margin-top: 2pt;
-  }
-
-  /* ---- schedule panel ---- */
-  .event { margin-bottom: 0.07in; }
-  .event:last-child { margin-bottom: 0; }
-  .event-head {
-    padding-bottom: 2pt;
-    border-bottom: 1pt solid var(--color-teal);
-    margin-bottom: 3pt;
-  }
-  .event .date {
-    font-family: var(--font-display);
-    font-size: 14pt;
-    line-height: 1;
-    color: var(--color-teal);
-    display: block;
-  }
-  .event .date .d-num { font-weight: 800; }
-  .event .date .d-mo { font-weight: 300; margin-left: 2pt; text-transform: capitalize; }
-  .event .title-line {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 9pt;
-    color: var(--color-teal);
-    line-height: 1.2;
-    margin-top: 1pt;
-  }
-  .event ul.times {
-    list-style: none;
-    padding: 0;
-    margin: 2pt 0 0 0;
-  }
-  .event ul.times li {
-    display: grid;
-    grid-template-columns: 1.3in 1fr;
-    gap: 5pt;
-    padding: 0;
-    line-height: 1.3;
-  }
-  .event ul.times .t {
-    font-family: var(--font-body);
-    font-size: 7.5pt;
-    color: var(--color-teal);
-    white-space: nowrap;
-  }
-  .event ul.times .a {
-    font-family: var(--font-body);
-    font-size: 7.5pt;
-    color: var(--color-teal);
-  }
-  .event .note {
     margin-top: 3pt;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 7pt;
-    color: var(--color-teal);
-    text-align: center;
-    opacity: 0.85;
   }
 
-  /* compact single-line TBD rows in the brochure */
-  .event-tbd {
-    margin-bottom: 0.04in;
-  }
-  .event-tbd .event-head {
-    padding-bottom: 1pt;
-    margin-bottom: 0;
-    border-bottom: 1pt dashed rgba(1, 64, 79, 0.6);
-    display: flex;
-    align-items: baseline;
-    gap: 6pt;
-  }
-  .event-tbd .date {
-    font-size: 10.5pt;
-    display: inline;
-  }
-  .event-tbd .date .d-num { font-weight: 800; }
-  .event-tbd .date .d-mo { font-weight: 400; }
-  .event-tbd .day-suffix {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 7pt;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-left: 2pt;
-  }
-  .event-tbd .title-line {
-    font-size: 9pt;
-    font-weight: 700;
-    margin-left: auto;
-    margin-top: 0;
-  }
-
-  /* ---- pictures panel ---- */
-  .pictures-inner { gap: 0.12in; }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.12in;
-    flex: 1 1 auto;
-  }
-  .photo-cell {
-    background: rgba(1, 64, 79, 0.08);
-    border: 1px dashed rgba(1, 64, 79, 0.4);
-    border-radius: 6pt;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-teal);
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 9pt;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.65;
-  }
-  .pictures-caption {
-    font-family: var(--font-body);
-    font-size: 7.5pt;
-    color: var(--color-teal);
-    opacity: 0.7;
-    text-align: center;
-    line-height: 1.45;
-  }
-  .pictures-caption code {
-    font-family: "Menlo", "Consolas", monospace;
-    font-size: 7pt;
-    background: rgba(1, 64, 79, 0.08);
-    padding: 0 3pt;
-    border-radius: 2pt;
-  }
-
-  /* ---- verses + mission panel ---- */
+  /* ============ shared: scripture hero ============ */
   .scripture-hero {
     text-align: center;
     color: var(--color-teal);
     margin: 0;
-    padding: 0 0.05in;
   }
   .scripture-hero .quote-text {
-    font-family: "Cormorant", "Georgia", serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: 13pt;
+    font-size: var(--t-scripture);
     line-height: 1.4;
     margin: 0;
     color: var(--color-teal);
   }
   .scripture-hero cite {
     display: block;
+    font-family: var(--font-display);
     font-style: normal;
     font-weight: 700;
-    font-size: 8pt;
+    font-size: var(--t-eyebrow);
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    margin-top: 10pt;
+    margin-top: 12pt;
     color: var(--color-teal);
   }
-  .aside-rule {
-    height: 1px;
-    background: var(--color-teal);
-    opacity: 0.35;
-    margin: 0.14in 0.1in;
+  .scripture-hero-big .quote-text { font-size: var(--t-scripture-big); line-height: 1.5; }
+
+  /* ========================================================== */
+  /* OUTSIDE FACE                                                */
+  /* ========================================================== */
+
+  /* --- tuck panel --- */
+  .tuck-inner {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.22in;
   }
-  .mission {
+  .tuck-ornament {
+    display: flex;
+    align-items: center;
+    gap: 10pt;
+    width: 100%;
+  }
+  .tuck-ornament .rule {
+    flex: 1;
+    height: 1.2pt;
+    background: var(--color-teal);
+    opacity: 0.8;
+  }
+  .tuck-ornament .diamond {
+    width: 6pt; height: 6pt;
+    background: var(--color-teal);
+    transform: rotate(45deg);
+  }
+  .tuck-verse-label {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    opacity: 0.75;
+  }
+
+  /* --- back cover (contact) --- */
+  .panel-back { background: var(--color-teal); color: var(--color-pink); }
+  .back-inner {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.14in;
+  }
+  .back-logo {
+    width: 1.3in;
+    height: 1.3in;
+    /* invert the teal logo to cream so it reads on the teal background */
+    filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(342%) hue-rotate(316deg) brightness(98%) contrast(97%);
+  }
+  .back-church {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-heading);
+    color: var(--color-pink);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+  .back-divider {
+    width: 1in;
+    height: 1pt;
+    background: var(--color-pink-deep);
+    opacity: 0.7;
+  }
+  .back-phone {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-phone);
+    color: var(--color-pink);
+    letter-spacing: 0.02em;
+  }
+  .back-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--t-subtitle);
+    color: var(--color-pink-deep);
+  }
+
+  /* --- front cover (the meat) --- */
+  .front-inner {
+    align-items: center;
+    text-align: center;
+    padding-top: 0.48in;
+  }
+  .front-eyebrow {
+    font-weight: 500;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    opacity: 0.8;
+  }
+  .front-logo {
+    width: 1in;
+    height: 1in;
+    margin-top: 0.14in;
+  }
+  .front-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-display);
+    color: var(--color-teal);
+    letter-spacing: 0.04em;
+    line-height: 1.02;
+    margin: 0.14in 0 0 0;
+  }
+  .front-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--t-subtitle);
+    color: var(--color-teal);
+    line-height: 1.3;
+    max-width: 2.6in;
+    margin-top: 6pt;
+  }
+  .front-divider {
+    display: flex;
+    align-items: center;
+    gap: 8pt;
+    width: 85%;
+    margin: 0.18in 0;
+  }
+  .front-divider .rule {
+    flex: 1;
+    height: 1pt;
+    background: var(--color-teal);
+    opacity: 0.8;
+  }
+  .front-divider .diamond {
+    width: 5pt; height: 5pt;
+    background: var(--color-teal);
+    transform: rotate(45deg);
+  }
+  .front-mission {
     font-family: var(--font-body);
-    font-size: 9pt;
+    font-size: var(--t-body);
     line-height: 1.55;
     color: var(--color-teal);
     text-align: justify;
   }
-  .mission .salutation {
+  .front-mission .salutation {
     display: block;
     text-align: center;
-    font-family: "Cormorant", "Georgia", serif;
+    font-family: var(--font-serif);
     font-weight: 400;
     font-style: italic;
-    font-size: 14pt;
-    color: var(--color-teal);
+    font-size: var(--t-subtitle);
     margin-bottom: 6pt;
   }
-  .mission p { margin: 0 0 6pt 0; }
-  .mission p:last-child { margin-bottom: 0; }
+  .front-mission p { margin: 0 0 6pt 0; }
+  .front-mission p:last-child { margin-bottom: 0; }
+
+  /* ========================================================== */
+  /* INSIDE FACE                                                 */
+  /* ========================================================== */
+
+  /* --- schedule panel --- */
+  .event { margin-bottom: 0.18in; break-inside: avoid; }
+  .event:last-child { margin-bottom: 0; }
+  .event-head {
+    padding-bottom: 4pt;
+    border-bottom: 1.5pt solid var(--color-teal);
+    margin-bottom: 5pt;
+  }
+  .event .date {
+    font-family: var(--font-display);
+    font-size: var(--t-date-num);
+    line-height: 1;
+    color: var(--color-teal);
+    display: block;
+  }
+  .event .date .d-num { font-weight: 800; }
+  .event .date .d-mo { font-weight: 300; margin-left: 3pt; text-transform: capitalize; }
+  .event .title-line {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-event-title);
+    color: var(--color-teal);
+    line-height: 1.2;
+    margin-top: 3pt;
+  }
+  .event ul.times {
+    list-style: none;
+    padding: 0;
+    margin: 5pt 0 0 0;
+  }
+  .event ul.times li {
+    display: grid;
+    grid-template-columns: 1.4in 1fr;
+    gap: 8pt;
+    padding: 1pt 0;
+  }
+  .event ul.times .t {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--t-body-small);
+    color: var(--color-teal);
+    white-space: nowrap;
+  }
+  .event ul.times .a {
+    font-family: var(--font-body);
+    font-size: var(--t-body-small);
+    color: var(--color-teal);
+  }
+  .event .note {
+    margin-top: 6pt;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--t-body-small);
+    color: var(--color-teal);
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  /* --- photo panel: one photo, upper half; text/breathing below --- */
+  .photo-frame {
+    flex: 0 0 auto;
+    height: 3.2in;
+    background: var(--color-teal);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("assets/photo.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .photo-caption {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-pink);
+    text-align: center;
+    padding: 8pt 12pt;
+    line-height: 1.4;
+  }
+  .photo-caption code {
+    font-family: "Menlo", "Consolas", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0;
+    text-transform: none;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1pt 4pt;
+    border-radius: 2pt;
+    color: var(--color-pink);
+    display: inline-block;
+    margin-top: 4pt;
+  }
+  .photo-subcaption {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--t-subtitle);
+    color: var(--color-teal);
+    text-align: center;
+    margin-top: 0.3in;
+    line-height: 1.5;
+  }
+
+  /* --- verse panel --- */
+  .panel-verse .panel-inner {
+    justify-content: flex-start;
+  }
+  .panel-verse .scripture-hero {
+    margin-top: 0.2in;
+  }
 }

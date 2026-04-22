@@ -8,63 +8,59 @@
 <body class="bg-pink text-teal font-body">
 
 <!-- ========================================================== -->
-<!-- OUTSIDE FACE (what you see when the brochure is folded up)  -->
-<!-- Panel order L->R on the printed sheet:                       -->
-<!--   [ INSIDE-TUCK | BACK COVER | FRONT COVER ]                 -->
+<!-- OUTSIDE FACE                                                 -->
+<!--   Panels printed L->R:  [ TUCK | BACK COVER | FRONT COVER ] -->
+<!--   When folded: front cover is on top; back cover underneath -->
 <!-- ========================================================== -->
 <div class="brochure-page outside">
 
-  <!-- Panel: tucks inside when folded (visible first when opened) -->
+  <!-- LEFT: tuck panel (tucks inside when folded) -->
   <section class="panel panel-tuck">
-    <div class="panel-inner">
+    <div class="panel-inner tuck-inner">
       <div class="tuck-ornament">
-        <span class="rule"></span>
-        <img src="assets/logo.png" alt="" class="tuck-logo">
-        <span class="rule"></span>
-      </div>
-      <blockquote class="scripture-hero">
-        <p class="quote-text">{{SCRIPTURE}}</p>
-        <cite>{{SCRIPTURE_CITE}}</cite>
-      </blockquote>
-      <div class="tuck-cta">
-        <div class="cta-eyebrow">Join Us</div>
-        <div class="cta-line">Central Ohio · 2026</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Panel: back cover when folded (shows contact info) -->
-  <section class="panel panel-back">
-    <div class="panel-inner back-inner">
-      <div class="back-label">Contact</div>
-      <img src="assets/logo.png" alt="" class="back-logo">
-      <div class="back-church">Zion Evangelical<br>Lutheran Church</div>
-      <div class="back-tagline">Event Organizer · Locations vary by event</div>
-      <div class="back-phone">(614) 556-0607</div>
-      <div class="back-foot">{{TITLE_UPPER}} &nbsp;·&nbsp; 2026</div>
-    </div>
-  </section>
-
-  <!-- Panel: front cover (visible when closed) -->
-  <section class="panel panel-front">
-    <div class="panel-inner front-inner">
-      <div class="front-eyebrow">Central Ohio · 2026</div>
-      <img src="assets/logo.png" alt="" class="front-logo">
-      <div class="front-ornament">
         <span class="rule"></span>
         <span class="diamond"></span>
         <span class="rule"></span>
       </div>
+      <div class="tuck-verse-label">Scripture</div>
+      <blockquote class="scripture-hero">
+        <p class="quote-text">{{SCRIPTURE}}</p>
+        <cite>{{SCRIPTURE_CITE}}</cite>
+      </blockquote>
+      <div class="tuck-ornament">
+        <span class="rule"></span>
+        <span class="diamond"></span>
+        <span class="rule"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MIDDLE: back cover (seen when brochure is closed, flipped over) -->
+  <section class="panel panel-back">
+    <div class="panel-inner back-inner">
+      <img src="assets/logo.png" alt="" class="back-logo">
+      <div class="back-church">Zion Evangelical<br>Lutheran Church</div>
+      <div class="back-divider"></div>
+      <div class="back-phone">(614) 556-0607</div>
+      <div class="back-tagline">Locations vary by event</div>
+    </div>
+  </section>
+
+  <!-- RIGHT: front cover (seen when folded closed, the first page people see) -->
+  <section class="panel panel-front">
+    <div class="panel-inner front-inner">
+      <div class="front-eyebrow">Central Ohio · 2026</div>
+      <img src="assets/logo.png" alt="" class="front-logo">
       <h1 class="front-title">{{TITLE_UPPER}}</h1>
-      <div class="front-subtitle">Connecting Confessional Lutherans in the Synod</div>
-      <div class="front-ornament">
+      <div class="front-subtitle">{{SUBTITLE}}</div>
+      <div class="front-divider">
         <span class="rule"></span>
         <span class="diamond"></span>
         <span class="rule"></span>
       </div>
       <div class="front-mission">
         <p class="salutation">{{SALUTATION}}</p>
-        {{MISSION_FRONT}}
+        {{MISSION}}
       </div>
     </div>
   </section>
@@ -72,8 +68,8 @@
 </div>
 
 <!-- ========================================================== -->
-<!-- INSIDE FACE (what you see when the brochure is unfolded)    -->
-<!--   [ SCHEDULE | PICTURES | VERSES + MISSION ]                 -->
+<!-- INSIDE FACE                                                  -->
+<!--   [ SCHEDULE | ONE PHOTO | SCRIPTURE ]                      -->
 <!-- ========================================================== -->
 <div class="brochure-page inside">
 
@@ -87,41 +83,31 @@
     </div>
   </section>
 
-  <section class="panel panel-pictures">
-    <div class="panel-inner pictures-inner">
+  <section class="panel panel-photo">
+    <div class="panel-inner">
       <div class="panel-heading">
-        <div class="panel-heading-eyebrow">Moments</div>
+        <div class="panel-heading-eyebrow">Fellowship</div>
         <div class="panel-heading-title">Our Community</div>
       </div>
-      <!-- Placeholder photo cells — replace with real images in assets/photos/ -->
-      <div class="photo-grid">
-        <div class="photo-cell"><span>Photo 1</span></div>
-        <div class="photo-cell"><span>Photo 2</span></div>
-        <div class="photo-cell"><span>Photo 3</span></div>
-        <div class="photo-cell"><span>Photo 4</span></div>
+      <div class="photo-frame">
+        <span class="photo-caption">Drop a photo here — replace <code>assets/photo.jpg</code></span>
       </div>
-      <div class="pictures-caption">
-        Photos from past gatherings &mdash; drop images into
-        <code>assets/photos/</code> and update this panel.
+      <div class="photo-subcaption">
+        Photos from past gatherings of the Lutheran Young Adults in central Ohio.
       </div>
     </div>
   </section>
 
-  <section class="panel panel-verses">
+  <section class="panel panel-verse">
     <div class="panel-inner">
       <div class="panel-heading">
         <div class="panel-heading-eyebrow">Scripture</div>
-        <div class="panel-heading-title">&amp; Mission</div>
+        <div class="panel-heading-title">Our Anchor</div>
       </div>
-      <blockquote class="scripture-hero">
+      <blockquote class="scripture-hero scripture-hero-big">
         <p class="quote-text">{{SCRIPTURE}}</p>
         <cite>{{SCRIPTURE_CITE}}</cite>
       </blockquote>
-      <div class="aside-rule"></div>
-      <div class="mission">
-        <p class="salutation">{{SALUTATION}}</p>
-        {{MISSION}}
-      </div>
     </div>
   </section>
 
