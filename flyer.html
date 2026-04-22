@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Lutheran Young Adults — Flyer</title>
+<title>Lutheran Young Adults</title>
 <style>
+  @font-face {
+    font-family: "Montserrat";
+    src: url("assets/fonts/Montserrat-variable.ttf") format("truetype-variations");
+    font-weight: 100 900;
+    font-style: normal;
+  }
+
   @page {
     size: letter;
-    margin: 0.5in;
+    margin: 0;
   }
 
   :root {
-    --navy: #1a3353;
-    --navy-light: #2a4a70;
-    --gold: #b89552;
-    --gold-light: #d4b87a;
-    --cream: #faf6ec;
-    --ink: #1d1d1d;
-    --muted: #555;
-    --rule: #c9b97a;
+    --pink: #fad5cd;
+    --pink-deep: #f5bbb0;
+    --teal: #01404f;
+    --teal-ink: #01404f;
+    --cream: #fff8f5;
+    --ink: #111;
   }
 
   * { box-sizing: border-box; }
@@ -25,221 +30,304 @@
   html, body {
     margin: 0;
     padding: 0;
-    background: var(--cream);
+    font-family: "Arial", sans-serif;
     color: var(--ink);
-    font-family: "Georgia", "Cormorant Garamond", "Garamond", "Times New Roman", serif;
-    font-size: 9.5pt;
-    line-height: 1.35;
+    background: var(--pink);
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    background: var(--pink);
+    padding: 0.55in 0.6in;
+    position: relative;
+    overflow: hidden;
   }
 
   /* ---------- Masthead ---------- */
   .masthead {
-    text-align: center;
-    border-bottom: 3px double var(--gold);
-    padding-bottom: 0.18in;
+    display: grid;
+    grid-template-columns: 0.85in 1fr 0.85in;
+    align-items: center;
+    gap: 0.2in;
     margin-bottom: 0.18in;
   }
-  .eyebrow {
-    font-family: "Helvetica", "Arial", sans-serif;
-    letter-spacing: 0.35em;
+  .masthead .logo {
+    width: 0.85in;
+    height: 0.85in;
+  }
+  .masthead .titleblock {
+    text-align: center;
+  }
+  .masthead .eyebrow {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.5em;
     text-transform: uppercase;
-    font-size: 7.5pt;
-    color: var(--gold);
+    color: var(--teal);
     margin-bottom: 4pt;
+    padding-left: 0.5em;
   }
-  h1.title {
-    font-family: "Georgia", "Cormorant Garamond", "Garamond", serif;
-    font-weight: 700;
-    font-size: 34pt;
-    line-height: 1.0;
-    color: var(--navy);
-    margin: 0 0 6pt 0;
-    letter-spacing: 0.01em;
-  }
-  .subtitle {
-    font-style: italic;
-    font-size: 12pt;
-    color: var(--navy-light);
+  .masthead h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 33pt;
+    line-height: 0.95;
+    color: var(--teal);
     margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .masthead .subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11pt;
+    color: var(--teal);
+    margin-top: 6pt;
+    letter-spacing: 0.02em;
+  }
+  .masthead .spacer {
+    /* mirrors the logo column to keep title centered */
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10pt;
+    margin: 0.14in 0 0.14in 0;
+    color: var(--teal);
+  }
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--teal);
+    opacity: 0.55;
+  }
+  .divider .diamond {
+    width: 5pt; height: 5pt;
+    background: var(--teal);
+    transform: rotate(45deg);
+    flex: 0 0 auto;
   }
 
   /* ---------- Scripture + Intro ---------- */
   .scripture {
-    text-align: center;
+    font-family: "Montserrat", sans-serif;
     font-style: italic;
+    font-weight: 400;
     font-size: 10pt;
-    color: var(--navy);
-    margin: 0 0.3in 0.12in 0.3in;
-    line-height: 1.4;
+    line-height: 1.45;
+    color: var(--teal);
+    text-align: center;
+    margin: 0 0.3in 0.06in 0.3in;
   }
   .scripture .cite {
     display: block;
+    margin-top: 5pt;
     font-style: normal;
-    font-family: "Helvetica", "Arial", sans-serif;
-    font-size: 7.5pt;
-    letter-spacing: 0.15em;
+    font-weight: 600;
+    font-size: 8pt;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 6pt;
   }
 
   .intro {
-    font-size: 9pt;
-    line-height: 1.45;
-    margin-bottom: 0.18in;
     column-count: 2;
     column-gap: 0.28in;
     text-align: justify;
+    font-family: "Arial", sans-serif;
+    font-size: 8.5pt;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0.08in 0.05in 0.14in 0.05in;
   }
   .intro .salutation {
     display: block;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 4pt;
-    font-size: 10pt;
     column-span: all;
     text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--teal);
+    margin-bottom: 4pt;
   }
   .intro p {
     margin: 0 0 6pt 0;
   }
 
   /* ---------- Schedule ---------- */
-  .schedule-header {
+  .schedule-heading {
     text-align: center;
-    margin: 0.08in 0 0.12in 0;
-  }
-  .schedule-header h2 {
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    letter-spacing: 0.6em;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
-    color: var(--navy);
-    font-size: 11pt;
-    margin: 0;
-    display: inline-block;
-    padding: 0 0.2in;
-    background: var(--cream);
-    position: relative;
-    z-index: 1;
-  }
-  .schedule-header::before {
-    content: "";
-    display: block;
-    height: 1px;
-    background: var(--rule);
-    position: relative;
-    top: 10pt;
-    z-index: 0;
+    color: var(--teal);
+    margin: 0.04in 0 0.14in 0;
+    padding-left: 0.6em;
   }
 
   .events {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.14in 0.18in;
+    gap: 0.12in 0.16in;
   }
+
   .event {
-    border: 1px solid var(--rule);
-    border-top: 4px solid var(--navy);
-    padding: 7pt 9pt 8pt 9pt;
-    background: #fffdf6;
+    background: var(--cream);
+    border: 1px solid var(--teal);
+    padding: 8pt 10pt 9pt 10pt;
     break-inside: avoid;
     page-break-inside: avoid;
+    position: relative;
+  }
+  .event .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6pt;
+    margin-bottom: 3pt;
+    padding-bottom: 4pt;
+    border-bottom: 1px solid var(--pink-deep);
   }
   .event .date {
-    font-family: "Helvetica", "Arial", sans-serif;
-    font-size: 7.5pt;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    margin-bottom: 2pt;
+    font-size: 13pt;
+    color: var(--teal);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .event .day {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--teal);
+    opacity: 0.7;
   }
   .event h3 {
-    font-size: 13pt;
-    color: var(--navy);
-    margin: 0 0 1pt 0;
-    line-height: 1.15;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
+    font-size: 14pt;
+    color: var(--teal);
+    margin: 2pt 0 0 0;
+    line-height: 1.1;
   }
-  .event .location {
-    font-size: 8.5pt;
+  .event .loc {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
     font-style: italic;
-    color: var(--muted);
+    font-size: 9pt;
+    color: var(--teal);
     margin-bottom: 5pt;
   }
   .event table {
     width: 100%;
     border-collapse: collapse;
+    font-family: "Arial", sans-serif;
     font-size: 8.5pt;
+    color: var(--ink);
   }
   .event td {
-    padding: 1.5pt 0;
+    padding: 1.8pt 0;
     vertical-align: top;
   }
   .event td.time {
     white-space: nowrap;
-    color: var(--navy-light);
-    font-variant-numeric: tabular-nums;
+    color: var(--teal);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 8pt;
     padding-right: 8pt;
-    width: 42%;
+    width: 45%;
   }
   .event td.activity {
     color: var(--ink);
   }
   .event .note {
-    margin-top: 5pt;
-    font-size: 8pt;
+    margin-top: 6pt;
+    padding-top: 5pt;
+    border-top: 1px dotted var(--pink-deep);
+    font-family: "Montserrat", sans-serif;
     font-style: italic;
-    color: var(--gold);
-    border-top: 1px dotted var(--rule);
-    padding-top: 4pt;
+    font-size: 8pt;
+    color: var(--teal);
+    text-align: center;
   }
   .event.tbd {
-    background: #f5efde;
-    border-top-color: var(--gold);
+    background: var(--pink);
+    border: 1px dashed var(--teal);
   }
-  .event.tbd .tbd-body {
-    font-family: "Helvetica", "Arial", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
+  .event.tbd .savedate {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
     font-size: 9pt;
-    color: var(--navy-light);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--teal);
     text-align: center;
-    padding: 10pt 0;
+    padding: 6pt 0 2pt 0;
   }
 
-  /* ---------- Contact ---------- */
-  .contact {
-    margin-top: 0.18in;
-    border-top: 3px double var(--gold);
-    padding-top: 0.12in;
+  /* ---------- Footer / contact ---------- */
+  .footer {
+    margin-top: 0.15in;
+    background: var(--teal);
+    color: var(--pink);
+    padding: 10pt 14pt;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.15in;
-    text-align: center;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 14pt;
+    align-items: center;
   }
-  .contact .label {
-    font-family: "Helvetica", "Arial", sans-serif;
+  .footer .col {
+    font-family: "Montserrat", sans-serif;
+  }
+  .footer .col.left { text-align: left; }
+  .footer .col.right { text-align: right; }
+  .footer .label {
     font-size: 7pt;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 3pt;
+    color: var(--pink-deep);
+    margin-bottom: 2pt;
   }
-  .contact .value {
+  .footer .value {
     font-size: 10pt;
-    color: var(--navy);
-    font-weight: 700;
+    font-weight: 500;
+    color: var(--pink);
   }
+  .footer .phone {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 20pt;
+    color: var(--pink);
+    letter-spacing: 0.02em;
+  }
+  .footer .centercol { text-align: center; }
 </style>
 </head>
 <body>
+<div class="page">
 
   <div class="masthead">
-    <div class="eyebrow">Central Ohio &nbsp;·&nbsp; 2026 Schedule</div>
-    <h1 class="title">Lutheran Young Adults</h1>
-    <p class="subtitle">Connecting Confessional Lutherans in the Synod</p>
+    <img class="logo" src="assets/logo.png" alt="">
+    <div class="titleblock">
+      <div class="eyebrow">Central Ohio · 2026 Schedule</div>
+      <h1>Lutheran Young&nbsp;Adults</h1>
+      <div class="subtitle">Connecting Confessional Lutherans in the Synod</div>
+    </div>
+    <div class="spacer"></div>
   </div>
+
+  <div class="divider"><span class="diamond"></span></div>
 
   <p class="scripture">
     &ldquo;And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another, and all the more as you see the Day drawing near.&rdquo;
@@ -252,14 +340,18 @@
     <p>This is why this group has been organized: to serve Confessional Lutherans who desire real connection with the members of their synod. Please prayerfully consider taking part in the growth of the bond of fellowship shared by Lutherans in central Ohio.</p>
   </div>
 
-  <div class="schedule-header"><h2>Schedule</h2></div>
+  <div class="divider"><span class="diamond"></span></div>
+
+  <div class="schedule-heading">Schedule</div>
 
   <div class="events">
 
     <div class="event">
-      <div class="date">06 june</div>
+      <div class="header">
+        <span class="date">06 june</span>
+      </div>
       <h3>Personality Day</h3>
-      <div class="location">Zion</div>
+      <div class="loc">Zion</div>
       <table>
         <tr><td class="time">2:00 PM - 2:15 PM</td><td class="activity">Introduction</td></tr>
         <tr><td class="time">2:15 PM - 2:45 PM</td><td class="activity">Vicar-led Devotional</td></tr>
@@ -272,9 +364,11 @@
     </div>
 
     <div class="event">
-      <div class="date">04 july</div>
+      <div class="header">
+        <span class="date">04 july</span>
+      </div>
       <h3>America&rsquo;s 250th Birthday</h3>
-      <div class="location">St. John&rsquo;s in Dublin</div>
+      <div class="loc">St. John&rsquo;s in Dublin</div>
       <table>
         <tr><td class="time">5:00 PM - 5:45 PM</td><td class="activity">Vicar-led Devotional</td></tr>
         <tr><td class="time">5:45 PM - 7:00 PM</td><td class="activity">Cookout and Dinner</td></tr>
@@ -284,9 +378,11 @@
     </div>
 
     <div class="event">
-      <div class="date">01 august</div>
+      <div class="header">
+        <span class="date">01 august</span>
+      </div>
       <h3>The Odyssey</h3>
-      <div class="location">AMC Dublin Village 18</div>
+      <div class="loc">AMC Dublin Village 18</div>
       <table>
         <tr><td class="time">3:00 PM - 6:00 PM</td><td class="activity">The Odyssey (~20&#128184;)</td></tr>
         <tr><td class="time">6:00 PM - whenever</td><td class="activity">Pins</td></tr>
@@ -294,9 +390,11 @@
     </div>
 
     <div class="event">
-      <div class="date">06 september</div>
+      <div class="header">
+        <span class="date">06 september</span>
+      </div>
       <h3>Community Service Day</h3>
-      <div class="location">Zion</div>
+      <div class="loc">Zion</div>
       <table>
         <tr><td class="time">11:30 AM - 12:00 PM</td><td class="activity">Vicar-led Devotional</td></tr>
         <tr><td class="time">12:00 PM - 12:45 PM</td><td class="activity">Lunch</td></tr>
@@ -306,9 +404,12 @@
     </div>
 
     <div class="event">
-      <div class="date">03 october &nbsp;·&nbsp; Saturday</div>
+      <div class="header">
+        <span class="date">03 october</span>
+        <span class="day">Saturday</span>
+      </div>
       <h3>Fall Cookout</h3>
-      <div class="location">TBD</div>
+      <div class="loc">TBD</div>
       <table>
         <tr><td class="time">5:00 PM - 6:30 PM</td><td class="activity">Cookout</td></tr>
         <tr><td class="time">6:30 PM - 7:30 PM</td><td class="activity">Bonfire</td></tr>
@@ -319,32 +420,37 @@
     </div>
 
     <div class="event tbd">
-      <div class="date">07 november &nbsp;·&nbsp; Saturday</div>
+      <div class="header">
+        <span class="date">07 november</span>
+        <span class="day">Saturday</span>
+      </div>
       <h3>TBD</h3>
-      <div class="location">TBD</div>
-      <div class="tbd-body">Save&nbsp;the&nbsp;date</div>
+      <div class="loc">TBD</div>
+      <div class="savedate">Save&nbsp;the&nbsp;Date</div>
     </div>
 
     <div class="event tbd">
-      <div class="date">05 december &nbsp;·&nbsp; Saturday</div>
+      <div class="header">
+        <span class="date">05 december</span>
+        <span class="day">Saturday</span>
+      </div>
       <h3>TBD</h3>
-      <div class="location">TBD</div>
-      <div class="tbd-body">Save&nbsp;the&nbsp;date</div>
+      <div class="loc">TBD</div>
+      <div class="savedate">Save&nbsp;the&nbsp;Date</div>
     </div>
 
-    <div class="event" style="background: var(--navy); color: var(--cream); border-top-color: var(--gold);">
-      <div class="date" style="color: var(--gold-light);">Get in Touch</div>
-      <h3 style="color: var(--cream);">Zion Evangelical Lutheran Church</h3>
-      <div class="location" style="color: var(--gold-light);">Event Organizer &nbsp;·&nbsp; Locations vary by event</div>
-      <div style="text-align: center; font-size: 18pt; font-weight: 700; color: var(--cream); margin-top: 10pt; letter-spacing: 0.04em;">
-        (614)&nbsp;556-0607
-      </div>
-      <div style="text-align: center; font-family: Helvetica, Arial, sans-serif; font-size: 7.5pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-top: 6pt;">
-        Contact
+    <div class="event" style="background: var(--teal); border-color: var(--teal); color: var(--pink);">
+      <div style="font-family: Montserrat, sans-serif; font-size: 7pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--pink-deep); text-align: center; margin-top: 2pt;">Event Organizer</div>
+      <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13pt; color: var(--pink); text-align: center; line-height: 1.2; margin: 4pt 0 3pt 0;">Zion Evangelical<br/>Lutheran Church</div>
+      <div style="font-family: Montserrat, sans-serif; font-style: italic; font-size: 8.5pt; color: var(--pink-deep); text-align: center; margin-bottom: 6pt;">Locations vary by event</div>
+      <div style="border-top: 1px dotted var(--pink-deep); padding-top: 6pt; text-align: center;">
+        <div style="font-family: Montserrat, sans-serif; font-size: 7pt; letter-spacing: 0.4em; text-transform: uppercase; color: var(--pink-deep);">Contact</div>
+        <div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 17pt; color: var(--pink); letter-spacing: 0.02em; margin-top: 2pt;">(614)&nbsp;556-0607</div>
       </div>
     </div>
 
   </div>
 
+</div>
 </body>
 </html>
