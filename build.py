@@ -203,10 +203,7 @@ def main():
     md = MD.read_text(encoding="utf-8")
     data = parse_markdown(md)
 
-    if args.all or args.format == "brochure":
-        events = data["events"]
-    else:
-        events = data["events"][: args.max]
+    events = data["events"] if args.all else data["events"][: args.max]
 
     template = cfg["template"].read_text(encoding="utf-8")
     mission_html = "\n".join(f"<p>{p}</p>" for p in data["mission"])
