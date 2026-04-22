@@ -22,12 +22,24 @@ import weasyprint
 
 ROOT = pathlib.Path(__file__).parent
 MD = ROOT / "lya_event_series.md"
-TEMPLATE = ROOT / "templates" / "flyer_template.html"
-HTML_OUT = ROOT / "flyer.html"
-CSS_IN = ROOT / "src" / "input.css"
-CSS_OUT = ROOT / "flyer.css"
-PDF_OUT = ROOT / "flyer.pdf"
 TAILWIND = ROOT / "tailwindcss"
+
+FORMATS = {
+    "flyer": {
+        "template": ROOT / "templates" / "flyer_template.html",
+        "html_out": ROOT / "flyer.html",
+        "css_in": ROOT / "src" / "input.css",
+        "css_out": ROOT / "flyer.css",
+        "pdf_out": ROOT / "flyer.pdf",
+    },
+    "brochure": {
+        "template": ROOT / "templates" / "brochure_template.html",
+        "html_out": ROOT / "brochure.html",
+        "css_in": ROOT / "src" / "brochure.css",
+        "css_out": ROOT / "brochure.css",
+        "pdf_out": ROOT / "brochure.pdf",
+    },
+}
 
 
 def parse_markdown(text: str) -> dict:
@@ -180,17 +192,26 @@ def render_events(events: list) -> str:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--max", type=int, default=3, help="max number of events to include")
+    ap.add_argument("--format", choices=list(FORMATS), default="flyer")
+    ap.add_argument("--max", type=int, default=3, help="max events (flyer only)")
     ap.add_argument("--all", action="store_true", help="include all events")
     args = ap.parse_args()
+
+    cfg = FORMATS[args.format]
+    expected_pages = 2 if args.format == "brochure" else 1
 
     md = MD.read_text(encoding="utf-8")
     data = parse_markdown(md)
 
-    events = data["events"] if args.all else data["events"][: args.max]
+    if args.all or args.format == "brochure":
+        events = data["events"]
+    else:
+        events = data["events"][: args.max]
 
-    template = TEMPLATE.read_text(encoding="utf-8")
+    template = cfg["template"].read_text(encoding="utf-8")
     mission_html = "\n".join(f"<p>{p}</p>" for p in data["mission"])
+    # front-of-brochure gets a lightly condensed mission (same text for now)
+    mission_front_html = mission_html
 
     html = (
         template
@@ -200,25 +221,26 @@ def main():
         .replace("{{SCRIPTURE}}", data["scripture"])
         .replace("{{SCRIPTURE_CITE}}", data["scripture_cite"])
         .replace("{{SALUTATION}}", data["salutation"])
+        .replace("{{MISSION_FRONT}}", mission_front_html)
         .replace("{{MISSION}}", mission_html)
         .replace("{{EVENTS}}", render_events(events))
     )
-    HTML_OUT.write_text(html, encoding="utf-8")
-    print(f"wrote {HTML_OUT.name}")
+    cfg["html_out"].write_text(html, encoding="utf-8")
+    print(f"wrote {cfg['html_out'].name}")
 
     if TAILWIND.exists():
         subprocess.run(
-            [str(TAILWIND), "-i", str(CSS_IN), "-o", str(CSS_OUT), "--minify"],
+            [str(TAILWIND), "-i", str(cfg["css_in"]), "-o", str(cfg["css_out"]), "--minify"],
             check=True, cwd=ROOT,
         )
-        print(f"built {CSS_OUT.name}")
+        print(f"built {cfg['css_out'].name}")
 
-    doc = weasyprint.HTML(str(HTML_OUT), base_url=str(ROOT)).render()
-    doc.write_pdf(str(PDF_OUT))
-    print(f"rendered {PDF_OUT.name} ({len(doc.pages)} page{'s' if len(doc.pages) != 1 else ''})")
+    doc = weasyprint.HTML(str(cfg["html_out"]), base_url=str(ROOT)).render()
+    doc.write_pdf(str(cfg["pdf_out"]))
+    print(f"rendered {cfg['pdf_out'].name} ({len(doc.pages)} page{'s' if len(doc.pages) != 1 else ''})")
 
-    if len(doc.pages) > 1:
-        print(f"  ⚠ flyer overflowed to {len(doc.pages)} pages — consider --max with a smaller value")
+    if len(doc.pages) != expected_pages:
+        print(f"  ⚠ expected {expected_pages} page(s), got {len(doc.pages)}")
         sys.exit(1)
 
 
