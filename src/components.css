@@ -129,14 +129,20 @@
   /* ================= ASIDE ================= */
   .aside {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.12in;
+  }
+  .aside-rule {
+    height: 1px;
+    background: var(--color-teal);
+    opacity: 0.35;
+    margin: 0.02in 0.15in;
   }
   .scripture-hero {
     text-align: center;
     color: var(--color-teal);
     margin: 0;
-    padding: 0 0.1in;
+    padding: 0 0.05in;
   }
   .scripture-hero .mark {
     font-family: "Georgia", serif;
@@ -165,6 +171,26 @@
     margin-top: 10pt;
     color: var(--color-teal);
   }
+
+  .mission {
+    font-family: var(--font-body);
+    font-size: 8pt;
+    line-height: 1.5;
+    color: var(--color-teal);
+    text-align: justify;
+  }
+  .mission .salutation {
+    display: block;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 9.5pt;
+    color: var(--color-teal);
+    margin-bottom: 5pt;
+  }
+  .mission p { margin: 0 0 5pt 0; }
+  .mission p:last-child { margin-bottom: 0; }
 
   /* ================= CONTACT BOX ================= */
   .contact-box {
