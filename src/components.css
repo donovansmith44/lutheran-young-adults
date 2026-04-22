@@ -89,8 +89,8 @@
   }
   .event .title-line {
     font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 12pt;
+    font-weight: 900;
+    font-size: 12.5pt;
     color: var(--color-teal);
     line-height: 1.2;
   }
