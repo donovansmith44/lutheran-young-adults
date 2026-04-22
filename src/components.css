@@ -1,7 +1,7 @@
 @layer components {
-  /* event block */
+  /* ---------- events ---------- */
   .event {
-    margin-bottom: 10pt;
+    margin-bottom: 9pt;
     break-inside: avoid;
   }
   .event-head {
@@ -18,13 +18,18 @@
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--color-teal);
+    opacity: 0.8;
+  }
+  .event .date .day {
+    font-weight: 400;
+    letter-spacing: 0.3em;
     opacity: 0.75;
   }
   .event .title {
     display: block;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 14pt;
+    font-size: 13pt;
     color: var(--color-teal);
     line-height: 1.1;
     margin-top: 1pt;
@@ -34,17 +39,16 @@
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
-    font-size: 9pt;
+    font-size: 8.5pt;
     color: var(--color-teal);
-    opacity: 0.75;
+    opacity: 0.8;
     margin-top: 1pt;
   }
 
   .event ul.times {
     list-style: none;
     padding: 0;
-    margin: 4pt auto 0 auto;
-    max-width: 4.2in;
+    margin: 3pt 0 0 0;
   }
   .event ul.times li {
     display: flex;
@@ -81,5 +85,80 @@
 
   .event-tbd .event-head {
     border-bottom-style: dashed;
+  }
+
+  /* ---------- aside ---------- */
+  .scripture {
+    text-align: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: var(--color-teal);
+    margin: 0;
+    padding: 0;
+  }
+  .scripture cite {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 7.5pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 5pt;
+  }
+
+  .mission {
+    text-align: justify;
+    font-family: var(--font-body);
+    font-size: 8pt;
+    line-height: 1.5;
+    color: #1a1a1a;
+  }
+  .mission p { margin: 0 0 5pt 0; }
+  .mission p:last-child { margin-bottom: 0; }
+  .mission .salutation {
+    text-align: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 10pt;
+    color: var(--color-teal);
+    margin-bottom: 5pt;
+  }
+
+  /* ---------- contact ---------- */
+  .contact {
+    text-align: center;
+    color: var(--color-teal);
+  }
+  .contact .label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 7pt;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .contact .org {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 11pt;
+    margin-top: 3pt;
+    line-height: 1.2;
+  }
+  .contact .locnote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 8pt;
+    opacity: 0.75;
+    margin-top: 2pt;
+  }
+  .contact .phone {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 15pt;
+    letter-spacing: 0.03em;
+    margin-top: 5pt;
   }
 }
