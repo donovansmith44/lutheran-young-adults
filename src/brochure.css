@@ -253,12 +253,35 @@ html, body { margin: 0; padding: 0; }
     background: var(--color-pink-deep);
     opacity: 0.7;
   }
+  .back-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--color-pink-deep);
+    margin-top: -0.06in;
+  }
+  .back-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 4pt;
+    align-items: center;
+  }
   .back-phone {
     font-family: var(--font-display);
-    font-weight: 800;
-    font-size: var(--t-phone);
+    font-weight: 700;
+    font-size: 13pt;
     color: var(--color-pink);
     letter-spacing: 0.02em;
+  }
+  .back-email {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 11pt;
+    color: var(--color-pink);
+    letter-spacing: 0.01em;
+    word-break: break-all;
   }
   .back-tagline {
     font-family: var(--font-serif);
@@ -446,17 +469,17 @@ html, body { margin: 0; padding: 0; }
   .about-event { break-inside: avoid; }
   .about-event .about-title {
     font-family: var(--font-serif);
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
-    font-size: 17pt;
+    font-size: 13pt;
     color: var(--color-teal);
     letter-spacing: 0;
-    line-height: 1.15;
-    margin: 0 0 6pt 0;
+    line-height: 1.2;
+    margin: 0 0 5pt 0;
   }
   .about-event .about-headline {
     font-family: var(--font-serif);
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     font-size: 10.5pt;
     color: var(--color-teal);
