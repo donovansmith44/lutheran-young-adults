@@ -258,13 +258,8 @@ html, body { margin: 0; padding: 0; }
   /* ========================================================== */
 
   /* --- schedule panel --- */
-  .panel-schedule .panel-inner { display: flex; flex-direction: column; }
-  .events-list {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  .events-list > .event { margin-bottom: 0.22in; }
+  .events-list > .event:last-child { margin-bottom: 0; }
   .event { break-inside: avoid; }
   .event-head {
     padding-bottom: 4pt;
