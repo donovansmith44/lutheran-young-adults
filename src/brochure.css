@@ -278,7 +278,7 @@ html, body { margin: 0; padding: 0; }
     white-space: nowrap;
   }
   .event .date .d-num { font-weight: 800; }
-  .event .date .d-mo { font-weight: 300; margin-left: 3pt; }
+  .event .date .d-mo { font-weight: 300; margin-left: 3pt; text-transform: capitalize; }
   .event .title-line {
     font-family: var(--font-display);
     font-weight: 700;
