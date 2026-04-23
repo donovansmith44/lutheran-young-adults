@@ -201,8 +201,9 @@ def render_events_about(events: list) -> str:
             continue
         headline_html = f'<p class="about-headline">{ev["headline"]}</p>' if ev["headline"] else ""
         blurb_html = f'<p class="about-blurb">{ev["about"]}</p>' if ev["about"] else ""
+        cls = "about-event about-event--full" if (ev["headline"] or ev["about"]) else "about-event"
         html.append(
-            f'<section class="about-event">'
+            f'<section class="{cls}">'
             f'<h3 class="about-title">{ev["title"]}</h3>'
             f'{headline_html}'
             f'{blurb_html}'
