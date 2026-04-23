@@ -404,7 +404,7 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0;
     color: var(--color-teal);
     opacity: 0.8;
-    margin-top: 2pt;
+    margin-bottom: 2pt;
   }
   .event ul.times {
     list-style: none;

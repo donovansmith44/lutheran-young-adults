@@ -195,8 +195,8 @@ def _schedule_event_html(ev: dict) -> str:
     day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
     if ev["location"] and ev["location"] != "TBD":
         title_line = (
-            f'{ev["title"]}'
             f'<span class="event-location">{ev["location"]}</span>'
+            f'{ev["title"]}'
         )
     else:
         title_line = ev["title"]
