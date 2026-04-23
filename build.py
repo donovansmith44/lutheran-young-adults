@@ -164,9 +164,12 @@ def render_events(events: list) -> str:
         else:
             date_html = f'<span class="d-num">{ev["date"]}</span>'
         day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
-        # combined title line "Event at Location"
+        # title line: event name, with location as a stylable trailing span
         if ev["location"] and ev["location"] != "TBD":
-            title_line = f'{ev["title"]} at {ev["location"]}'
+            title_line = (
+                f'{ev["title"]}'
+                f'<span class="event-location">at {ev["location"]}</span>'
+            )
         else:
             title_line = ev["title"]
         times_html = ""
