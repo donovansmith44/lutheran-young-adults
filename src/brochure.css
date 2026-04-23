@@ -129,14 +129,15 @@ html, body { margin: 0; padding: 0; }
   }
   .scripture-hero cite {
     display: block;
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 700;
-    font-size: var(--t-eyebrow);
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    margin-top: 12pt;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 10.5pt;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 8pt;
     color: var(--color-teal);
+    opacity: 0.85;
   }
   .scripture-hero-big .quote-text { font-size: var(--t-scripture-big); line-height: 1.5; }
 
@@ -308,8 +309,8 @@ html, body { margin: 0; padding: 0; }
   }
   .event ul.times li {
     display: grid;
-    grid-template-columns: 1.2in 1fr;
-    gap: 8pt;
+    grid-template-columns: 1.35in 1fr;
+    gap: 10pt;
     padding: 1pt 0;
   }
   .event ul.times .t {
