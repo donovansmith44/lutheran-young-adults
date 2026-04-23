@@ -287,6 +287,7 @@ html, body { margin: 0; padding: 0; }
     line-height: 1.25;
     letter-spacing: 0.01em;
     padding-bottom: 1pt;
+    text-align: right;
   }
   .event .title-line .event-location {
     display: block;

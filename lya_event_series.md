@@ -31,7 +31,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 
 ---
 
-### 04 july — America's 250th Birthday
+### 04 july — America's 250th
 **Location:** St. John's in Dublin
 
 | Time | Activity |
