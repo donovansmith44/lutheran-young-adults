@@ -1,0 +1,66 @@
+# Trello Butler rules created on every new event board by the orchestrator.
+# These are POSTed via the Trello API at board creation time.
+#
+# Butler reference: https://trello.com/butler
+# Free tier: ~250 rule operations per month (plenty for our scale).
+#
+# Each rule has:
+#   name          human-readable label (shown in Butler UI)
+#   trigger       what sets it off
+#   conditions    extra filters on the trigger
+#   actions       what Butler does when triggered
+#
+# Variables available in rule bodies:
+#   {cardname}, {cardurl}, {duedate}, {boardname}, {username}, etc.
+
+rules:
+
+  # Deadline slip — move + alert
+  - name: Move overdue cards to "At Risk"
+    trigger: every day at 9am
+    conditions:
+      - card has a due date that has passed
+      - card is not in list "Done"
+      - card is not in list "At Risk"
+    actions:
+      - move card to top of list "At Risk"
+      - add red label "overdue"
+      - post comment: |
+          @{boardowner} this task is overdue — was due {duedate} and still
+          open. Review: is the event still on track, or do we need to talk?
+
+  # Entering "At Risk" — visible notification
+  - name: Comment @ owner when card enters At Risk
+    trigger: when card is moved to list "At Risk"
+    actions:
+      - post comment: |
+          ⚠ moved to At Risk. {cardname} missed its deadline ({duedate}).
+
+  # Card completed — basic log
+  - name: Log when card is done
+    trigger: when card is moved to list "Done"
+    actions:
+      - post comment: |
+          ✓ completed {date}. ({username})
+
+  # Low-claim warning: pullable task in pool 14+ days old
+  - name: Flag stale unclaimed tasks
+    trigger: every Monday at 9am
+    conditions:
+      - card is in list "Help Wanted"
+      - card has been in this list for more than 14 days
+      - card has no members
+    actions:
+      - add yellow label "needs-nudge"
+      - post comment: |
+          🙋 still unclaimed after 2 weeks. Might be worth a push on the
+          help-wanted list or reassigning as a POC task.
+
+# Notes on semantics:
+#
+# - These rules assume the standard list layout set up by event-create:
+#     [ "To Do", "In Progress", "Help Wanted", "At Risk", "Done" ]
+# - Dates use the card's due date (set from lead_time_days in
+#   trello_recurring_tasks.yaml at card-creation time)
+# - Comments trigger Trello's normal notification pathways for anyone
+#   watching the board or card

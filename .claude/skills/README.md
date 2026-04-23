@@ -15,6 +15,7 @@ user invokes it conversationally or via `/<skill-name>`.
 | `event-invite` | Draft + send personalized invites; blocked until preflight is complete |
 | `event-set-status` | Manually log an RSVP reply (coming / maybe / not_coming) |
 | `event-status` | Dashboard: preflight state, RSVP counts, help-wanted status |
+| `event-watch` | Risk-report health check — cross-checks Trello, Sheet, RSVPs, preflight, deadlines. One-shot or loop with desktop notifications. |
 | `event-help-wanted` | Draft + send help-wanted messages to confirmed attendees with the Sheet link |
 | `event-remind` | Draft + send reminders to pending invitees |
 | `event-change` | Notify accepted+maybe about a time/venue change |
