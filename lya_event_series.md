@@ -44,7 +44,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 ---
 
 ### 01 august — The Odyssey
-**Location:** AMC Dublin Village 18
+**Location:** AMC Dublin 18
 
 | Time | Activity |
 |---|---|

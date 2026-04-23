@@ -168,7 +168,7 @@ def render_events(events: list) -> str:
         if ev["location"] and ev["location"] != "TBD":
             title_line = (
                 f'{ev["title"]}'
-                f'<span class="event-location">at {ev["location"]}</span>'
+                f'<span class="event-location">{ev["location"]}</span>'
             )
         else:
             title_line = ev["title"]

@@ -404,11 +404,10 @@ html, body { margin: 0; padding: 0; }
   }
   .verse-mission {
     font-family: var(--font-serif);
-    font-size: 10pt;
-    line-height: 1.5;
+    font-size: 10.5pt;
+    line-height: 1.55;
     color: var(--color-teal);
-    text-align: justify;
-    hyphens: auto;
+    text-align: left;
   }
   .verse-mission .salutation {
     display: block;
@@ -416,28 +415,10 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-serif);
     font-weight: 400;
     font-style: italic;
-    font-size: 11pt;
+    font-size: 11.5pt;
     letter-spacing: 0;
-    margin-bottom: 7pt;
+    margin-bottom: 8pt;
   }
-  .verse-mission p { margin: 0 0 6pt 0; }
+  .verse-mission p { margin: 0 0 7pt 0; }
   .verse-mission p:last-child { margin-bottom: 0; }
-  .verse-mission .signoff {
-    display: block;
-    margin-top: 9pt;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 10.5pt;
-    text-align: left;
-    line-height: 1.35;
-  }
-  .verse-mission .signoff .name {
-    display: block;
-    font-style: normal;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 9.5pt;
-    letter-spacing: 0.04em;
-    margin-top: 2pt;
-  }
 }
