@@ -74,6 +74,52 @@ html, body { margin: 0; padding: 0; }
   }
   .brochure-page:last-child { page-break-after: auto; }
 
+  /* inside face is a plain box that contains a table;
+     column-stripe gradient gives each panel its background color */
+  .brochure-page.inside {
+    position: relative;
+    display: block;
+    padding: 0;
+    background: linear-gradient(
+      to right,
+      var(--color-pink) 0 33.3333%,
+      var(--color-cream) 33.3333% 66.6667%,
+      var(--color-pink) 66.6667% 100%
+    );
+  }
+  .inside-table {
+    width: 11in;
+    height: 8.5in;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .inside-table .col-sched,
+  .inside-table .col-about,
+  .inside-table .col-photo { width: 33.3333%; }
+
+  .inside-table .cell { padding: 0 0.38in; vertical-align: top; }
+  .inside-table .cell-head {
+    padding-top: 0.42in;
+    padding-bottom: 0.12in;
+  }
+  .inside-table .cell-event {
+    padding-top: 0.04in;
+    padding-bottom: 0.22in;
+  }
+  .inside-table .cell-sched,
+  .inside-table .cell-about {
+    border-right: 1px dashed rgba(1, 64, 79, 0.2);
+  }
+  .inside-table .cell-photo {
+    padding: 0;
+    vertical-align: middle;
+  }
+  .inside-table .cell-photo .photo-frame {
+    width: 100%;
+    height: 100%;
+  }
+  .inside-table .cell-filler { padding: 0; }
+
   .panel {
     height: 100%;
     position: relative;
@@ -396,67 +442,37 @@ html, body { margin: 0; padding: 0; }
     line-height: 1.45;
   }
 
-  /* --- about panel (inside-middle: editorial event descriptions on cream) --- */
-  .panel-about { background: var(--color-cream); }
-  .panel-about .panel-heading { border-bottom-color: rgba(1, 64, 79, 0.35); }
-
-  .about-list { display: flex; flex-direction: column; }
-  .about-event {
-    break-inside: avoid;
-    margin-bottom: 0.26in;
-    padding-bottom: 0.2in;
-    border-bottom: 1px dashed rgba(1, 64, 79, 0.22);
-  }
-  .about-event:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  /* bare event (no headline/blurb): title stands alone as an editorial index entry */
+  /* --- about cells (editorial event descriptions) --- */
+  .about-event { break-inside: avoid; }
   .about-event .about-title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 16pt;
-    color: var(--color-teal);
-    letter-spacing: 0;
-    line-height: 1.15;
-    margin: 0;
-  }
-
-  /* full event (has headline/blurb): title demoted to a small kicker */
-  .about-event.about-event--full .about-title {
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 8.5pt;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--color-teal);
-    opacity: 0.65;
-    margin: 0 0 5pt 0;
-    line-height: 1;
-  }
-  .about-event--full .about-headline {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
     font-size: 17pt;
     color: var(--color-teal);
     letter-spacing: 0;
-    margin: 0 0 7pt 0;
-    line-height: 1.2;
+    line-height: 1.15;
+    margin: 0 0 6pt 0;
   }
-  .about-event--full .about-blurb {
+  .about-event .about-headline {
     font-family: var(--font-serif);
-    font-style: normal;
+    font-style: italic;
     font-weight: 400;
     font-size: 10.5pt;
     color: var(--color-teal);
+    opacity: 0.75;
+    margin: 0 0 8pt 0;
+    line-height: 1.35;
+  }
+  .about-event .about-blurb {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10pt;
+    color: var(--color-teal);
     opacity: 0.92;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
     letter-spacing: 0.002em;
   }
 

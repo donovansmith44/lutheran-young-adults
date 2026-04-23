@@ -57,43 +57,42 @@
 
 <!-- ========================================================== -->
 <!-- INSIDE FACE                                                  -->
-<!--   [ SCHEDULE | ABOUT | PHOTO ]                              -->
+<!--   Table layout so each event row aligns across panels:      -->
+<!--     [ schedule cell | about cell | photo (rowspan all) ]    -->
 <!-- ========================================================== -->
 <div class="brochure-page inside">
-
-  <section class="panel panel-schedule">
-    <p class="schedule-footnote">* Event details subject to change as the Lord wills</p>
-    <div class="panel-inner">
-      <div class="panel-heading">
-        <div class="panel-heading-eyebrow">2026</div>
-        <div class="panel-heading-title">Event Schedule</div>
-      </div>
-      <div class="events-list">
-        {{EVENTS_SCHEDULE}}
-      </div>
-    </div>
-  </section>
-
-  <section class="panel panel-about">
-    <div class="panel-inner">
-      <div class="panel-heading">
-        <div class="panel-heading-eyebrow">What to Expect</div>
-        <div class="panel-heading-title">The Events</div>
-      </div>
-      <div class="about-list">
-        {{EVENTS_ABOUT}}
-      </div>
-    </div>
-  </section>
-
-  <section class="panel panel-photo">
-    <div class="panel-inner">
-      <div class="photo-frame">
-        <span class="photo-caption">Drop a photo here — replace <code>assets/photo.jpg</code></span>
-      </div>
-    </div>
-  </section>
-
+  <p class="schedule-footnote">* Event details subject to change as the Lord wills</p>
+  <table class="inside-table">
+    <colgroup>
+      <col class="col-sched">
+      <col class="col-about">
+      <col class="col-photo">
+    </colgroup>
+    <tr class="row-head">
+      <td class="cell cell-sched cell-head">
+        <div class="panel-heading">
+          <div class="panel-heading-eyebrow">2026</div>
+          <div class="panel-heading-title">Event Schedule</div>
+        </div>
+      </td>
+      <td class="cell cell-about cell-head">
+        <div class="panel-heading">
+          <div class="panel-heading-eyebrow">What to Expect</div>
+          <div class="panel-heading-title">The Events</div>
+        </div>
+      </td>
+      <td class="cell cell-photo" rowspan="99">
+        <div class="photo-frame">
+          <span class="photo-caption">Drop a photo here — replace <code>assets/photo.jpg</code></span>
+        </div>
+      </td>
+    </tr>
+    {{INSIDE_ROWS}}
+    <tr class="row-filler">
+      <td class="cell cell-sched cell-filler"></td>
+      <td class="cell cell-about cell-filler"></td>
+    </tr>
+  </table>
 </div>
 
 </body>

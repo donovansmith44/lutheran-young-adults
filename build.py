@@ -167,49 +167,61 @@ def _date_html(ev: dict) -> str:
     return f'<span class="d-num">{ev["date"]}</span>'
 
 
+def _schedule_event_html(ev: dict) -> str:
+    is_tbd = not ev["times"] and ev["title"].upper() == "TBD"
+    cls = "event event-tbd" if is_tbd else "event"
+    day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
+    times_html = ""
+    if ev["times"]:
+        items = "\n".join(
+            f'<li><span class="t">{t}</span><span class="a">{a}</span></li>'
+            for t, a in ev["times"]
+        )
+        times_html = f'<ul class="times">{items}</ul>'
+    return (
+        f'<section class="{cls}">'
+        f'<div class="event-head">'
+        f'<div class="date">{_date_html(ev)}{day_html}</div>'
+        f'<div class="title-line">{ev["title"]}</div>'
+        f'</div>'
+        f'{times_html}'
+        f'</section>'
+    )
+
+
+def _about_event_html(ev: dict) -> str:
+    headline_html = f'<p class="about-headline">{ev["headline"]}</p>' if ev["headline"] else ""
+    blurb_html = f'<p class="about-blurb">{ev["about"]}</p>' if ev["about"] else ""
+    cls = "about-event about-event--full" if (ev["headline"] or ev["about"]) else "about-event"
+    return (
+        f'<section class="{cls}">'
+        f'<h3 class="about-title">{ev["title"]}</h3>'
+        f'{headline_html}'
+        f'{blurb_html}'
+        f'</section>'
+    )
+
+
 def render_events_schedule(events: list) -> str:
-    """Left (schedule) panel: date + event name + times."""
-    html = []
-    for ev in events:
-        is_tbd = not ev["times"] and ev["title"].upper() == "TBD"
-        cls = "event event-tbd" if is_tbd else "event"
-        day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
-        times_html = ""
-        if ev["times"]:
-            items = "\n".join(
-                f'<li><span class="t">{t}</span><span class="a">{a}</span></li>'
-                for t, a in ev["times"]
-            )
-            times_html = f'<ul class="times">{items}</ul>'
-        html.append(
-            f'<section class="{cls}">'
-            f'<div class="event-head">'
-            f'<div class="date">{_date_html(ev)}{day_html}</div>'
-            f'<div class="title-line">{ev["title"]}</div>'
-            f'</div>'
-            f'{times_html}'
-            f'</section>'
-        )
-    return "\n".join(html)
+    """Flyer-style stacked schedule list (used by the flyer template)."""
+    return "\n".join(_schedule_event_html(ev) for ev in events)
 
 
-def render_events_about(events: list) -> str:
-    """Middle (about) panel: event name + headline + blurb."""
-    html = []
+def render_inside_rows(events: list) -> str:
+    """Paired schedule+about table rows for the brochure inside face.
+
+    Each event becomes one <tr> with two <td>s so the schedule entry
+    and the about description share a row height and align.
+    """
+    rows = []
     for ev in events:
-        if not ev["times"] and ev["title"].upper() == "TBD":
-            continue
-        headline_html = f'<p class="about-headline">{ev["headline"]}</p>' if ev["headline"] else ""
-        blurb_html = f'<p class="about-blurb">{ev["about"]}</p>' if ev["about"] else ""
-        cls = "about-event about-event--full" if (ev["headline"] or ev["about"]) else "about-event"
-        html.append(
-            f'<section class="{cls}">'
-            f'<h3 class="about-title">{ev["title"]}</h3>'
-            f'{headline_html}'
-            f'{blurb_html}'
-            f'</section>'
+        rows.append(
+            '<tr class="row-event">'
+            f'<td class="cell cell-sched cell-event">{_schedule_event_html(ev)}</td>'
+            f'<td class="cell cell-about cell-event">{_about_event_html(ev)}</td>'
+            '</tr>'
         )
-    return "\n".join(html)
+    return "\n".join(rows)
 
 
 def main():
@@ -243,8 +255,7 @@ def main():
         .replace("{{MISSION_FRONT}}", mission_front_html)
         .replace("{{MISSION}}", mission_html)
         .replace("{{EVENTS}}", render_events_schedule(events))
-        .replace("{{EVENTS_SCHEDULE}}", render_events_schedule(events))
-        .replace("{{EVENTS_ABOUT}}", render_events_about(events))
+        .replace("{{INSIDE_ROWS}}", render_inside_rows(events))
     )
     cfg["html_out"].write_text(html, encoding="utf-8")
     print(f"wrote {cfg['html_out'].name}")
