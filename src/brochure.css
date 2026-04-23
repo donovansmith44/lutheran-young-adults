@@ -98,6 +98,16 @@ html, body { margin: 0; padding: 0; }
   .inside-table .col-photo { width: 33.3333%; }
 
   .inside-table .cell { padding: 0 0.38in; vertical-align: top; }
+
+  /* make the schedule and about headings share a baseline across columns:
+     bottom-align their contents so the title line (and bottom border) sit at
+     the same Y whether there's an eyebrow above or not */
+  .inside-table .panel-heading {
+    min-height: 40pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
   .inside-table .cell-head {
     padding-top: 0.42in;
     padding-bottom: 0.12in;
@@ -106,10 +116,21 @@ html, body { margin: 0; padding: 0; }
     padding-top: 0.04in;
     padding-bottom: 0.22in;
   }
-  .inside-table .cell-sched,
-  .inside-table .cell-about {
-    border-right: 1px dashed rgba(1, 64, 79, 0.2);
+  /* full-height dashed dividers between the three inside panels, via
+     pseudo-elements on the page so they run floor-to-ceiling regardless
+     of how much content the table rows hold */
+  .brochure-page.inside::before,
+  .brochure-page.inside::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px dashed rgba(1, 64, 79, 0.2);
+    pointer-events: none;
   }
+  .brochure-page.inside::before { left: 33.3333%; }
+  .brochure-page.inside::after { left: 66.6667%; }
   .inside-table .cell-photo {
     padding: 0;
     vertical-align: middle;
@@ -522,11 +543,11 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0.002em;
   }
 
-  /* --- schedule footnote (little asterisk in the top-left corner) --- */
+  /* --- schedule footnote (little asterisk in the bottom-left corner) --- */
   .schedule-footnote {
     position: absolute;
-    top: 0.14in;
-    left: 0.18in;
+    bottom: 0.22in;
+    left: 0.38in;
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 7pt;
