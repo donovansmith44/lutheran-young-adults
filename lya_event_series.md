@@ -35,6 +35,8 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 
 ### 04 july — America's 250th
 **Location:** St. John's in Dublin
+**Headline:** Celebrate the gift of country
+**About:** This will be a laid back get-together to enjoy fellowship and, hopefully, beautiful weather. The gathering will be held indoors in the event of adverse conditions.
 
 | Time | Activity |
 |---|---|
@@ -47,6 +49,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 
 ### 01 august — The Odyssey
 **Location:** AMC Dublin 18
+**About:** Kick back and enjoy one of the most anticipated movies of the year, and afterwards, come hang out at Pins for drinks, bowling, and games (21+ after 8:00 PM).
 
 | Time | Activity |
 |---|---|
