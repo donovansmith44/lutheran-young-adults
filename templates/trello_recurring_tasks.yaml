@@ -1,0 +1,123 @@
+# Recurring tasks created for every event board.
+#
+# Fields per task:
+#   id               stable identifier, referenced by other tasks in depends_on
+#   title            human-readable name (appears on the Trello card + Sheet row)
+#   description      Markdown body for the Trello card — use {{event.title}}
+#                    {{event.date}} {{event.location}} for interpolation
+#   depends_on       list of task ids that must complete first — used for topo
+#                    sort and for computing the critical path
+#   lead_time_days   days before the event this should be DONE by; the orchestrator
+#                    back-calculates a deadline (event.date - lead_time_days)
+#   pullable         true  -> goes in the Google Sheet for volunteers to claim
+#                    false -> skipped from the pool; handled by POC below
+#   poc              (only if pullable=false) references a name key in people.yaml.
+#                    orchestrator drafts a direct personal ask to this person.
+#   comm_deps        list of person keys to consult while doing this task
+#   category         organizational grouping: location | marketing | food |
+#                    logistics | ops
+
+tasks:
+  - id: secure_location
+    title: Secure location with host
+    description: |
+      Confirm availability for {{event.date}} at the target location.
+      Get written confirmation (email or text) of the time block.
+    depends_on: []
+    lead_time_days: 42
+    pullable: false
+    poc: pastor_zion           # override per-event in frontmatter if not Zion
+    comm_deps: [pastor_zion]
+    category: location
+
+  - id: create_brochure
+    title: Create event brochure
+    description: |
+      Run `python3 build.py --format brochure` once the location is locked.
+      Review for typos; ensure date/location match the confirmed booking.
+    depends_on: [secure_location]
+    lead_time_days: 28
+    pullable: false
+    poc: self
+    category: marketing
+
+  - id: advertise_congregation_a
+    title: Advertise at Zion (Congregation A)
+    description: |
+      Bulletin insert + verbal announcement at services the 2 Sundays before.
+      Bring physical brochures.
+    depends_on: [create_brochure]
+    lead_time_days: 14
+    pullable: true
+    category: marketing
+
+  - id: advertise_congregation_b
+    title: Advertise to Congregation B
+    description: |
+      Coordinate announcement with the other parish's young-adult contact.
+    depends_on: [create_brochure]
+    lead_time_days: 14
+    pullable: true
+    category: marketing
+
+  - id: advertise_congregation_c
+    title: Advertise to Congregation C
+    description: |
+      Coordinate announcement with the third parish's contact.
+    depends_on: [create_brochure]
+    lead_time_days: 14
+    pullable: true
+    category: marketing
+
+  - id: distro_list_announcement
+    title: Send announcement to distribution list
+    description: |
+      Email blast to the LYA distro list with the brochure attached
+      + a one-paragraph hook. Include RSVP instructions.
+    depends_on: [create_brochure]
+    lead_time_days: 14
+    pullable: false
+    poc: self
+    category: marketing
+
+  - id: food_signup_list
+    title: Build food signup list
+    description: |
+      Set up a shared food signup (can piggyback on the tasks Google Sheet).
+      Seed with anchor items (main dish, drinks, plates/utensils) so
+      people can add/claim sides, desserts, misc.
+    depends_on: []
+    lead_time_days: 21
+    pullable: true
+    category: food
+
+  - id: rsvp_collection
+    title: Collect and track RSVPs
+    description: |
+      Keep the encrypted RSVP log current. Surface pending/maybes to
+      decide on pushes or cancellation at the min_attendees threshold.
+    depends_on: []
+    lead_time_days: 7
+    pullable: false
+    poc: self
+    category: ops
+
+  - id: day_of_setup
+    title: Day-of setup
+    description: |
+      Arrive early. Tables/chairs arranged. Food prep area clear.
+      Signage (if any) visible.
+    depends_on: [secure_location]
+    lead_time_days: 0
+    pullable: true
+    category: logistics
+
+  - id: day_of_cleanup
+    title: Day-of cleanup
+    description: |
+      Leave the space cleaner than you found it. Trash out, tables
+      back in original config, lights off.
+    depends_on: [day_of_setup]
+    lead_time_days: 0
+    pullable: true
+    category: logistics
