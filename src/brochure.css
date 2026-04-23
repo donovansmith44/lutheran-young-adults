@@ -99,15 +99,6 @@ html, body { margin: 0; padding: 0; }
 
   .inside-table .cell { padding: 0 0.38in; vertical-align: top; }
 
-  /* make the schedule and about headings share a baseline across columns:
-     bottom-align their contents so the title line (and bottom border) sit at
-     the same Y whether there's an eyebrow above or not */
-  .inside-table .panel-heading {
-    min-height: 40pt;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
   .inside-table .cell-head {
     padding-top: 0.42in;
     padding-bottom: 0.12in;
