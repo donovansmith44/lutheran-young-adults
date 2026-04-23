@@ -308,7 +308,7 @@ html, body { margin: 0; padding: 0; }
   }
   .event ul.times li {
     display: grid;
-    grid-template-columns: 1.4in 1fr;
+    grid-template-columns: 1.2in 1fr;
     gap: 8pt;
     padding: 1pt 0;
   }
@@ -323,6 +323,7 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-body);
     font-size: var(--t-body-small);
     color: var(--color-teal);
+    white-space: nowrap;
   }
   .event .note {
     margin-top: 6pt;
@@ -386,11 +387,8 @@ html, body { margin: 0; padding: 0; }
   }
 
   /* --- verse panel --- */
-  .panel-verse .panel-inner {
-    justify-content: center;
-  }
   .panel-verse .scripture-hero {
-    margin-top: 0;
+    margin-top: 0.18in;
   }
   .panel-verse .scripture-hero .quote-text {
     font-size: 12.5pt;
