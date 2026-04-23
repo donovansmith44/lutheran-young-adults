@@ -283,6 +283,29 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0.01em;
     word-break: break-all;
   }
+  .back-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6pt;
+    margin: 2pt 0 2pt 0;
+  }
+  .back-qr-img {
+    width: 1.05in;
+    height: 1.05in;
+    background: var(--color-cream);
+    padding: 5pt;
+    border-radius: 4pt;
+    display: block;
+  }
+  .back-qr-caption {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-pink);
+  }
   .back-tagline {
     font-family: var(--font-serif);
     font-style: italic;

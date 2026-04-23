@@ -17,12 +17,34 @@ import pathlib
 import re
 import subprocess
 import sys
+import urllib.parse
 
+import segno
 import weasyprint
 
 ROOT = pathlib.Path(__file__).parent
 MD = ROOT / "lya_event_series.md"
 TAILWIND = ROOT / "tailwindcss"
+QR_OUT = ROOT / "assets" / "qr-rsvp.svg"
+
+# Where the QR code sends people. mailto: works out of the box — no backend,
+# no account; phone cameras open the user's Mail app with the fields filled in.
+# Swap this for a Google Form / Partiful / Eventbrite URL once you have one
+# and rerun the build to regenerate the QR.
+RSVP_EMAIL = "donovan.smith44@gmail.com"
+RSVP_SUBJECT = "RSVP — Lutheran Young Adults"
+RSVP_BODY = (
+    "Hi Donovan,\n\n"
+    "I'd like to RSVP for the following LYA event(s):\n"
+    "  - \n\n"
+    "Name:\n"
+    "Phone / email:\n"
+)
+RSVP_URL = (
+    f"mailto:{RSVP_EMAIL}"
+    f"?subject={urllib.parse.quote(RSVP_SUBJECT)}"
+    f"&body={urllib.parse.quote(RSVP_BODY)}"
+)
 
 FORMATS = {
     "flyer": {
@@ -238,6 +260,14 @@ def main():
     data = parse_markdown(md)
 
     events = data["events"] if args.all else data["events"][: args.max]
+
+    # Regenerate the RSVP QR code every build so swapping RSVP_URL just works.
+    QR_OUT.parent.mkdir(parents=True, exist_ok=True)
+    segno.make(RSVP_URL, error="m").save(
+        str(QR_OUT), kind="svg", scale=10, border=0,
+        dark="#01404f", light=None, omitsize=True,
+    )
+    print(f"wrote {QR_OUT.relative_to(ROOT)}")
 
     template = cfg["template"].read_text(encoding="utf-8")
     mission_html = "\n".join(f"<p>{p}</p>" for p in data["mission"])
