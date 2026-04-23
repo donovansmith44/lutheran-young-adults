@@ -6,7 +6,7 @@
 
 ---
 
-### Brothers and Sisters in Christ,
+### Brothers and sisters in Christ,
 
 The words of Paul remind us of the importance of regular gathering within the Church. As Paul was encouraged by the faith of the Ephesians and the Philippians, we ought to be encouraged by the faith of one another. This truth is especially poignant today, now that many young adults are leaving Confessional Lutheranism in search of community and fellowship in church bodies that have more young adults than we do.
 
