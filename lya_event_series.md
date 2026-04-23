@@ -19,12 +19,12 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 ### 06 june — Personality Day
 **Location:** Zion
 **Headline:** Learn something about yourself and others
-**About:** After opening with some hymns and a devotional, we'll all take a personality test and be matched with groups where everyone is tested to have either similar or opposite traits from yourself. This will be an opportunity for us all to get better acquainted, play games, and enjoy a catered meal from Zupas!
+**About:** After opening with some hymns and a devotional, we'll all take a personality test and be matched with groups where everyone has tested as having either similar or opposite traits from yourself. This will be an opportunity for us all to get better acquainted, play games, and enjoy a catered meal from Zupas!
 
 | Time | Activity |
 |---|---|
-| 2:00 PM - 2:15 PM | Introduction |
-| 2:15 PM - 2:45 PM | Vicar-led Devotional |
+| 2:00 PM - 2:30 PM | Vicar-led Devotional |
+| 2:30 PM - 2:45 PM | Introduction |
 | 2:45 PM - 3:30 PM | Personality Test |
 | 3:30 PM - 4:15 PM | Activity 1 |
 | 4:15 PM - 5:15 PM | Activity 2 |
