@@ -1,3 +1,21 @@
 *:Zone.Identifier
 tailwindcss
 assets_logo.png
+
+# Decrypted secrets (orchestrator reads ~/.config/event_planner/, but
+# in case anyone runs `python3 secret.py cat ... > foo` by accident):
+.env
+.env.*
+people.yaml
+voice.md
+
+# Never, never a private age key. Real key lives at
+# ~/.config/event_planner/key.txt and is not in this repo.
+key.txt
+*.key
+
+# Editor / OS junk
+.DS_Store
+*.swp
+__pycache__/
+*.pyc

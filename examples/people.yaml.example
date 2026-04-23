@@ -1,0 +1,42 @@
+# Contacts + context for event invitees. Decrypted at orchestrator run time,
+# plaintext never written to disk. Edit with:
+#   python3 secret.py edit people.yaml
+#
+# Structure is a list of people. Fields:
+#   name                 - display name
+#   phone                - E.164 format, e.g. "+16145551234"  (optional)
+#   email                - email address (optional; used as fallback)
+#   relationship         - short description of how you know them + tone
+#   style_samples        - 2-3 actual texts you'd send this person, so
+#                          Claude matches your voice to them specifically
+#   context              - other background: prior involvement, quirks,
+#                          things that should inform what you say
+#   point_of_contact_for - list of recurring-task ids this person owns
+#                          (matches ids in trello_recurring_tasks.yaml)
+#   default_invite       - true if they get invited to every event board
+
+- name: Martti Laine
+  phone: "+16145550000"     # replace with your real number
+  email: "pgdad1st@gmail.com"
+  relationship: self
+  default_invite: true
+
+- name: Donovan Smith
+  phone: "+1614..."          # replace
+  email: "donovan.smith44@gmail.com"
+  relationship: >-
+    Close friend, co-organizer of LYA events, brother in Christ.
+    Casual and direct. He volunteers for food coordination and
+    RSVP tracking on events we run together.
+  style_samples:
+    - "yo donovan — locking in the june cookout for the 6th, you in?"
+    - "need a hand on the food signup for july, can you take it?"
+  context: >-
+    Already on most LYA events. Tends to jump on location logistics.
+  point_of_contact_for:
+    - food_signup_list
+    - rsvp_collection
+  default_invite: true
+
+# Add more entries here. Pastor(s), Zion host contacts, distro-list owners,
+# anyone who might get invited to an event board.
