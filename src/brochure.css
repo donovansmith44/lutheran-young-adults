@@ -567,7 +567,7 @@ html, body { margin: 0; padding: 0; }
     text-align: center;
     font-family: var(--font-serif);
     font-weight: 400;
-    font-style: italic;
+    font-style: normal;
     font-size: 11.5pt;
     letter-spacing: 0;
     margin-bottom: 8pt;
