@@ -221,87 +221,51 @@ html, body { margin: 0; padding: 0; }
 
   /* --- front cover (the meat) --- */
   .front-inner {
-    align-items: center;
+    justify-content: center;
     text-align: center;
+    gap: 0.18in;
     padding-top: 0.34in;
     padding-bottom: 0.34in;
   }
-  .front-eyebrow {
-    font-weight: 500;
-    font-size: var(--t-eyebrow);
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--color-teal);
-    opacity: 0.8;
-  }
   .front-logo {
-    width: 0.85in;
-    height: 0.85in;
-    margin-top: 0.1in;
+    width: 1.1in;
+    height: 1.1in;
+    align-self: center;
   }
   .front-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: var(--t-display);
+    font-size: 22pt;
     color: var(--color-teal);
     letter-spacing: 0.04em;
-    line-height: 1.08;
-    margin: 0.12in 0 0 0;
+    line-height: 1.1;
+    margin: 0;
+    width: 100%;
   }
   .front-subtitle {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-subtitle);
+    font-size: 15pt;
     color: var(--color-teal);
     line-height: 1.3;
-    max-width: 2.6in;
-    margin-top: 6pt;
+    margin: 0 auto;
+    max-width: 2.7in;
   }
-  .front-divider {
-    display: flex;
-    align-items: center;
-    gap: 8pt;
-    width: 85%;
-    margin: 0.14in 0;
-  }
-  .front-divider .rule {
-    flex: 1;
-    height: 1pt;
-    background: var(--color-teal);
-    opacity: 0.8;
-  }
-  .front-divider .diamond {
-    width: 5pt; height: 5pt;
-    background: var(--color-teal);
-    transform: rotate(45deg);
-  }
-  .front-mission {
-    font-family: var(--font-body);
-    font-size: 9pt;
-    line-height: 1.5;
-    color: var(--color-teal);
-    text-align: justify;
-  }
-  .front-mission .salutation {
-    display: block;
-    text-align: center;
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-style: italic;
-    font-size: var(--t-subtitle);
-    margin-bottom: 6pt;
-  }
-  .front-mission p { margin: 0 0 6pt 0; }
-  .front-mission p:last-child { margin-bottom: 0; }
 
   /* ========================================================== */
   /* INSIDE FACE                                                 */
   /* ========================================================== */
 
   /* --- schedule panel --- */
-  .event { margin-bottom: 0.18in; break-inside: avoid; }
-  .event:last-child { margin-bottom: 0; }
+  .panel-schedule .panel-inner { display: flex; flex-direction: column; }
+  .events-list {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .event { break-inside: avoid; }
   .event-head {
     padding-bottom: 4pt;
     border-bottom: 1.5pt solid var(--color-teal);
@@ -315,7 +279,7 @@ html, body { margin: 0; padding: 0; }
     display: block;
   }
   .event .date .d-num { font-weight: 800; }
-  .event .date .d-mo { font-weight: 300; margin-left: 3pt; text-transform: capitalize; }
+  .event .date .d-mo { font-weight: 300; margin-left: 3pt; }
   .event .title-line {
     font-family: var(--font-display);
     font-weight: 800;
@@ -408,6 +372,36 @@ html, body { margin: 0; padding: 0; }
     justify-content: flex-start;
   }
   .panel-verse .scripture-hero {
-    margin-top: 0.2in;
+    margin-top: 0.15in;
   }
+  .panel-verse .scripture-hero .quote-text {
+    font-size: 12.5pt;
+    line-height: 1.45;
+  }
+  .verse-divider {
+    width: 1.1in;
+    height: 1pt;
+    background: var(--color-teal);
+    opacity: 0.45;
+    margin: 0.22in auto 0.18in;
+  }
+  .verse-mission {
+    font-family: var(--font-body);
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: var(--color-teal);
+    text-align: justify;
+  }
+  .verse-mission .salutation {
+    display: block;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 10pt;
+    letter-spacing: 0.02em;
+    margin-bottom: 6pt;
+  }
+  .verse-mission p { margin: 0 0 5pt 0; }
+  .verse-mission p:last-child { margin-bottom: 0; }
 }

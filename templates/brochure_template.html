@@ -49,19 +49,9 @@
   <!-- RIGHT: front cover (seen when folded closed, the first page people see) -->
   <section class="panel panel-front">
     <div class="panel-inner front-inner">
-      <div class="front-eyebrow">Central Ohio · 2026</div>
       <img src="assets/logo.png" alt="" class="front-logo">
       <h1 class="front-title">{{TITLE_UPPER}}</h1>
       <div class="front-subtitle">{{SUBTITLE}}</div>
-      <div class="front-divider">
-        <span class="rule"></span>
-        <span class="diamond"></span>
-        <span class="rule"></span>
-      </div>
-      <div class="front-mission">
-        <p class="salutation">{{SALUTATION}}</p>
-        {{MISSION}}
-      </div>
     </div>
   </section>
 
@@ -79,7 +69,9 @@
         <div class="panel-heading-eyebrow">2026</div>
         <div class="panel-heading-title">Event Schedule</div>
       </div>
-      {{EVENTS}}
+      <div class="events-list">
+        {{EVENTS}}
+      </div>
     </div>
   </section>
 
@@ -104,10 +96,15 @@
         <div class="panel-heading-eyebrow">Scripture</div>
         <div class="panel-heading-title">Our Anchor</div>
       </div>
-      <blockquote class="scripture-hero scripture-hero-big">
+      <blockquote class="scripture-hero">
         <p class="quote-text">{{SCRIPTURE}}</p>
         <cite>{{SCRIPTURE_CITE}}</cite>
       </blockquote>
+      <div class="verse-divider"></div>
+      <div class="verse-mission">
+        <p class="salutation">{{SALUTATION}}</p>
+        {{MISSION}}
+      </div>
     </div>
   </section>
 
