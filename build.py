@@ -152,26 +152,20 @@ def parse_markdown(text: str) -> dict:
     }
 
 
-def render_events(events: list) -> str:
+def _date_html(ev: dict) -> str:
+    parts = ev["date"].split(None, 1)
+    if len(parts) == 2:
+        return f'<span class="d-num">{parts[0]}</span><span class="d-mo">{parts[1]}</span>'
+    return f'<span class="d-num">{ev["date"]}</span>'
+
+
+def render_events_schedule(events: list) -> str:
+    """Left (schedule) panel: date + event name + times."""
     html = []
     for ev in events:
         is_tbd = not ev["times"] and ev["title"].upper() == "TBD"
         cls = "event event-tbd" if is_tbd else "event"
-        # split date "06 june" into number + month spans
-        parts = ev["date"].split(None, 1)
-        if len(parts) == 2:
-            date_html = f'<span class="d-num">{parts[0]}</span><span class="d-mo">{parts[1]}</span>'
-        else:
-            date_html = f'<span class="d-num">{ev["date"]}</span>'
         day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
-        # title line: event name, with location as a stylable trailing span
-        if ev["location"] and ev["location"] != "TBD":
-            title_line = (
-                f'{ev["title"]}'
-                f'<span class="event-location">{ev["location"]}</span>'
-            )
-        else:
-            title_line = ev["title"]
         times_html = ""
         if ev["times"]:
             items = "\n".join(
@@ -179,14 +173,32 @@ def render_events(events: list) -> str:
                 for t, a in ev["times"]
             )
             times_html = f'<ul class="times">{items}</ul>'
-        note_html = f'<p class="note">{ev["note"]}</p>' if ev["note"] else ""
         html.append(
             f'<section class="{cls}">'
             f'<div class="event-head">'
-            f'<div class="date">{date_html}{day_html}</div>'
-            f'<div class="title-line">{title_line}</div>'
+            f'<div class="date">{_date_html(ev)}{day_html}</div>'
+            f'<div class="title-line">{ev["title"]}</div>'
             f'</div>'
             f'{times_html}'
+            f'</section>'
+        )
+    return "\n".join(html)
+
+
+def render_events_about(events: list) -> str:
+    """Middle (about) panel: event name + location + note."""
+    html = []
+    for ev in events:
+        if not ev["times"] and ev["title"].upper() == "TBD":
+            continue
+        loc = ev["location"] if ev["location"] and ev["location"] != "TBD" else ""
+        loc_html = f'<p class="about-location">{loc}</p>' if loc else ""
+        note_html = f'<p class="about-note">{ev["note"]}</p>' if ev["note"] else ""
+        html.append(
+            f'<section class="about-event">'
+            f'<div class="about-date">{_date_html(ev)}</div>'
+            f'<h3 class="about-title">{ev["title"]}</h3>'
+            f'{loc_html}'
             f'{note_html}'
             f'</section>'
         )
@@ -223,7 +235,9 @@ def main():
         .replace("{{SALUTATION}}", data["salutation"])
         .replace("{{MISSION_FRONT}}", mission_front_html)
         .replace("{{MISSION}}", mission_html)
-        .replace("{{EVENTS}}", render_events(events))
+        .replace("{{EVENTS}}", render_events_schedule(events))
+        .replace("{{EVENTS_SCHEDULE}}", render_events_schedule(events))
+        .replace("{{EVENTS_ABOUT}}", render_events_about(events))
     )
     cfg["html_out"].write_text(html, encoding="utf-8")
     print(f"wrote {cfg['html_out'].name}")

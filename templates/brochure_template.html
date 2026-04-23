@@ -9,14 +9,28 @@
 
 <!-- ========================================================== -->
 <!-- OUTSIDE FACE                                                 -->
-<!--   Panels printed L->R:  [ TUCK | BACK COVER | FRONT COVER ] -->
+<!--   Panels printed L->R:  [ MISSION | BACK COVER | FRONT ]    -->
 <!--   When folded: front cover is on top; back cover underneath -->
 <!-- ========================================================== -->
 <div class="brochure-page outside">
 
-  <!-- LEFT: tuck panel (tucks inside when folded; intentionally blank) -->
-  <section class="panel panel-tuck">
-    <div class="panel-inner tuck-inner"></div>
+  <!-- LEFT: mission / scripture (tucks inside when folded) -->
+  <section class="panel panel-mission">
+    <div class="panel-inner">
+      <div class="panel-heading">
+        <div class="panel-heading-eyebrow">Our Mission</div>
+        <div class="panel-heading-title">Connection</div>
+      </div>
+      <blockquote class="scripture-hero">
+        <p class="quote-text">&ldquo;{{SCRIPTURE}}&rdquo;</p>
+        <cite>{{SCRIPTURE_CITE}}</cite>
+      </blockquote>
+      <div class="verse-divider"></div>
+      <div class="verse-mission">
+        <p class="salutation">{{SALUTATION}}</p>
+        {{MISSION}}
+      </div>
+    </div>
   </section>
 
   <!-- MIDDLE: back cover (seen when brochure is closed, flipped over) -->
@@ -43,7 +57,7 @@
 
 <!-- ========================================================== -->
 <!-- INSIDE FACE                                                  -->
-<!--   [ SCHEDULE | ONE PHOTO | SCRIPTURE ]                      -->
+<!--   [ SCHEDULE | ABOUT | PHOTO ]                              -->
 <!-- ========================================================== -->
 <div class="brochure-page inside">
 
@@ -54,7 +68,19 @@
         <div class="panel-heading-title">Event Schedule</div>
       </div>
       <div class="events-list">
-        {{EVENTS}}
+        {{EVENTS_SCHEDULE}}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel-about">
+    <div class="panel-inner">
+      <div class="panel-heading">
+        <div class="panel-heading-eyebrow">What to Expect</div>
+        <div class="panel-heading-title">The Events</div>
+      </div>
+      <div class="about-list">
+        {{EVENTS_ABOUT}}
       </div>
     </div>
   </section>
@@ -63,24 +89,6 @@
     <div class="panel-inner">
       <div class="photo-frame">
         <span class="photo-caption">Drop a photo here — replace <code>assets/photo.jpg</code></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel panel-verse">
-    <div class="panel-inner">
-      <div class="panel-heading">
-        <div class="panel-heading-eyebrow">Our Mission</div>
-        <div class="panel-heading-title">Connection</div>
-      </div>
-      <blockquote class="scripture-hero">
-        <p class="quote-text">&ldquo;{{SCRIPTURE}}&rdquo;</p>
-        <cite>{{SCRIPTURE_CITE}}</cite>
-      </blockquote>
-      <div class="verse-divider"></div>
-      <div class="verse-mission">
-        <p class="salutation">{{SALUTATION}}</p>
-        {{MISSION}}
       </div>
     </div>
   </section>

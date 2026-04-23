@@ -387,13 +387,58 @@ html, body { margin: 0; padding: 0; }
     justify-content: center;
   }
 
-  /* --- verse panel --- */
-  .panel-verse .scripture-hero {
+  /* --- mission panel (outside-left, holds scripture + mission letter) --- */
+  .panel-mission .scripture-hero {
     margin-top: 0.18in;
   }
-  .panel-verse .scripture-hero .quote-text {
+  .panel-mission .scripture-hero .quote-text {
     font-size: 12.5pt;
     line-height: 1.45;
+  }
+
+  /* --- about panel (inside-middle: event descriptions) --- */
+  .about-list { display: flex; flex-direction: column; }
+  .about-event {
+    break-inside: avoid;
+    margin-bottom: 0.22in;
+  }
+  .about-event:last-child { margin-bottom: 0; }
+  .about-date {
+    font-family: var(--font-display);
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    opacity: 0.75;
+    margin-bottom: 3pt;
+  }
+  .about-date .d-num { font-weight: 700; }
+  .about-date .d-mo { font-weight: 400; margin-left: 2pt; }
+  .about-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 12pt;
+    color: var(--color-teal);
+    letter-spacing: 0.01em;
+    margin: 0 0 4pt 0;
+    line-height: 1.2;
+  }
+  .about-location {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 10.5pt;
+    color: var(--color-teal);
+    opacity: 0.85;
+    margin: 0;
+  }
+  .about-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 9.5pt;
+    color: var(--color-teal);
+    opacity: 0.85;
+    margin: 4pt 0 0 0;
+    line-height: 1.4;
   }
   .verse-divider {
     width: 1.1in;
@@ -419,6 +464,6 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0;
     margin-bottom: 8pt;
   }
-  .verse-mission p { margin: 0 0 7pt 0; letter-spacing: -0.01em; }
+  .verse-mission p { margin: 0 0 7pt 0; letter-spacing: -0.015em; }
   .verse-mission p:last-child { margin-bottom: 0; }
 }
