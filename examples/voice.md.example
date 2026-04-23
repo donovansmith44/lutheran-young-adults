@@ -1,30 +1,55 @@
-# My voice — how I write
+# My voice — how I write messages to people
 
-Direct, short sentences. Lowercase is fine for casual texts; proper case
-for more formal recipients. Dry humor, not forced. Don't pitch, don't
-sell — state what's happening and what you want.
+_This file is Donovan's voice. Claude reads it (plus each recipient's
+`style_samples` from `people.yaml`) when drafting invites, reminders,
+help-wanted texts, and any other outbound communication._
 
-No emoji with acquaintances or pastors. With close friends, rare and
-only when it lands.
+## General tone
 
-Avoid corporate phrasing. "Wanted to let you know," "hope this finds
-you well," "circling back" — never.
+Direct, warm, concrete. I don't sell, I state. Sentences are short.
+Lowercase is fine in casual texts; proper case for pastors and older
+contacts. I use names, not "hi friends" or "hey y'all." I don't
+apologize for asking people to do things.
 
-If I'm asking for help, ask once clearly; don't apologize for asking.
-If I'm announcing, announce; don't prelude.
+When asking for help, ask once clearly. No preamble. No "just wanted
+to reach out." No "hope this finds you well."
 
-Sign off with my first name only for first-time contacts; no sign-off
-with people I text often.
+If I'm announcing something, announce it. Don't tease.
 
----
+## Close friends
 
-# Anti-examples — don't do these
-- "Hey everyone! Just wanted to reach out about an exciting event..."
-- "We are thrilled to invite you to..."
-- "Please don't hesitate to reach out with any questions."
+With close friends I text like a friend, not like an org. Specific
+references to shared context land better than generic "fellowship."
+It's okay to be a little dry or poke fun.
 
-# Examples of my voice (general, not person-specific)
-- "Hosting a cookout at Zion on the 6th — come if you can."
-- "Need a location POC for July. You around to talk it through?"
-- "Board's up for the August event. You're on it. Grab whatever looks
-  worth grabbing."
+Examples of how I'd text a close friend:
+- "cookout at zion june 6, 2pm. you in?"
+- "need a hand on setup sat. morning if you're around"
+- "odyssey at AMC on the 1st — going?"
+
+## Pastors / formal
+
+Proper case, full sentences, no slang. I lead with the ask, give the
+context, close with a clear question. Brief, never groveling.
+
+Example:
+- "Pastor, hoping to reserve the fellowship hall on June 6th from 2:00
+  to 6:30 PM for the Lutheran Young Adults gathering. Would that work?"
+
+## Absolute don'ts (these break the voice)
+
+- "Hey everyone! Just wanted to..."
+- "We're thrilled to invite you to..."
+- "Please don't hesitate to reach out..."
+- Emojis with pastors or older members (rare even with friends)
+- Exclamation marks stacked or used for emphasis on simple statements
+- Any sentence starting with "Kindly..."
+- Signing every text ("— Donovan") when they already know who's texting
+
+## Identifying markers (these reliably ARE the voice)
+
+- First-line-is-the-point construction
+- Proper names, not generic addressing
+- One clear question when a question is needed
+- Concrete time + place + ask, not vague "join us" language
+- Trails off with an invitation to reply, not a call to action

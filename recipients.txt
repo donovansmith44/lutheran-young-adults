@@ -2,7 +2,7 @@
 # Each collaborator generates their own keypair, sends their public key,
 # and it gets added here. Private keys NEVER appear in this file.
 #
-# To add a collaborator (e.g., Donny):
+# To add a collaborator:
 #   1. They run:  age-keygen -o ~/.config/event_planner/key.txt
 #   2. They send you the single line starting with "age1..." from that file
 #   3. Paste it below with their name in a comment
@@ -15,5 +15,9 @@
 #      offline with their private key, so rotate any leaked-risk secrets)
 #   3. Commit.
 
-# mlaine1 (Martti, laptop)
+# dev machine (Martti) — scaffolding key; swap or keep alongside Donovan's
 age1aewj3d6xdyffe3vksj37m5q6f8wltkajzga4vtft2vmqh92ew9yslqa26j
+
+# Donovan — organizer + texter
+# PASTE DONOVAN'S PUBLIC KEY HERE (generated via age-keygen on his machine)
+# age1...

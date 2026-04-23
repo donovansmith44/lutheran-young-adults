@@ -3,40 +3,85 @@
 #   python3 secret.py edit people.yaml
 #
 # Structure is a list of people. Fields:
-#   name                 - display name
-#   phone                - E.164 format, e.g. "+16145551234"  (optional)
-#   email                - email address (optional; used as fallback)
-#   relationship         - short description of how you know them + tone
-#   style_samples        - 2-3 actual texts you'd send this person, so
-#                          Claude matches your voice to them specifically
-#   context              - other background: prior involvement, quirks,
+#
+#   name                 display name
+#   phone                E.164 format e.g. "+16145551234" (optional)
+#   email                optional; used as fallback or for email-preferred folks
+#   preferred_channel    sms | email | phone_call | in_person
+#                          sms        → text via sms-gate.app
+#                          email      → smtp send
+#                          phone_call → orchestrator surfaces a reminder to
+#                                       call, does NOT auto-dial
+#                          in_person  → orchestrator surfaces a reminder that
+#                                       YOU (or their relay) should invite
+#                                       them face-to-face; no auto-send
+#   congregation         which church this person belongs to (free-form string)
+#   relay_via            (for in_person or hard-to-reach people) the key of
+#                          another person in this file who regularly sees them
+#                          and can pass along an invite or message
+#   relationship         short description of how you know them + tone hints
+#   style_samples        2-3 real texts YOU'D send this person (so Claude
+#                          drafts match your voice to THEM specifically)
+#   context              other background: prior involvement, quirks,
 #                          things that should inform what you say
-#   point_of_contact_for - list of recurring-task ids this person owns
-#                          (matches ids in trello_recurring_tasks.yaml)
-#   default_invite       - true if they get invited to every event board
+#   point_of_contact_for list of recurring-task ids this person owns
+#                          (matches ids in templates/trello_recurring_tasks.yaml)
+#   default_invite       true if they get invited to every event board
 
-- name: Martti Laine
-  phone: "+16145550000"     # replace with your real number
-  email: "pgdad1st@gmail.com"
-  relationship: self
+- key: donovan_smith
+  name: Donovan Smith
+  phone: "+1614XXXXXXX"     # replace
+  email: donovan.smith44@gmail.com
+  preferred_channel: sms
+  congregation: zion
+  relationship: self — organizer of these events
   default_invite: true
 
-- name: Donovan Smith
-  phone: "+1614..."          # replace
-  email: "donovan.smith44@gmail.com"
-  relationship: >-
-    Close friend, co-organizer of LYA events, brother in Christ.
-    Casual and direct. He volunteers for food coordination and
-    RSVP tracking on events we run together.
+- key: pastor_zion
+  name: Pastor [redacted]
+  email: "pastor@zion.example"
+  preferred_channel: email
+  congregation: zion
+  relationship: vicar at Zion; point of contact for facilities booking
   style_samples:
-    - "yo donovan — locking in the june cookout for the 6th, you in?"
-    - "need a hand on the food signup for july, can you take it?"
-  context: >-
-    Already on most LYA events. Tends to jump on location logistics.
+    - |
+      Pastor, hoping we can reserve the fellowship hall on June 6th,
+      2:00–6:30 PM, for the Lutheran Young Adults gathering.
+      Would that work?
   point_of_contact_for:
-    - food_signup_list
-    - rsvp_collection
+    - secure_location
+
+- key: jane_doe
+  name: Jane Doe
+  phone: "+1614XXXXXXX"
+  preferred_channel: sms
+  congregation: st_johns_dublin
+  relationship: attends LYA regularly; casual tone
+  style_samples:
+    - "yo jane — cookout at zion june 6, 2pm. you around?"
+    - "need someone on playlist duty for the 6th, any interest?"
   default_invite: true
 
-# Add more entries here. Pastor(s), Zion host contacts, distro-list owners,
-# anyone who might get invited to an event board.
+# Example: an offline-only contact reached via a relay at their church.
+# The orchestrator won't auto-send to Foo. Instead it generates a reminder
+# for you (invite him in person) AND drafts a message to Pastor Mark
+# asking him to mention it next time he sees Foo.
+- key: foo_offline
+  name: Foo [last name]
+  phone: null                # deliberately no phone — he doesn't text
+  preferred_channel: in_person
+  congregation: st_marks
+  relay_via: pastor_mark
+  relationship: faithful attender, prefers face-to-face, no smartphone
+  default_invite: true
+
+- key: pastor_mark
+  name: Pastor Mark [redacted]
+  email: "mark@stmarks.example"
+  preferred_channel: email
+  congregation: st_marks
+  relationship: vicar at St. Mark's; relay contact for several older attendees
+  default_invite: false
+
+# Add more entries below. Each needs a unique `key` (snake_case, used by
+# other YAML files to reference this person). The `name` is just display.
