@@ -109,6 +109,7 @@ html, body { margin: 0; padding: 0; }
     color: var(--color-teal);
     letter-spacing: 0.03em;
     margin-top: 3pt;
+    white-space: nowrap;
   }
 
   /* ============ shared: scripture hero ============ */
@@ -395,15 +396,12 @@ html, body { margin: 0; padding: 0; }
     font-size: 12.5pt;
     line-height: 1.45;
   }
-  .mission-heading {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 13pt;
-    color: var(--color-teal);
-    letter-spacing: 0.03em;
-    text-align: center;
-    white-space: nowrap;
-    margin: 0.14in 0 0.08in;
+  .verse-divider {
+    width: 1.1in;
+    height: 1pt;
+    background: var(--color-teal);
+    opacity: 0.45;
+    margin: 0.22in auto 0.18in;
   }
   .verse-mission {
     font-family: var(--font-serif);
@@ -422,6 +420,6 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0;
     margin-bottom: 8pt;
   }
-  .verse-mission p { margin: 0 0 7pt 0; }
+  .verse-mission p { margin: 0 0 7pt 0; letter-spacing: -0.01em; }
   .verse-mission p:last-child { margin-bottom: 0; }
 }
