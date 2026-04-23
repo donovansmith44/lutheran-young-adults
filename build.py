@@ -114,6 +114,8 @@ def parse_markdown(text: str) -> dict:
                         "day": day,
                         "title": event_title,
                         "location": "",
+                        "headline": "",
+                        "about": "",
                         "times": [],
                         "note": "",
                     }
@@ -125,6 +127,12 @@ def parse_markdown(text: str) -> dict:
                         lm = re.match(r"^\*\*Location:\*\*\s*(.+)$", nl)
                         if lm:
                             ev["location"] = lm.group(1).strip()
+                        hm = re.match(r"^\*\*Headline:\*\*\s*(.+)$", nl)
+                        if hm:
+                            ev["headline"] = hm.group(1).strip()
+                        am = re.match(r"^\*\*About:\*\*\s*(.+)$", nl)
+                        if am:
+                            ev["about"] = am.group(1).strip()
                         # table row: | time | activity |
                         tm = re.match(r"^\|\s*(.+?)\s*\|\s*(.+?)\s*\|$", nl)
                         if tm and tm.group(1).lower() != "time" and "---" not in tm.group(1):
@@ -186,20 +194,18 @@ def render_events_schedule(events: list) -> str:
 
 
 def render_events_about(events: list) -> str:
-    """Middle (about) panel: event name + location + note."""
+    """Middle (about) panel: event name + headline + blurb."""
     html = []
     for ev in events:
         if not ev["times"] and ev["title"].upper() == "TBD":
             continue
-        loc = ev["location"] if ev["location"] and ev["location"] != "TBD" else ""
-        loc_html = f'<p class="about-location">{loc}</p>' if loc else ""
-        note_html = f'<p class="about-note">{ev["note"]}</p>' if ev["note"] else ""
+        headline_html = f'<p class="about-headline">{ev["headline"]}</p>' if ev["headline"] else ""
+        blurb_html = f'<p class="about-blurb">{ev["about"]}</p>' if ev["about"] else ""
         html.append(
             f'<section class="about-event">'
-            f'<div class="about-date">{_date_html(ev)}</div>'
             f'<h3 class="about-title">{ev["title"]}</h3>'
-            f'{loc_html}'
-            f'{note_html}'
+            f'{headline_html}'
+            f'{blurb_html}'
             f'</section>'
         )
     return "\n".join(html)

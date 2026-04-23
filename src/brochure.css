@@ -423,22 +423,39 @@ html, body { margin: 0; padding: 0; }
     margin: 0 0 4pt 0;
     line-height: 1.2;
   }
-  .about-location {
+  .about-headline {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 10.5pt;
     color: var(--color-teal);
-    opacity: 0.85;
-    margin: 0;
+    opacity: 0.9;
+    margin: 0 0 5pt 0;
+    line-height: 1.35;
   }
-  .about-note {
+  .about-blurb {
+    font-family: var(--font-body);
+    font-size: 9pt;
+    color: var(--color-teal);
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  /* --- schedule footnote (little asterisk in the top corner) --- */
+  .schedule-footnote {
+    position: absolute;
+    top: 0.14in;
+    right: 0.16in;
+    max-width: 1.6in;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 9.5pt;
+    font-size: 7.5pt;
+    line-height: 1.3;
     color: var(--color-teal);
-    opacity: 0.85;
-    margin: 4pt 0 0 0;
-    line-height: 1.4;
+    opacity: 0.55;
+    text-align: right;
+    margin: 0;
   }
   .verse-divider {
     width: 1.1in;
