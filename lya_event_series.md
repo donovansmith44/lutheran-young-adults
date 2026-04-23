@@ -1,6 +1,6 @@
 # Lutheran Young Adults
 
-## Connecting Confessional Lutherans in the Synod
+## Called to Gather
 
 > *"And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another, and all the more as you see the Day drawing near."* (Hbr. 10:24-25, ESV)
 
