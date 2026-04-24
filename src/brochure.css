@@ -64,27 +64,35 @@ html, body { margin: 0; padding: 0; }
     line-height: 1.5;
   }
 
+  /* Tri-fold roll-fold geometry: the tuck/inner-fold panel is 1/8"
+     narrower than the other two so it tucks cleanly inside the closed
+     brochure without jamming against the back/front fold.
+     Outside face (panel order L->R): [ TUCK | BACK | FRONT ]
+     Inside face is mirrored by the paper flip, so the tuck-aligned
+     column lives on the right: [ WIDE | WIDE | NARROW ]. */
   .brochure-page {
     width: 11in;
     height: 8.5in;
     background: var(--color-pink);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 3.5833in 3.7083in 3.7083in;
     page-break-after: always;
   }
   .brochure-page:last-child { page-break-after: auto; }
 
   /* inside face is a plain box that contains a table;
-     column-stripe gradient gives each panel its background color */
+     column-stripe gradient gives each panel its background color.
+     Columns: [ schedule (wide) | about (wide) | photo (narrow-tuck) ]
+     so the narrow column lines up with the outside tuck panel. */
   .brochure-page.inside {
     position: relative;
     display: block;
     padding: 0;
     background: linear-gradient(
       to right,
-      var(--color-pink) 0 33.3333%,
-      var(--color-cream) 33.3333% 66.6667%,
-      var(--color-pink) 66.6667% 100%
+      var(--color-pink) 0 33.7121%,
+      var(--color-cream) 33.7121% 67.4242%,
+      var(--color-pink) 67.4242% 100%
     );
   }
   .inside-table {
@@ -93,9 +101,9 @@ html, body { margin: 0; padding: 0; }
     border-collapse: collapse;
     table-layout: fixed;
   }
-  .inside-table .col-sched,
-  .inside-table .col-about,
-  .inside-table .col-photo { width: 33.3333%; }
+  .inside-table .col-sched { width: 3.7083in; }
+  .inside-table .col-about { width: 3.7083in; }
+  .inside-table .col-photo { width: 3.5833in; }
 
   .inside-table .cell { padding: 0 0.38in; vertical-align: top; }
 
@@ -120,8 +128,8 @@ html, body { margin: 0; padding: 0; }
     border-left: 1px dashed rgba(1, 64, 79, 0.2);
     pointer-events: none;
   }
-  .brochure-page.inside::before { left: 33.3333%; }
-  .brochure-page.inside::after { left: 66.6667%; }
+  .brochure-page.inside::before { left: 33.7121%; }
+  .brochure-page.inside::after { left: 67.4242%; }
   .inside-table .cell-photo {
     padding: 0;
     vertical-align: middle;
@@ -491,7 +499,11 @@ html, body { margin: 0; padding: 0; }
     justify-content: center;
   }
 
-  /* --- mission panel (outside-left, holds scripture + mission letter) --- */
+  /* --- mission panel (outside-left, holds scripture + mission letter) ---
+     This is the narrow tuck panel (1/8in shorter than the others), so
+     trim the horizontal padding to keep the effective text column the
+     same width as it would be on a full-width panel. */
+  .panel-mission .panel-inner { padding: 0.42in 0.3383in; }
   .panel-mission .scripture-hero {
     margin-top: 0.18in;
   }
