@@ -63,16 +63,16 @@
 
 <!-- ========================================================== -->
 <!-- INSIDE FACE                                                  -->
-<!--   Table layout so each event row aligns across panels:      -->
-<!--     [ schedule cell | about cell | photo (rowspan all) ]    -->
+<!--   Table layout, columns mirror the folded outside face:     -->
+<!--     [ schedule | photo (rowspan all) | about (narrow tuck) ]-->
 <!-- ========================================================== -->
 <div class="brochure-page inside">
   <p class="schedule-footnote">* Event details subject to change as the Lord wills</p>
   <table class="inside-table">
     <colgroup>
       <col class="col-sched">
-      <col class="col-about">
       <col class="col-photo">
+      <col class="col-about">
     </colgroup>
     <tr class="row-head">
       <td class="cell cell-sched cell-head">
@@ -80,14 +80,14 @@
           <div class="panel-heading-title">Event Schedule</div>
         </div>
       </td>
-      <td class="cell cell-about cell-head">
-        <div class="panel-heading">
-          <div class="panel-heading-title">What to Expect</div>
-        </div>
-      </td>
       <td class="cell cell-photo" rowspan="99">
         <div class="photo-frame">
           <span class="photo-caption">Drop a photo here — replace <code>assets/photo.jpg</code></span>
+        </div>
+      </td>
+      <td class="cell cell-about cell-head">
+        <div class="panel-heading">
+          <div class="panel-heading-title">What to Expect</div>
         </div>
       </td>
     </tr>
