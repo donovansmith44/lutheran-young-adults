@@ -341,8 +341,10 @@ html, body { margin: 0; padding: 0; }
     justify-content: center;
     text-align: center;
     gap: 0.18in;
-    padding-top: 0.34in;
-    padding-bottom: 0.34in;
+    /* FRONT panel is 3.5" but the folded closed brochure is 4" wide (BACK).
+       Asymmetric padding shifts the cover content 0.25" right so it lands
+       on the closed-brochure's optical center instead of FRONT's own center. */
+    padding: 0.34in 0.13in 0.34in 0.63in;
   }
   .front-logo {
     width: 1.1in;
@@ -352,7 +354,7 @@ html, body { margin: 0; padding: 0; }
   .front-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: 22pt;
+    font-size: 19pt;
     color: var(--color-teal);
     letter-spacing: 0.04em;
     line-height: 1.1;

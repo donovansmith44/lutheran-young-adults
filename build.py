@@ -281,10 +281,20 @@ def main():
     # front-of-brochure gets a lightly condensed mission (same text for now)
     mission_front_html = mission_html
 
+    # Front-cover title: break after the first word so "Lutheran" sits on its
+    # own line and the remaining words stay glued together as a non-breaking
+    # unit (prevents a mid-phrase wrap like "YOUNG" / "ADULTS" on the narrow
+    # 3.5" front panel).
+    title_words = data["title"].upper().split()
+    if len(title_words) >= 2:
+        title_upper_cover = title_words[0] + "<br>" + "&nbsp;".join(title_words[1:])
+    else:
+        title_upper_cover = data["title"].upper()
+
     html = (
         template
         .replace("{{TITLE}}", data["title"])
-        .replace("{{TITLE_UPPER}}", data["title"].upper())
+        .replace("{{TITLE_UPPER}}", title_upper_cover)
         .replace("{{SUBTITLE}}", data["subtitle"])
         .replace("{{SCRIPTURE}}", data["scripture"])
         .replace("{{SCRIPTURE_CITE}}", data["scripture_cite"])
