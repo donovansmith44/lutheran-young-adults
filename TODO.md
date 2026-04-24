@@ -21,7 +21,7 @@ Keep the top section trimmed. When something gets done, move the summary into "D
 - Outside face:
   - TUCK panel = "Connection" mission letter (salutation + mission text + scripture + citation `(Hbr. 10:24-25, ESV)`).
   - BACK panel = contact page — logo, CONTACT eyebrow, QR ("Scan to RSVP"), phone `(614) 556-0607`, email `donovan.smith44@gmail.com`, tagline.
-  - FRONT panel = cover — "Lutheran Young Adults" / subtitle "Connecting Confessional Lutherans".
+  - FRONT panel = cover — "Lutheran Young Adults" / subtitle "Connecting Confessional Lutherans". Title renders on two lines ("LUTHERAN" / "YOUNG ADULTS") via `build.py` splitting on the first word and joining the rest with `&nbsp;`; cover font-size is 19pt to fit the narrower 3.5" front panel.
 - Inside face (table layout so each event row aligns across columns):
   - Left (schedule): date + event name + italic-Cormorant location caption above name + times list. "Event Schedule" heading, bottom-left footnote "* Event details subject to change as the Lord wills".
   - Middle (photo): single photo slot spanning all rows via `rowspan`.
@@ -34,7 +34,7 @@ Keep the top section trimmed. When something gets done, move the summary into "D
 
 ## In progress / parked
 
-_Nothing right now — brochure is at a clean 2-page render._
+- **Cover alignment — horizontal centering vs. optical-center-when-folded.** `.front-inner` uses asymmetric padding (`0.34in 0.13in 0.34in 0.63in` in `src/brochure.css`) to shift the cover content 0.25" right so it lands on the optical center of the folded closed brochure (BACK is 4" wide, FRONT is only 3.5", and when folded the viewer sees 4" of cover-face width). On the flat PDF this looks off-center to the right. Donovan printed a test copy and it still looked a bit weird in hand — so the optical-center logic isn't clearly winning either. Decide: (a) revert to symmetric padding `0.34in 0.38in` and accept that the cover sits slightly left-of-visual-center when folded, (b) keep the current shift but tune the offset (try 0.15"? 0.10"?), or (c) something else. Donovan is going to look at it again in the morning.
 
 ## Next up
 
