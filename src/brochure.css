@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* B&W palette for ink-saving proofs. Historical names kept so CSS
-     selectors don't need to change — just the values. */
-  --color-pink: #ffffff;
-  --color-pink-deep: #e5e5e5;
-  --color-cream: #ffffff;
-  --color-teal: #000000;
+  --color-pink: #fad5cd;
+  --color-pink-deep: #f5bbb0;
+  --color-cream: #fff8f2;
+  --color-teal: #01404f;
   --font-display: "Montserrat", sans-serif;
   --font-body: "Montserrat", sans-serif;
   --font-serif: "Cormorant", "Georgia", serif;
@@ -66,31 +64,36 @@ html, body { margin: 0; padding: 0; }
     line-height: 1.5;
   }
 
-  /* Tri-fold roll-fold geometry: the tuck/inner-fold panel is 1/4"
-     narrower than the other two so it tucks cleanly inside the closed
-     brochure without jamming against the back/front fold.
-     Outside face (panel order L->R): [ TUCK | BACK | FRONT ]
-     Inside face is mirrored by the paper flip, so the tuck-aligned
-     column lives on the right: [ WIDE | WIDE | NARROW ]. */
+  /* Tri-fold roll-fold geometry. The middle (BACK / PHOTO) panel is the
+     widest; TUCK and FRONT are each 3.5" so the outer panels don't
+     overhang BACK when folded. BACK = 4" sets the closed brochure size.
+     Outside face (panel order L->R): [ TUCK 3.5 | BACK 4 | FRONT 3.5 ]
+     Inside face is mirrored by the paper flip, so the narrow columns
+     land on both outer edges: [ SCHEDULE 3.5 | PHOTO 4 | ABOUT 3.5 ]. */
   .brochure-page {
     width: 11in;
     height: 8.5in;
     background: var(--color-pink);
     display: grid;
-    grid-template-columns: 3.5in 3.75in 3.75in;
+    grid-template-columns: 3.5in 4in 3.5in;
     page-break-after: always;
   }
   .brochure-page:last-child { page-break-after: auto; }
 
-  /* inside face: plain white box with a table inside.
-     Columns: [ schedule (wide) | photo (wide, middle) | about (narrow, tuck) ]
-     The narrow column on the right mirrors the outside tuck panel so
-     the folded brochure lines up correctly. */
+  /* inside face: table layout with column-stripe gradient for panel
+     backgrounds. Columns: [ schedule 3.5 | photo 4 | about 3.5 ].
+     Schedule and photo keep the pink stock color; about is cream
+     to mark it as the editorial panel. */
   .brochure-page.inside {
     position: relative;
     display: block;
     padding: 0;
-    background: #ffffff;
+    background: linear-gradient(
+      to right,
+      var(--color-pink) 0 31.8182%,
+      var(--color-pink) 31.8182% 68.1818%,
+      var(--color-cream) 68.1818% 100%
+    );
   }
   .inside-table {
     width: 11in;
@@ -98,8 +101,8 @@ html, body { margin: 0; padding: 0; }
     border-collapse: collapse;
     table-layout: fixed;
   }
-  .inside-table .col-sched { width: 3.75in; }
-  .inside-table .col-photo { width: 3.75in; }
+  .inside-table .col-sched { width: 3.5in; }
+  .inside-table .col-photo { width: 4in; }
   .inside-table .col-about { width: 3.5in; }
 
   .inside-table .cell { padding: 0 0.38in; vertical-align: top; }
@@ -128,7 +131,7 @@ html, body { margin: 0; padding: 0; }
     border-left: 1px dashed rgba(1, 64, 79, 0.2);
     pointer-events: none;
   }
-  .brochure-page.inside::before { left: 34.0909%; }
+  .brochure-page.inside::before { left: 31.8182%; }
   .brochure-page.inside::after { left: 68.1818%; }
   .inside-table .cell-photo {
     padding: 0;
@@ -245,8 +248,8 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.75;
   }
 
-  /* --- back cover (contact). B&W: white bg, black ink. --- */
-  .panel-back { background: #ffffff; color: var(--color-teal); }
+  /* --- back cover (contact) --- */
+  .panel-back { background: var(--color-teal); color: var(--color-pink); }
   .back-inner {
     align-items: center;
     justify-content: center;
@@ -256,20 +259,22 @@ html, body { margin: 0; padding: 0; }
   .back-logo {
     width: 1.3in;
     height: 1.3in;
+    /* invert the teal logo to cream so it reads on the teal background */
+    filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(342%) hue-rotate(316deg) brightness(98%) contrast(97%);
   }
   .back-church {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: var(--t-heading);
-    color: var(--color-teal);
+    color: var(--color-pink);
     line-height: 1.15;
     letter-spacing: 0.01em;
   }
   .back-divider {
     width: 1in;
     height: 1pt;
-    background: var(--color-teal);
-    opacity: 0.4;
+    background: var(--color-pink-deep);
+    opacity: 0.7;
   }
   .back-eyebrow {
     font-family: var(--font-display);
@@ -277,7 +282,7 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-eyebrow);
     letter-spacing: 0.45em;
     text-transform: uppercase;
-    color: var(--color-teal);
+    color: var(--color-pink-deep);
     margin-top: -0.06in;
   }
   .back-contacts {
@@ -290,14 +295,14 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 13pt;
-    color: var(--color-teal);
+    color: var(--color-pink);
     letter-spacing: 0.02em;
   }
   .back-email {
     font-family: var(--font-display);
     font-weight: 500;
     font-size: 11pt;
-    color: var(--color-teal);
+    color: var(--color-pink);
     letter-spacing: 0.01em;
     word-break: break-all;
   }
@@ -311,7 +316,9 @@ html, body { margin: 0; padding: 0; }
   .back-qr-img {
     width: 1.05in;
     height: 1.05in;
-    padding: 4pt;
+    background: var(--color-cream);
+    padding: 5pt;
+    border-radius: 4pt;
     display: block;
   }
   .back-qr-caption {
@@ -320,13 +327,13 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-eyebrow);
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--color-teal);
+    color: var(--color-pink);
   }
   .back-tagline {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: var(--t-subtitle);
-    color: var(--color-teal);
+    color: var(--color-pink-deep);
   }
 
   /* --- front cover (the meat) --- */
@@ -444,17 +451,15 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.85;
   }
 
-  /* --- photo panel: one photo, upper half; text/breathing below.
-     B&W ink-saver: no solid fill, just a dashed placeholder border.
-     background-image fills the frame once a real photo.jpg exists. */
+  /* --- photo panel: one photo, upper half; text/breathing below --- */
   .photo-frame {
     flex: 0 0 auto;
     height: 3.2in;
+    background: var(--color-teal);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed var(--color-teal);
     background-image: url("assets/photo.jpg");
     background-size: cover;
     background-position: center;
