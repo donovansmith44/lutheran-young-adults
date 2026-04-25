@@ -272,7 +272,7 @@ def main():
     QR_OUT.parent.mkdir(parents=True, exist_ok=True)
     segno.make(RSVP_URL, error="m").save(
         str(QR_OUT), kind="svg", scale=10, border=0,
-        dark="#01404f", light=None, omitsize=True,
+        dark="#000000", light=None, omitsize=True,
     )
     print(f"wrote {QR_OUT.relative_to(ROOT)}")
 

@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-pink: #fad5cd;
-  --color-pink-deep: #f5bbb0;
-  --color-cream: #fff8f2;
-  --color-teal: #01404f;
+  /* B&W palette for ink-saving proofs. Historical names kept so CSS
+     selectors don't need to change — just the values. */
+  --color-pink: #ffffff;
+  --color-pink-deep: #e5e5e5;
+  --color-cream: #ffffff;
+  --color-teal: #000000;
   --font-display: "Montserrat", sans-serif;
   --font-body: "Montserrat", sans-serif;
   --font-serif: "Cormorant", "Georgia", serif;
@@ -88,12 +90,7 @@ html, body { margin: 0; padding: 0; }
     position: relative;
     display: block;
     padding: 0;
-    background: linear-gradient(
-      to right,
-      var(--color-pink) 0 31.8182%,
-      var(--color-pink) 31.8182% 68.1818%,
-      var(--color-cream) 68.1818% 100%
-    );
+    background: #ffffff;
   }
   .inside-table {
     width: 11in;
@@ -248,8 +245,8 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.75;
   }
 
-  /* --- back cover (contact) --- */
-  .panel-back { background: var(--color-teal); color: var(--color-pink); }
+  /* --- back cover (contact). B&W: white bg, black ink. --- */
+  .panel-back { background: #ffffff; color: var(--color-teal); }
   .back-inner {
     align-items: center;
     justify-content: center;
@@ -259,22 +256,20 @@ html, body { margin: 0; padding: 0; }
   .back-logo {
     width: 1.3in;
     height: 1.3in;
-    /* invert the teal logo to cream so it reads on the teal background */
-    filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(342%) hue-rotate(316deg) brightness(98%) contrast(97%);
   }
   .back-church {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: var(--t-heading);
-    color: var(--color-pink);
+    color: var(--color-teal);
     line-height: 1.15;
     letter-spacing: 0.01em;
   }
   .back-divider {
     width: 1in;
     height: 1pt;
-    background: var(--color-pink-deep);
-    opacity: 0.7;
+    background: var(--color-teal);
+    opacity: 0.4;
   }
   .back-eyebrow {
     font-family: var(--font-display);
@@ -282,7 +277,7 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-eyebrow);
     letter-spacing: 0.45em;
     text-transform: uppercase;
-    color: var(--color-pink-deep);
+    color: var(--color-teal);
     margin-top: -0.06in;
   }
   .back-contacts {
@@ -295,14 +290,14 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 13pt;
-    color: var(--color-pink);
+    color: var(--color-teal);
     letter-spacing: 0.02em;
   }
   .back-email {
     font-family: var(--font-display);
     font-weight: 500;
     font-size: 11pt;
-    color: var(--color-pink);
+    color: var(--color-teal);
     letter-spacing: 0.01em;
     word-break: break-all;
   }
@@ -316,9 +311,7 @@ html, body { margin: 0; padding: 0; }
   .back-qr-img {
     width: 1.05in;
     height: 1.05in;
-    background: var(--color-cream);
-    padding: 5pt;
-    border-radius: 4pt;
+    padding: 4pt;
     display: block;
   }
   .back-qr-caption {
@@ -327,13 +320,13 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-eyebrow);
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--color-pink);
+    color: var(--color-teal);
   }
   .back-tagline {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: var(--t-subtitle);
-    color: var(--color-pink-deep);
+    color: var(--color-teal);
   }
 
   /* --- front cover (the meat) --- */
@@ -453,15 +446,17 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.85;
   }
 
-  /* --- photo panel: one photo, upper half; text/breathing below --- */
+  /* --- photo panel: one photo, upper half; text/breathing below.
+     B&W ink-saver: no solid fill, just a dashed placeholder border.
+     background-image fills the frame once a real photo.jpg exists. */
   .photo-frame {
     flex: 0 0 auto;
     height: 3.2in;
-    background: var(--color-teal);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px dashed var(--color-teal);
     background-image: url("assets/photo.jpg");
     background-size: cover;
     background-position: center;
