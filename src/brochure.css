@@ -400,6 +400,7 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0.01em;
     padding-bottom: 1pt;
     text-align: right;
+    white-space: nowrap;
   }
   .event .title-line .event-location {
     display: block;
