@@ -26,8 +26,8 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 | 2:00 PM - 2:30 PM | Vicar-led Devotional |
 | 2:30 PM - 2:45 PM | Introduction |
 | 2:45 PM - 3:30 PM | Personality Test |
-| 3:30 PM - 4:15 PM | Activity 1 |
-| 4:15 PM - 5:15 PM | Activity 2 |
+| 3:30 PM - 4:30 PM | Activity 1 |
+| 4:30 PM - 5:15 PM | Hangout |
 | 5:15 PM - 6:00 PM | Dinner (Zupas) |
 | 6:00 PM - 6:30 PM | Vespers and Close |
 
@@ -53,7 +53,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 
 | Time | Activity |
 |---|---|
-| 7:05 PM - whenever | Game and fireworks (~$30) |
+| 7:05 PM - whenever | Game & fireworks (~$30) |
 
 ---
 
