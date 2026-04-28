@@ -16,7 +16,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 
 ## Schedule
 
-### 06 june — Personality Day
+### 20 june — Personality Day
 **Location:** Zion
 **Headline:** Learn something about yourself and others
 **About:** After opening with some hymns and a devotional, we'll all take a personality test and be matched with groups where everyone has tested as having either similar or opposite traits from yourself. This will be an opportunity for us all to get better acquainted, play games, and enjoy a catered meal from Zupas!
@@ -47,14 +47,13 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 
 ---
 
-### 01 august — The Odyssey
-**Location:** AMC Dublin 18
-**About:** Kick back and enjoy one of the most anticipated movies of the year, and afterwards, come hang out at Pins for drinks, bowling, and games (21+ after 8:00 PM).
+### 01 august — Clippers Game
+**Location:** Huntington Park
+**About:** Come watch the Clippers play the Toledo Mudhens, and stick around for a promotional fireworks show afterwards! We'll gather RSVPs as the date approaches so that we can buy tickets in a batch.
 
 | Time | Activity |
 |---|---|
-| 3:00 PM - 6:00 PM | The Odyssey (~$20) |
-| 6:00 PM - whenever | Pins |
+| 7:05 PM - whenever | Game and fireworks (~$30) |
 
 ---
 
