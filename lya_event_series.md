@@ -34,16 +34,16 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 ---
 
 ### 04 july — America's 250th
-**Location:** St. John's in Dublin
+**Location:** TBD
 **Headline:** Celebrate the gift of country
-**About:** This will be a laid back get-together to enjoy fellowship and, hopefully, beautiful weather. The gathering will be held indoors in the event of adverse conditions.
+**About:** This will be a laid back get-together to enjoy fellowship and, hopefully, beautiful weather. The gathering will be held indoors in the event of adverse conditions. Detailed itinerary TBD.
 
 | Time | Activity |
 |---|---|
 | 5:00 PM - 5:45 PM | Vicar-led Devotional |
 | 5:45 PM - 7:00 PM | Cookout and Dinner |
 | 7:00 PM - 7:30 PM | Compline |
-| 7:30 PM - whenever | Bonfire and Fireworks |
+| 7:30 PM - whenever | Bonfire |
 
 ---
 

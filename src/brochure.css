@@ -532,7 +532,7 @@ html, body { margin: 0; padding: 0; }
   }
   .about-event .about-headline {
     font-family: var(--font-serif);
-    font-style: normal;
+    font-style: italic;
     font-weight: 400;
     font-size: 10.5pt;
     color: var(--color-teal);
@@ -559,7 +559,7 @@ html, body { margin: 0; padding: 0; }
     left: 0.38in;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 7pt;
+    font-size: 9pt;
     line-height: 1;
     color: var(--color-teal);
     opacity: 0.55;
