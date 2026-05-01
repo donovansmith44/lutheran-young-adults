@@ -193,7 +193,7 @@ def _schedule_event_html(ev: dict) -> str:
     is_tbd = not ev["times"] and ev["title"].upper() == "TBD"
     cls = "event event-tbd" if is_tbd else "event"
     day_html = f'<span class="day-suffix">· {ev["day"]}</span>' if ev["day"] else ""
-    if ev["location"] and ev["location"] != "TBD":
+    if ev["location"]:
         title_line = (
             f'<span class="event-location">{ev["location"]}</span>'
             f'{ev["title"]}'
