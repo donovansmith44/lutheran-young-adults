@@ -30,7 +30,7 @@ QR_OUT = ROOT / "assets" / "qr-rsvp.svg"
 # the printed QR encodes this URL forever, and the *contents* of rsvp.html
 # can be edited later to redirect to a Tally form / Partiful / etc.
 # without invalidating already-printed brochures.
-RSVP_URL = "https://donovansmith44.github.io/lya-event-planner/rsvp.html"
+RSVP_URL = "https://donovansmith44.github.io/lutheran-young-adults/rsvp.html"
 
 FORMATS = {
     "flyer": {
