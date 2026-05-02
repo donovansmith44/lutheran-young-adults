@@ -17,8 +17,6 @@ import pathlib
 import re
 import subprocess
 import sys
-import urllib.parse
-
 import segno
 import weasyprint
 
@@ -27,24 +25,12 @@ MD = ROOT / "lya_event_series.md"
 TAILWIND = ROOT / "tailwindcss"
 QR_OUT = ROOT / "assets" / "qr-rsvp.svg"
 
-# Where the QR code sends people. mailto: works out of the box — no backend,
-# no account; phone cameras open the user's Mail app with the fields filled in.
-# Swap this for a Google Form / Partiful / Eventbrite URL once you have one
-# and rerun the build to regenerate the QR.
-RSVP_EMAIL = "donovan.smith44@gmail.com"
-RSVP_SUBJECT = "RSVP — Lutheran Young Adults"
-RSVP_BODY = (
-    "Hi Donovan,\n\n"
-    "I'd like to RSVP for the following LYA event(s):\n"
-    "  - \n\n"
-    "Name:\n"
-    "Phone / email:\n"
-)
-RSVP_URL = (
-    f"mailto:{RSVP_EMAIL}"
-    f"?subject={urllib.parse.quote(RSVP_SUBJECT)}"
-    f"&body={urllib.parse.quote(RSVP_BODY)}"
-)
+# Where the QR code sends people. We use a permanent GitHub Pages URL
+# (rsvp.html in this repo, deployed via Pages) as an indirection layer:
+# the printed QR encodes this URL forever, and the *contents* of rsvp.html
+# can be edited later to redirect to a Tally form / Partiful / etc.
+# without invalidating already-printed brochures.
+RSVP_URL = "https://donovansmith44.github.io/lya-event-planner/rsvp.html"
 
 FORMATS = {
     "flyer": {

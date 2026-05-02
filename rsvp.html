@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSVP — Lutheran Young Adults</title>
+  <!--
+    This page is the QR-code destination on the LYA brochure. It exists
+    so the printed QR has a permanent URL we control — when the real
+    RSVP form (Tally) is live, we change THIS file's contents to redirect
+    to it, and every already-printed brochure still works.
+
+    To swap to a redirect, replace the body with:
+
+      <meta http-equiv="refresh" content="0; url=https://tally.so/r/XXX">
+      <p>Redirecting to RSVP form. <a href="https://tally.so/r/XXX">Click here if not redirected.</a></p>
+
+    Until then, this page collects RSVPs via mailto.
+  -->
+  <style>
+    :root {
+      --pink: #fad5cd;
+      --pink-deep: #f5bbb0;
+      --teal: #01404f;
+      --cream: #fff8f2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      max-width: 32rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      color: var(--teal);
+      line-height: 1.55;
+      background: var(--cream);
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    h1 {
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 0.25rem;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-style: italic;
+      color: var(--teal);
+      opacity: 0.75;
+      margin: 0;
+    }
+    .event-card {
+      background: var(--pink);
+      border-left: 4px solid var(--teal);
+      padding: 1.25rem 1.5rem;
+      border-radius: 4px;
+      margin: 1.5rem 0 2rem;
+    }
+    .event-card .title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin: 0 0 0.5rem;
+    }
+    .event-card .meta {
+      margin: 0;
+      color: var(--teal);
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+    p { margin: 1rem 0; }
+    .cta {
+      display: block;
+      background: var(--teal);
+      color: white;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+    }
+    .cta:active { opacity: 0.85; }
+    .footnote {
+      color: var(--teal);
+      opacity: 0.7;
+      font-size: 0.875rem;
+      border-top: 1px solid var(--pink-deep);
+      padding-top: 1.25rem;
+      margin-top: 2rem;
+    }
+    .footnote a { color: var(--teal); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lutheran Young Adults</h1>
+    <p class="subtitle">Connecting Confessional Lutherans</p>
+  </header>
+
+  <div class="event-card">
+    <p class="title">Personality Day</p>
+    <p class="meta">
+      Saturday, June 20, 2026 · 2:00 PM<br>
+      Zion Evangelical Lutheran Church<br>
+      766 S. High St., Columbus, OH
+    </p>
+  </div>
+
+  <p>To RSVP, tap the button below. It opens your email app with a
+     short pre-filled message — just add your name and send.</p>
+
+  <a class="cta"
+     href="mailto:donovan.smith44@gmail.com?subject=RSVP%20%E2%80%94%20LYA%20Personality%20Day&body=Hi%20Donovan%2C%0A%0AI%27d%20like%20to%20RSVP%20for%20Personality%20Day%20%28June%2020%29.%0A%0AName%3A%20%0AComing%3F%20%28Yes%20%2F%20Maybe%20%2F%20No%29%3A%20%0A%0AAnything%20I%20should%20know%20%28dietary%20needs%2C%20t-shirt%20size%2C%20etc.%29%3A%0A%0A">
+    Email Donovan to RSVP
+  </a>
+
+  <p class="footnote">
+    A short web form is coming soon — for now, email works perfectly.<br>
+    Questions? <a href="mailto:donovan.smith44@gmail.com">donovan.smith44@gmail.com</a> · (614) 556-0607
+  </p>
+</body>
+</html>
