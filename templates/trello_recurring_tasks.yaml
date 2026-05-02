@@ -86,9 +86,32 @@ tasks:
       Set up a shared food signup (can piggyback on the tasks Google Sheet).
       Seed with anchor items (main dish, drinks, plates/utensils) so
       people can add/claim sides, desserts, misc.
+
+      ⚠ Skip this task on events that use catering instead of potluck.
+      For Zupas-buffet events use `book_catering` (below) instead.
     depends_on: []
     lead_time_days: 21
     pullable: true
+    category: food
+
+  - id: book_catering
+    title: Book Zupas catering
+    description: |
+      Order the Build-Your-Own Buffet for {{event.title}} on
+      {{event.date}} at {{event.location}}.
+
+      Walk through `templates/zupas_booking_checklist.md` start to
+      finish — it covers headcount, dietary brief, what to confirm
+      is included (plates/napkins/drinks), service style, and
+      confirmation/reconfirmation steps.
+
+      Lead time: do this around T-7 days. The order itself locks at
+      T-5 days (the cutoff communicated on the RSVP form), so you
+      have ~48 hours to absorb late RSVPs before submitting.
+    depends_on: [secure_location, rsvp_collection]
+    lead_time_days: 7
+    pullable: false
+    poc: self
     category: food
 
   - id: rsvp_collection
