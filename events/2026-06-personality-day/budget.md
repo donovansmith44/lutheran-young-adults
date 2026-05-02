@@ -9,23 +9,23 @@
 - **Expected attendance:** 25 (≈40% of invitees — typical for casual
   social events with food; see budget rationale below)
 - **T-shirts:** ordered for this event, given to attendees, $15 each
-- **Catering:** Cafe Zupas boxed lunches, mix of sandwiches + salads
-  (per the RSVP form's Zupas pick options) — average $12.50/person
+- **Catering:** Cafe Zupas Pick-2 combo boxes (each attendee picks two
+  half-portions from sandwich / salad / soup options) — $12.79/person
 - **Funding source:** TBD (LYA pool / Zion budget / out of pocket)
 
 ## Line items (25 attendees)
 
 | Line | Calc | Amount |
 |---|---|---|
-| Zupas — boxed lunches | 25 × $12.50 | $312.50 |
+| Zupas — Pick-2 combo boxes | 25 × $12.79 | $319.75 |
 | Zupas — delivery fee | flat | $20.00 |
-| Zupas — tip (~18%) | on subtotal | $60.00 |
+| Zupas — tip (~18%) | on subtotal | $61.00 |
 | T-shirts | 25 × $15 | $375.00 |
 | Brochure printing | ~25 tri-folds @ $1.50 ea. (color) | $40.00 |
 | Misc supplies | name tags, pens, personality-test handouts | $30.00 |
-| **Subtotal** | | **$837.50** |
-| Buffer (~10%) | rounding + small unknowns | $82.50 |
-| **Total** | | **~$920** |
+| **Subtotal** | | **$845.75** |
+| Buffer (~10%) | rounding + small unknowns | $84.25 |
+| **Total** | | **~$930** |
 
 ## Sensitivity
 

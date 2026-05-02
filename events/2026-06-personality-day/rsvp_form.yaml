@@ -53,17 +53,35 @@ form:
         - No
       required: true
 
-    - id: zupas_pick
+    # Zupas "Pick 2" combo format — each box = two half-portions, any
+    # combination of sandwich / salad / soup. Two dropdowns rather than a
+    # single multi-select so we can preserve order ("first pick" vs.
+    # "second pick") and so people can pick two of the same category if
+    # they want (e.g. two soups). Same option list on both.
+    - id: zupas_pick_1
       type: dropdown
-      label: "Pick your Zupas order"
+      label: "Zupas pick — first half"
       help_text: "Order locks June 15 — RSVPs after that can still attend, but a Zupas box isn't guaranteed."
-      options:
-        - Turkey Bacon Avocado Sandwich
-        - BBQ Chicken Sandwich
-        - Chicken Caesar Salad
-        - Asian Cashew Chicken Salad
-        - "Strawberry Harvest Salad (vegetarian)"
-        - Surprise me
+      options: &zupas_options
+        - "Sandwich: Turkey Bacon Avocado"
+        - "Sandwich: BBQ Chicken"
+        - "Sandwich: Italian Grinder"
+        - "Salad: Chicken Caesar"
+        - "Salad: Asian Cashew Chicken"
+        - "Salad: Strawberry Harvest (vegetarian)"
+        - "Soup: Tomato Basil"
+        - "Soup: Lobster Bisque"
+        - "Soup: Chicken Enchilada Chili"
+        - "Surprise me"
+      required: true
+      show_if:
+        question: coming
+        equals_any: [Yes, Maybe]
+
+    - id: zupas_pick_2
+      type: dropdown
+      label: "Zupas pick — second half"
+      options: *zupas_options
       required: true
       show_if:
         question: coming
