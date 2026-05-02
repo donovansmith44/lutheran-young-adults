@@ -1,0 +1,65 @@
+# Personality Day — budget
+
+**Event:** Personality Day at Zion, 2026-06-20, 2:00–6:30 PM
+**Status:** Planning estimate (RSVPs not yet collected)
+
+## Assumptions
+
+- **Invited:** 50–60 people
+- **Expected attendance:** 25 (≈40% of invitees — typical for casual
+  social events with food; see budget rationale below)
+- **T-shirts:** ordered for this event, given to attendees, $15 each
+- **Catering:** Cafe Zupas boxed lunches, mix of sandwiches + salads
+  (per the RSVP form's Zupas pick options) — average $12.50/person
+- **Funding source:** TBD (LYA pool / Zion budget / out of pocket)
+
+## Line items (25 attendees)
+
+| Line | Calc | Amount |
+|---|---|---|
+| Zupas — boxed lunches | 25 × $12.50 | $312.50 |
+| Zupas — delivery fee | flat | $20.00 |
+| Zupas — tip (~18%) | on subtotal | $60.00 |
+| T-shirts | 25 × $15 | $375.00 |
+| Brochure printing | ~25 tri-folds @ $1.50 ea. (color) | $40.00 |
+| Misc supplies | name tags, pens, personality-test handouts | $30.00 |
+| **Subtotal** | | **$837.50** |
+| Buffer (~10%) | rounding + small unknowns | $82.50 |
+| **Total** | | **~$920** |
+
+## Sensitivity
+
+| Scenario | Attendees | Total |
+|---|---|---|
+| Light turnout | 15 | ~$580 |
+| Expected | 25 | ~$920 |
+| Heavy turnout | 30 | ~$1,110 |
+
+T-shirts are the largest single swing (~$15 per attendee). Catering is
+the second largest (~$13.50 per attendee landed).
+
+## Timing — when to lock the numbers
+
+| Date | Action |
+|---|---|
+| 2026-05-23 *(T-4 wks)* | Push pending RSVPs hard; treat the headcount as ~final |
+| 2026-05-30 *(T-3 wks)* | Lock RSVP-yes count + t-shirt sizes; submit print order |
+| 2026-06-13 *(T-1 wk)* | Confirm Zupas final headcount + delivery time (24-hour notice required) |
+| 2026-06-19 *(T-1 day)* | Pick up brochures, t-shirts; final supply run |
+
+Late-week RSVPs after the t-shirt lock get fed but don't get a shirt
+this round. Order **+3 extras** at common sizes (M, L) to absorb
+late-yes responses or sizing errors.
+
+## Where the attendance estimate came from
+
+For casual social events with free food, the consensus turnout from
+raw invitees is 35–45% (not the more-cited "60%" figure, which is
+attendance from *confirmed RSVPs* not invitees). Adjustments for
+this specific event:
+
+- **Up:** existing relational ties (synod members, not strangers)
+- **Down:** first event in a series, no precedent / "is this a thing?"
+
+Net: 40% midpoint of the consensus range. Revisit after 2–3 events
+once we have actual data on LYA's specific RSVP→show ratio.
