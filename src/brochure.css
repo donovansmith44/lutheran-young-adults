@@ -480,6 +480,22 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
+  /* Citation styled to match the Hebrews quote on the outside mission
+     panel — same italic Cormorant treatment, same 10.5pt size, same
+     0.85 opacity. The two scripture references read as a matched
+     pair when the brochure is folded. */
+  .psalm-pullquote cite {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 10.5pt;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 8pt;
+    color: var(--color-teal);
+    opacity: 0.85;
+  }
 
   /* --- photo panel --- */
   .panel-photo .panel-inner {
