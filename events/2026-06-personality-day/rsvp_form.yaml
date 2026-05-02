@@ -1,0 +1,101 @@
+# RSVP form spec for Personality Day (2026-06-20).
+#
+# This is the canonical structure of the form Donovan builds in Tally.
+# Today, it's a reference doc — Donovan reads this while clicking through
+# Tally's UI. Later, an `orchestrate.py rsvp-form-create` primitive can
+# read this YAML and POST to Tally's API to build the form
+# automatically (Tally's API supports form creation given an account
+# token; we'd add TALLY_TOKEN to .env.age first).
+#
+# Schema notes:
+#   - `id` is the stable internal key — Claude uses it when ingesting
+#     submissions into encrypted state, so changes here would invalidate
+#     existing RSVPs. Don't rename without a migration.
+#   - `show_if` is the conditional-logic clause; in Tally UI this is
+#     the "Logic" tab on each block.
+#   - `equals_any` means "match if the answer is in this list."
+#   - All Yes/Maybe-gated questions hide automatically when the user
+#     answers "No" — keeps the form short for declines.
+
+form:
+  title: "LYA — Personality Day RSVP"
+  description: |
+    RSVP for Personality Day — June 20, 2026 at Zion Lutheran Church.
+    About 30 seconds.
+  submission_message: "Thanks! See you June 20."
+
+  notifications:
+    email_on_submission:
+      enabled: true
+      recipient: donovan.smith44@gmail.com
+      subject_template: "New LYA RSVP — {{ name }}"
+
+  questions:
+
+    - id: name
+      type: short_answer
+      label: "Your name"
+      required: true
+
+    - id: coming
+      type: multiple_choice
+      label: "Can you make it?"
+      options:
+        - Yes
+        - Maybe
+        - No
+      required: true
+
+    - id: zupas_pick
+      type: dropdown
+      label: "Pick your Zupas order"
+      options:
+        - Turkey Bacon Avocado Sandwich
+        - BBQ Chicken Sandwich
+        - Chicken Caesar Salad
+        - Asian Cashew Chicken Salad
+        - "Strawberry Harvest Salad (vegetarian)"
+        - Surprise me
+      required: true
+      show_if:
+        question: coming
+        equals_any: [Yes, Maybe]
+
+    - id: dietary_needs
+      type: short_answer
+      label: "Any allergies or dietary needs we should know about?"
+      help_text: "Optional"
+      required: false
+      show_if:
+        question: coming
+        equals_any: [Yes, Maybe]
+
+    - id: tshirt_size
+      type: dropdown
+      label: "T-shirt size"
+      help_text: "Optional — we order shirts a few times a year for active members"
+      options:
+        - XS
+        - S
+        - M
+        - L
+        - XL
+        - XXL
+      required: false
+      show_if:
+        question: coming
+        equals_any: [Yes, Maybe]
+
+    - id: help_with
+      type: checkboxes
+      label: "Want to help with anything?"
+      help_text: "Optional, pick any. Many hands make light work."
+      options:
+        - "Setup (chairs, signage)"
+        - "Greeting people at the door"
+        - "Coordinating Zupas pickup"
+        - "Cleanup"
+      required: false
+      show_if:
+        question: coming
+        equals_any: [Yes, Maybe]
