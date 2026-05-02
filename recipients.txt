@@ -19,5 +19,4 @@
 age1aewj3d6xdyffe3vksj37m5q6f8wltkajzga4vtft2vmqh92ew9yslqa26j
 
 # Donovan — organizer + texter
-# PASTE DONOVAN'S PUBLIC KEY HERE (generated via age-keygen on his machine)
-# age1...
+age1twaxhanulvnvy8vp45lj3k35huhahc7hy70aecgny7zyzklcqa6sjytstd
