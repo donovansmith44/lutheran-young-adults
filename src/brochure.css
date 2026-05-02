@@ -459,13 +459,45 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.85;
   }
 
-  /* --- photo panel: a real <img>, sized to the column width.
-     Native aspect preserved → no ugly cropping. Centered vertically
-     in the photo column by the cell's vertical-align: middle. --- */
-  .photo-img {
+  /* --- middle panel: Psalm 133 pull-quote.
+     Centered vertically in the photo column by cell's vertical-align: middle. --- */
+  .psalm-pullquote {
+    padding: 0 0.45in;
+    text-align: center;
+    color: var(--color-teal);
+  }
+  .psalm-pullquote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 1.5;
+    margin: 0 0 12pt 0;
+  }
+  .psalm-pullquote .v {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 7.5pt;
+    margin-right: 3pt;
+    opacity: 0.55;
+    vertical-align: super;
+  }
+  .psalm-pullquote .sc {
+    font-size: 0.78em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .psalm-pullquote cite {
     display: block;
-    width: 100%;
-    height: auto;
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 500;
+    font-size: var(--t-eyebrow);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    opacity: 0.7;
+    margin-top: 14pt;
   }
 
   /* --- photo panel --- */

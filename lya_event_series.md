@@ -36,7 +36,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 ### 04 july — America's 250th
 **Location:** TBD
 **Headline:** Celebrate the gift of country
-**About:** This will be a laid back get-together to enjoy fellowship and, hopefully, beautiful weather. The gathering will be held indoors in the event of adverse conditions. Detailed itinerary TBD.
+**About:** This will be a laid back get-together to enjoy fellowship and, hopefully, beautiful weather. The gathering will be held indoors in the event of adverse conditions. Location details TBD.
 
 | Time | Activity |
 |---|---|
