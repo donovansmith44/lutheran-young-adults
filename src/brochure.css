@@ -461,8 +461,12 @@ html, body { margin: 0; padding: 0; }
 
   /* --- middle panel: Psalm 133 pull-quote.
      Centered vertically in the photo column by cell's vertical-align: middle. --- */
+  /* Tight horizontal padding so the longer poetic lines (e.g.
+     "It is like the precious ointment upon the head,") fit without
+     wrapping to a single-word orphan ("head,") on the next line.
+     Cell width is 4in; 0.15in each side gives ~3.7in of content. */
   .psalm-pullquote {
-    padding: 0 0.45in;
+    padding: 0 0.15in;
     text-align: center;
     color: var(--color-teal);
   }
