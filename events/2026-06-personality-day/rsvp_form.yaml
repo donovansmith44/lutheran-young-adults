@@ -22,6 +22,13 @@ form:
   description: |
     RSVP for Personality Day — June 20, 2026 at Zion Lutheran Church.
     About 30 seconds.
+
+    Two cutoffs to know about:
+      • T-shirts: RSVP by May 30 (3 weeks out) — printing lead time
+      • Zupas: RSVP by June 15 (5 days out) — catering lead time
+
+    RSVPs after either cutoff are welcome — you just may not have a
+    shirt or a Zupas box guaranteed.
   submission_message: "Thanks! See you June 20."
 
   notifications:
@@ -49,6 +56,7 @@ form:
     - id: zupas_pick
       type: dropdown
       label: "Pick your Zupas order"
+      help_text: "Order locks June 15 — RSVPs after that can still attend, but a Zupas box isn't guaranteed."
       options:
         - Turkey Bacon Avocado Sandwich
         - BBQ Chicken Sandwich
@@ -73,7 +81,7 @@ form:
     - id: tshirt_size
       type: dropdown
       label: "T-shirt size"
-      help_text: "Optional — we order shirts a few times a year for active members"
+      help_text: "Optional. Order locks May 30 — RSVPs after that can still attend, but a shirt isn't guaranteed."
       options:
         - XS
         - S

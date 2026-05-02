@@ -40,16 +40,22 @@ the second largest (~$13.50 per attendee landed).
 
 ## Timing — when to lock the numbers
 
-| Date | Action |
-|---|---|
-| 2026-05-23 *(T-4 wks)* | Push pending RSVPs hard; treat the headcount as ~final |
-| 2026-05-30 *(T-3 wks)* | Lock RSVP-yes count + t-shirt sizes; submit print order |
-| 2026-06-13 *(T-1 wk)* | Confirm Zupas final headcount + delivery time (24-hour notice required) |
-| 2026-06-19 *(T-1 day)* | Pick up brochures, t-shirts; final supply run |
+| Date | Action | Communicated to attendees? |
+|---|---|---|
+| 2026-05-23 *(T-4 wks)* | Push pending RSVPs hard; treat the headcount as ~final | — |
+| **2026-05-30 *(T-3 wks)*** | **T-shirt cutoff.** Lock t-shirt sizes; submit print order | ✓ on RSVP form |
+| **2026-06-15 *(T-5 days)*** | **Zupas cutoff.** Lock final Zupas headcount + picks; submit catering order | ✓ on RSVP form |
+| 2026-06-19 *(T-1 day)* | Pick up brochures, t-shirts; final supply run | — |
 
-Late-week RSVPs after the t-shirt lock get fed but don't get a shirt
-this round. Order **+3 extras** at common sizes (M, L) to absorb
-late-yes responses or sizing errors.
+The two cutoffs (May 30 t-shirts, June 15 Zupas) are surfaced in the
+RSVP form description and as help-text on the relevant fields, so
+late respondents understand the tradeoff up front.
+
+Late-week RSVPs after the t-shirt lock are welcome but don't get a
+shirt this round. Order **+3 extras** at common sizes (M, L) to
+absorb late-yes responses or sizing errors. Same idea for Zupas:
+late RSVPs eat what's available; +1-2 extra Zupas boxes at common
+picks gives some slack.
 
 ## Where the attendance estimate came from
 
