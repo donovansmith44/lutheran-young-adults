@@ -471,33 +471,14 @@ html, body { margin: 0; padding: 0; }
     font-style: italic;
     font-weight: 400;
     font-size: 12pt;
-    line-height: 1.5;
-    margin: 0 0 12pt 0;
+    line-height: 1.45;
+    margin: 0 0 6pt 0;
   }
-  .psalm-pullquote .v {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 7.5pt;
-    margin-right: 3pt;
-    opacity: 0.55;
-    vertical-align: super;
-  }
+  .psalm-pullquote p:last-child { margin-bottom: 0; }
   .psalm-pullquote .sc {
     font-size: 0.78em;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-  }
-  .psalm-pullquote cite {
-    display: block;
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 500;
-    font-size: var(--t-eyebrow);
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--color-teal);
-    opacity: 0.7;
-    margin-top: 14pt;
   }
 
   /* --- photo panel --- */
