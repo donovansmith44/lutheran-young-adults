@@ -346,10 +346,12 @@ html, body { margin: 0; padding: 0; }
     justify-content: center;
     text-align: center;
     gap: 0.18in;
-    /* FRONT panel is 3.5" but the folded closed brochure is 4" wide (BACK).
-       Asymmetric padding shifts the cover content 0.25" right so it lands
-       on the closed-brochure's optical center instead of FRONT's own center. */
-    padding: 0.34in 0.13in 0.34in 0.63in;
+    /* Symmetric padding — cover content sits on FRONT panel's geometric
+       center. We previously used asymmetric padding (0.13in/0.63in) to
+       optical-center against the closed-brochure 4" width, but on the
+       flat PDF and even on a folded test print it read as "shifted
+       right" rather than centered. Keeping it simple. */
+    padding: 0.34in 0.38in;
   }
   .front-logo {
     width: 1.1in;
