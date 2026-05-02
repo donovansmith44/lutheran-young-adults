@@ -1,0 +1,10 @@
+- [User identity — Donovan Smith](user_donovan_smith.md) — who the primary user is (organizer + SMS texter for LYA); implications for voice, phone setup, and age key ownership
+- [Event orchestrator architecture (current)](project_event_orchestrator_architecture.md) — definitive architecture doc: chat→skills→primitives, encrypted config, Sheet↔Trello sync, preflight gate, current build status
+- [Event planner two-stage workflow](project_event_planner_workflow.md) — original intent (authoring markdown → marketing-format pipeline); largely superseded by the orchestrator architecture but still valid framing
+- [Tri-fold brochure — shipped](project_trifold_brochure_plan.md) — brochure template is done, lives at templates/brochure_template.html; includes CRISP card-stock printing advice
+- [Canva integration — explored, not pursued](project_canva_integration_options.md) — three paths documented, HTML→PDF pipeline chosen instead
+- [Flyer design approved](feedback_flyer_design_approved.md) — design baseline for the 1-page flyer; pink #fad5cd + teal #01404f + Montserrat + Cormorant + church logo
+- [Preserve source wording verbatim](feedback_preserve_source_wording.md) — when transforming source (Excel/docs) don't paraphrase, substitute punctuation, or replace emoji
+- [Push early, don't batch](feedback_push_early_dont_batch.md) — commit + push WIP immediately; user reviews via GitHub
+- [Always pull before push](feedback_always_pull_before_push.md) — `git pull --ff-only` before every push; user edits directly on the remote
+- [Check existing auth before asking user to log in](feedback_check_existing_auth.md) — probe ~/.git-credentials, gh config, env vars first
