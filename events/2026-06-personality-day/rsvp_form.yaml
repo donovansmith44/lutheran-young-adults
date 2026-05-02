@@ -25,10 +25,10 @@ form:
 
     Two cutoffs to know about:
       • T-shirts: RSVP by May 30 (3 weeks out) — printing lead time
-      • Zupas: RSVP by June 15 (5 days out) — catering lead time
+      • Food: RSVP by June 15 (5 days out) — catering headcount lead time
 
-    RSVPs after either cutoff are welcome — you just may not have a
-    shirt or a Zupas box guaranteed.
+    RSVPs after either cutoff are welcome — we just can't guarantee a
+    shirt or a spot in the Zupas headcount.
   submission_message: "Thanks! See you June 20."
 
   notifications:
@@ -53,44 +53,14 @@ form:
         - No
       required: true
 
-    # Zupas "Pick 2" combo format — each box = two half-portions, any
-    # combination of sandwich / salad / soup. Two dropdowns rather than a
-    # single multi-select so we can preserve order ("first pick" vs.
-    # "second pick") and so people can pick two of the same category if
-    # they want (e.g. two soups). Same option list on both.
-    - id: zupas_pick_1
-      type: dropdown
-      label: "Zupas pick — first half"
-      help_text: "Order locks June 15 — RSVPs after that can still attend, but a Zupas box isn't guaranteed."
-      options: &zupas_options
-        - "Sandwich: Turkey Bacon Avocado"
-        - "Sandwich: BBQ Chicken"
-        - "Sandwich: Italian Grinder"
-        - "Salad: Chicken Caesar"
-        - "Salad: Asian Cashew Chicken"
-        - "Salad: Strawberry Harvest (vegetarian)"
-        - "Soup: Tomato Basil"
-        - "Soup: Lobster Bisque"
-        - "Soup: Chicken Enchilada Chili"
-        - "Surprise me"
-      required: true
-      show_if:
-        question: coming
-        equals_any: [Yes, Maybe]
-
-    - id: zupas_pick_2
-      type: dropdown
-      label: "Zupas pick — second half"
-      options: *zupas_options
-      required: true
-      show_if:
-        question: coming
-        equals_any: [Yes, Maybe]
-
-    - id: dietary_needs
+    # Food is buffet-style (Zupas Build-Your-Own Bar) — attendees pick
+    # at the buffet line on the day, so the form doesn't collect
+    # individual menu picks. We DO need to know about restrictions /
+    # allergies so we can brief Zupas to bring appropriate options.
+    - id: dietary_restrictions
       type: short_answer
-      label: "Any allergies or dietary needs we should know about?"
-      help_text: "Optional"
+      label: "Any eating restrictions or allergies?"
+      help_text: "Optional. Lets us tell Zupas to make sure there's something for everyone (vegetarian, gluten-free, nut allergy, etc.)."
       required: false
       show_if:
         question: coming
@@ -119,7 +89,7 @@ form:
       options:
         - "Setup (chairs, signage)"
         - "Greeting people at the door"
-        - "Coordinating Zupas pickup"
+        - "Buffet monitoring during dinner"
         - "Cleanup"
       required: false
       show_if:

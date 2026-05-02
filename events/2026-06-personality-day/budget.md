@@ -9,34 +9,37 @@
 - **Expected attendance:** 25 (≈40% of invitees — typical for casual
   social events with food; see budget rationale below)
 - **T-shirts:** ordered for this event, given to attendees, $15 each
-- **Catering:** Cafe Zupas Pick-2 combo boxes (each attendee picks two
-  half-portions from sandwich / salad / soup options) — $12.79/person
+- **Catering:** Cafe Zupas Build-Your-Own Buffet — $12.99/person, 10
+  guest minimum. Zupas team sets up a buffet line; attendees mix and
+  match sandwiches / salads / soups themselves on the day. RSVP form
+  collects only headcount + dietary restrictions (vegetarian / GF /
+  allergies) so Zupas can be briefed to bring appropriate options.
 - **Funding source:** TBD (LYA pool / Zion budget / out of pocket)
 
 ## Line items (25 attendees)
 
 | Line | Calc | Amount |
 |---|---|---|
-| Zupas — Pick-2 combo boxes | 25 × $12.79 | $319.75 |
-| Zupas — delivery fee | flat | $20.00 |
-| Zupas — tip (~18%) | on subtotal | $61.00 |
+| Zupas — Build-Your-Own Buffet | 25 × $12.99 | $324.75 |
+| Zupas — delivery / setup fee | flat | $25.00 |
+| Zupas — tip (~18%) | on subtotal | $63.00 |
 | T-shirts | 25 × $15 | $375.00 |
 | Brochure printing | ~25 tri-folds @ $1.50 ea. (color) | $40.00 |
 | Misc supplies | name tags, pens, personality-test handouts | $30.00 |
-| **Subtotal** | | **$845.75** |
-| Buffer (~10%) | rounding + small unknowns | $84.25 |
-| **Total** | | **~$930** |
+| **Subtotal** | | **$857.75** |
+| Buffer (~10%) | rounding + small unknowns | $82.25 |
+| **Total** | | **~$940** |
 
 ## Sensitivity
 
 | Scenario | Attendees | Total |
 |---|---|---|
-| Light turnout | 15 | ~$580 |
-| Expected | 25 | ~$920 |
-| Heavy turnout | 30 | ~$1,110 |
+| Light turnout | 15 | ~$590 |
+| Expected | 25 | ~$940 |
+| Heavy turnout | 30 | ~$1,125 |
 
 T-shirts are the largest single swing (~$15 per attendee). Catering is
-the second largest (~$13.50 per attendee landed).
+the second largest (~$16.50 per attendee landed, including delivery + tip).
 
 ## Timing — when to lock the numbers
 
@@ -44,7 +47,7 @@ the second largest (~$13.50 per attendee landed).
 |---|---|---|
 | 2026-05-23 *(T-4 wks)* | Push pending RSVPs hard; treat the headcount as ~final | — |
 | **2026-05-30 *(T-3 wks)*** | **T-shirt cutoff.** Lock t-shirt sizes; submit print order | ✓ on RSVP form |
-| **2026-06-15 *(T-5 days)*** | **Zupas cutoff.** Lock final Zupas headcount + picks; submit catering order | ✓ on RSVP form |
+| **2026-06-15 *(T-5 days)*** | **Zupas cutoff.** Lock final Zupas headcount; submit catering order with dietary brief | ✓ on RSVP form |
 | 2026-06-19 *(T-1 day)* | Pick up brochures, t-shirts; final supply run | — |
 
 The two cutoffs (May 30 t-shirts, June 15 Zupas) are surfaced in the
@@ -53,9 +56,12 @@ late respondents understand the tradeoff up front.
 
 Late-week RSVPs after the t-shirt lock are welcome but don't get a
 shirt this round. Order **+3 extras** at common sizes (M, L) to
-absorb late-yes responses or sizing errors. Same idea for Zupas:
-late RSVPs eat what's available; +1-2 extra Zupas boxes at common
-picks gives some slack.
+absorb late-yes responses or sizing errors.
+
+Buffet headcount: pad the Zupas number by **+2** (~$26) so a couple
+of late-yes RSVPs eat without the buffet running thin. Buffet
+portions are sized per headcount, so over-ordering by a small margin
+is the cleanest insurance.
 
 ## Where the attendance estimate came from
 
