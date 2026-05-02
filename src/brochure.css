@@ -329,6 +329,15 @@ html, body { margin: 0; padding: 0; }
     text-transform: uppercase;
     color: var(--color-pink);
   }
+  .back-qr-url {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 8.5pt;
+    letter-spacing: 0;
+    color: var(--color-pink);
+    opacity: 0.85;
+  }
   .back-tagline {
     font-family: var(--font-serif);
     font-style: italic;
