@@ -2,7 +2,7 @@
 
 ## Connecting Confessional Lutherans
 
-> *"And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another, and all the more as you see the Day drawing near."* (Hbr. 10:24-25, ESV)
+> *"And let us consider one another to provoke unto love and to good works: Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching."* (Hbr. 10:24-25, KJV)
 
 ---
 

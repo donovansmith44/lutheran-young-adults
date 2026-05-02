@@ -506,9 +506,13 @@ html, body { margin: 0; padding: 0; }
      This is the narrow tuck panel (1/8in shorter than the others), so
      trim the horizontal padding to keep the effective text column the
      same width as it would be on a full-width panel. */
-  .panel-mission .panel-inner { padding: 0.42in 0.3in; }
+  /* Tighter top/bottom padding than the default 0.42in panel-inner —
+     the mission panel's content (scripture + salutation + 2 mission
+     paragraphs) needs the vertical room, especially with KJV which
+     runs longer than ESV. */
+  .panel-mission .panel-inner { padding: 0.22in 0.3in; }
   .panel-mission .scripture-hero {
-    margin-top: 0.18in;
+    margin-top: 0.08in;
   }
   .panel-mission .scripture-hero .quote-text {
     font-size: 12.5pt;
@@ -568,7 +572,7 @@ html, body { margin: 0; padding: 0; }
     height: 1pt;
     background: var(--color-teal);
     opacity: 0.45;
-    margin: 0.22in auto 0.18in;
+    margin: 0.14in auto 0.12in;
   }
   .verse-mission {
     font-family: var(--font-serif);
