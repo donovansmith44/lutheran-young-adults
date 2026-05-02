@@ -2,44 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>LYA — June 20, 2026 RSVP</title>
-  <script async src="https://tally.so/widgets/embed.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSVP — Lutheran Young Adults</title>
+  <meta http-equiv="refresh" content="0; url=https://tally.so/r/Ek8QeA">
+  <link rel="canonical" href="https://tally.so/r/Ek8QeA">
+  <script>window.location.replace("https://tally.so/r/Ek8QeA");</script>
   <!--
-    QR code destination — embeds the Tally RSVP form directly so the
-    user stays on this URL throughout (the address bar shows
-    donovansmith44.github.io/lutheran-young-adults/rsvp.html, not
-    tally.so). Better UX than a redirect: no flash, no domain switch.
+    QR code destination — redirects to the Tally RSVP form.
 
-    The brochure's QR encodes THIS URL, not the Tally URL — so we can
-    swap the form (or move to a different tool entirely) by editing
-    the data-tally-src below and pushing. No reprint needed.
+    The brochure's QR encodes THIS URL, not the Tally URL directly,
+    so we can change the form (or swap to a different tool entirely)
+    without invalidating already-printed brochures. To repoint, just
+    edit the redirect targets on the meta refresh, canonical link,
+    JS replace, and the fallback <a href> below, then push.
 
     Current target: Tally form for Personality Day (2026-06-20 RSVP).
   -->
   <style>
-    html, body { margin: 0; height: 100%; overflow: hidden; background: #fff8f2; }
-    iframe { position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 0; width: 100%; height: 100%; }
-    .fallback {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #01404f;
-      text-align: center;
-      max-width: 24rem;
+    :root { --teal: #01404f; --cream: #fff8f2; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      max-width: 28rem;
+      margin: 4rem auto;
       padding: 0 1.25rem;
+      color: var(--teal);
+      background: var(--cream);
+      text-align: center;
+      line-height: 1.5;
     }
-    .fallback a { color: #01404f; font-weight: 600; }
+    a { color: var(--teal); font-weight: 600; }
   </style>
 </head>
 <body>
-  <noscript>
-    <div class="fallback">
-      <p>The RSVP form needs JavaScript enabled. <a href="https://tally.so/r/Ek8QeA">Open the form directly here.</a></p>
-    </div>
-  </noscript>
-  <iframe data-tally-src="https://tally.so/r/Ek8QeA?transparentBackground=1"
-          width="100%" height="100%"
-          frameborder="0" marginheight="0" marginwidth="0"
-          title="LYA — June 20, 2026 RSVP"></iframe>
+  <p>Redirecting you to the RSVP form…</p>
+  <p><a href="https://tally.so/r/Ek8QeA">Tap here if you aren't redirected automatically.</a></p>
 </body>
 </html>
