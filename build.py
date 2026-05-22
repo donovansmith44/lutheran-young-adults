@@ -293,8 +293,8 @@ POSTER_HERO = {
             "to dwell together in unity!"
         ),
         "scripture_cite": "Psalm 133",
-        "callout_eyebrow": "Included",
-        "callout_headline": "Free<br>Dinner",
+        "callout_eyebrow": "Included with the event",
+        "callout_headline": "Free Dinner",
         "callout_sub": "catered by Zupas",
     },
 }

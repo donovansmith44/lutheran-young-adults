@@ -8,15 +8,16 @@
 <body class="bg-pink text-teal font-body">
 
 <!-- ============================================================ -->
-<!-- ONE-PAGE LANDSCAPE POSTER — v2                                -->
-<!--   Hero advertises the EVENT and the FIRST-EVER framing,      -->
-<!--   not the group brand. Scripture pullquote + free-dinner     -->
-<!--   callout sit beneath as twin emotional + practical anchors.  -->
-<!--   Schedule lives in a compact footer strip.                  -->
+<!-- ONE-PAGE PORTRAIT POSTER                                     -->
+<!--   Vertical stack:                                            -->
+<!--     [ masthead + QR ]                                        -->
+<!--     [ hero: eyebrow + title + meta ]                         -->
+<!--     [ scripture pullquote, centered ]                        -->
+<!--     [ FREE DINNER band, full width ]                         -->
+<!--     [ vertical schedule agenda ]                             -->
 <!-- ============================================================ -->
 <div class="poster-page">
 
-  <!-- HEADER STRIP: group identity left, QR right -->
   <header class="poster-header">
     <div class="poster-id">
       <div class="poster-id-name">{{GROUP_NAME_UPPER}}</div>
@@ -28,7 +29,6 @@
     </div>
   </header>
 
-  <!-- HERO: eyebrow → event title → date/location -->
   <section class="poster-hero">
     <div class="poster-eyebrow">
       <span class="rule"></span>
@@ -39,25 +39,23 @@
     <div class="poster-hero-meta">{{EVENT_META_LINE}}</div>
   </section>
 
-  <!-- ANCHOR ROW: scripture pullquote (left) + free-dinner callout (right) -->
-  <section class="poster-anchors">
-    <blockquote class="poster-scripture">
-      <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
-      <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
-    </blockquote>
-    <aside class="poster-callout">
-      <div class="callout-eyebrow">{{CALLOUT_EYEBROW}}</div>
-      <div class="callout-headline">{{CALLOUT_HEADLINE}}</div>
-      <div class="callout-sub">{{CALLOUT_SUB}}</div>
-    </aside>
-  </section>
+  <blockquote class="poster-scripture">
+    <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
+    <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
+  </blockquote>
 
-  <!-- SCHEDULE FOOTER STRIP -->
-  <footer class="poster-schedule-strip">
-    <ul class="strip-rows">
+  <aside class="poster-callout">
+    <div class="callout-eyebrow">{{CALLOUT_EYEBROW}}</div>
+    <div class="callout-headline">{{CALLOUT_HEADLINE}}</div>
+    <div class="callout-sub">{{CALLOUT_SUB}}</div>
+  </aside>
+
+  <section class="poster-schedule">
+    <h2 class="sched-title">The Afternoon</h2>
+    <ul class="sched-rows">
       {{SCHEDULE_ROWS_POSTER}}
     </ul>
-  </footer>
+  </section>
 
 </div>
 
