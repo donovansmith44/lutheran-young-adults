@@ -1,0 +1,301 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pink: #fad5cd;
+  --color-pink-deep: #f5bbb0;
+  --color-cream: #fff8f2;
+  --color-teal: #01404f;
+  --font-display: "Montserrat", sans-serif;
+  --font-body: "Montserrat", sans-serif;
+  --font-serif: "Cormorant", "Georgia", serif;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("../assets/fonts/CormorantGaramond-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("../assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@page {
+  size: letter landscape;
+  margin: 0;
+}
+
+html, body { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ============================================================ */
+/* TYPE SCALE — sized for a 15-foot read on letter landscape.    */
+/* Rule of thumb: ~1in cap height per ~10ft viewing distance.   */
+/* ============================================================ */
+:root {
+  --t-name:       50pt;  /* group name — stacked on two lines */
+  --t-tagline:    13pt;  /* italic tagline under name */
+  --t-qr-cap:     10pt;  /* "scan to RSVP" caption */
+  --t-event:      28pt;  /* event title + date band */
+  --t-event-dot:  22pt;  /* separator between band pieces */
+  --t-col-title:  20pt;  /* "Event Schedule" / "What to Expect" */
+  --t-sched-time: 14pt;  /* schedule time column */
+  --t-sched-act:  14pt;  /* schedule activity column */
+  --t-bullet:     19pt;  /* what-to-expect bullets */
+  --t-bullet-hi:  22pt;  /* emphasized bullets (games, scavenger hunt) */
+}
+
+@layer components {
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--color-teal);
+    font-size: var(--t-bullet);
+    line-height: 1.4;
+  }
+
+  /* Letter landscape page, pink stock, single panel. */
+  .poster-page {
+    width: 11in;
+    height: 8.5in;
+    background: var(--color-pink);
+    padding: 0.28in 0.5in 0.24in 0.5in;
+    display: flex;
+    flex-direction: column;
+    page-break-after: auto;
+    overflow: hidden;
+  }
+
+  /* ============================================================ */
+  /* HEADER BAND                                                   */
+  /* Name visually centered. QR locked top-right with a matching   */
+  /* spacer on the left so the name truly centers on the page.    */
+  /* ============================================================ */
+  .poster-header {
+    display: grid;
+    grid-template-columns: 2.1in 1fr 2.1in;
+    align-items: center;
+    column-gap: 0.2in;
+    margin-bottom: 0.18in;
+  }
+  .poster-name-block {
+    grid-column: 2;
+    text-align: center;
+    align-self: center;
+  }
+  .poster-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-name);
+    color: var(--color-teal);
+    letter-spacing: 0.015em;
+    line-height: 0.92;
+    margin: 0;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2pt;
+  }
+  .poster-name-l1, .poster-name-l2 {
+    display: block;
+    white-space: nowrap;
+  }
+  .poster-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--t-tagline);
+    color: var(--color-teal);
+    opacity: 0.85;
+    margin-top: 6pt;
+  }
+  .poster-qr-block {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: end;
+    gap: 4pt;
+  }
+  .poster-qr {
+    width: 2.05in;
+    height: 2.05in;
+    background: var(--color-cream);
+    padding: 6pt;
+    border-radius: 5pt;
+    display: block;
+  }
+  .poster-qr-cap {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--t-qr-cap);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    white-space: nowrap;
+    margin-top: 2pt;
+  }
+
+  /* ============================================================ */
+  /* EVENT BAND — second-loudest line on the page.                */
+  /* Filled teal bar so it pops from the pink background even     */
+  /* from across the room.                                        */
+  /* ============================================================ */
+  .poster-event-band {
+    background: var(--color-teal);
+    color: var(--color-pink);
+    text-align: center;
+    padding: 10pt 20pt;
+    margin: 0 0 0.22in 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--t-event);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    border-radius: 4pt;
+    white-space: nowrap;
+  }
+  .poster-event-date { font-weight: 800; text-transform: uppercase; }
+  .poster-event-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: calc(var(--t-event) * 1.05);
+    letter-spacing: 0;
+    margin: 0 0.18em;
+    color: var(--color-pink);
+  }
+  .poster-event-loc {
+    font-weight: 500;
+    font-size: calc(var(--t-event) * 0.78);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    opacity: 0.92;
+  }
+  .poster-event-dot {
+    display: inline-block;
+    font-size: var(--t-event-dot);
+    line-height: 1;
+    margin: 0 0.08em;
+    opacity: 0.7;
+    vertical-align: 0.06em;
+  }
+
+  /* ============================================================ */
+  /* BODY — two columns, divider down the middle                  */
+  /* ============================================================ */
+  .poster-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 4.4in 1fr;
+    column-gap: 0.45in;
+    min-height: 0;
+  }
+  .poster-col {
+    position: relative;
+    padding: 0.06in 0;
+  }
+  .poster-col-schedule {
+    padding-right: 0.25in;
+    border-right: 1.2pt dashed rgba(1, 64, 79, 0.35);
+  }
+  .poster-col-expect {
+    padding-left: 0.25in;
+  }
+  .poster-col-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-col-title);
+    color: var(--color-teal);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 14pt 0;
+    padding-bottom: 7pt;
+    border-bottom: 1.4pt solid var(--color-teal);
+    text-align: center;
+  }
+
+  /* --- schedule list --- */
+  .poster-schedule-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .poster-schedule-list li {
+    display: grid;
+    grid-template-columns: 1.55in 1fr;
+    column-gap: 12pt;
+    padding: 5pt 0;
+    border-bottom: 0.6pt solid rgba(1, 64, 79, 0.18);
+    align-items: baseline;
+  }
+  .poster-schedule-list li:last-child { border-bottom: none; }
+  .poster-schedule-list .t {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--t-sched-time);
+    color: var(--color-teal);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .poster-schedule-list .a {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--t-sched-act);
+    color: var(--color-teal);
+    letter-spacing: 0.005em;
+  }
+
+  /* --- what-to-expect bullets --- */
+  .poster-expect-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .poster-expect-list li {
+    display: grid;
+    grid-template-columns: 0.28in 1fr;
+    align-items: center;
+    column-gap: 8pt;
+    padding: 5pt 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--t-bullet);
+    color: var(--color-teal);
+    line-height: 1.15;
+    letter-spacing: 0.005em;
+  }
+  /* diamond ornament bullet, reused from brochure motif */
+  .poster-expect-list li::before {
+    content: "";
+    display: inline-block;
+    width: 11pt;
+    height: 11pt;
+    background: var(--color-teal);
+    transform: rotate(45deg);
+    margin-left: 4pt;
+    justify-self: start;
+    align-self: center;
+  }
+  .poster-expect-list li.hi {
+    font-weight: 800;
+    font-size: var(--t-bullet-hi);
+    letter-spacing: 0.01em;
+  }
+  .poster-expect-list li.hi::before {
+    background: var(--color-teal);
+    width: 13pt;
+    height: 13pt;
+  }
+}

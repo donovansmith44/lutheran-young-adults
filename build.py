@@ -22,7 +22,10 @@ import weasyprint
 
 ROOT = pathlib.Path(__file__).parent
 MD = ROOT / "lya_event_series.md"
-TAILWIND = ROOT / "tailwindcss"
+TAILWIND = next(
+    (p for p in (ROOT / "tailwindcss.exe", ROOT / "tailwindcss") if p.exists()),
+    ROOT / "tailwindcss",
+)
 QR_OUT = ROOT / "assets" / "qr-rsvp.svg"
 
 # Where the QR code sends people. We use a permanent GitHub Pages URL
@@ -46,6 +49,13 @@ FORMATS = {
         "css_in": ROOT / "src" / "brochure.css",
         "css_out": ROOT / "brochure.css",
         "pdf_out": ROOT / "brochure.pdf",
+    },
+    "poster": {
+        "template": ROOT / "templates" / "poster_template.html",
+        "html_out": ROOT / "poster.html",
+        "css_in": ROOT / "src" / "poster.css",
+        "css_out": ROOT / "poster.css",
+        "pdf_out": ROOT / "poster.pdf",
     },
 }
 
@@ -222,6 +232,69 @@ def render_events_schedule(events: list) -> str:
     return "\n".join(_schedule_event_html(ev) for ev in events)
 
 
+def _compact_time(t: str) -> str:
+    """Compress "2:00 PM - 2:30 PM" -> "2:00–2:30 PM" so each row fits a
+    narrow time column at distance-readable type sizes."""
+    m = re.match(r"^(\d{1,2}:\d{2})\s*(AM|PM)?\s*[-–]\s*(\d{1,2}:\d{2})\s*(AM|PM)?$", t)
+    if not m:
+        return t
+    start, start_ap, end, end_ap = m.group(1), m.group(2), m.group(3), m.group(4)
+    ap = end_ap or start_ap or ""
+    return f"{start}–{end} {ap}".strip()
+
+
+def render_poster_schedule(ev: dict) -> str:
+    """Schedule rows for the poster — each <li> is a time/activity pair.
+
+    Reuses the same time strings as the brochure but in a big, readable
+    list rather than the dense 3-column event block, since the poster is
+    sized to be readable from across a room.
+    """
+    return "\n".join(
+        f'<li><span class="t">{_compact_time(t)}</span><span class="a">{a}</span></li>'
+        for t, a in ev["times"]
+    )
+
+
+# Poster "What to Expect" bullets keyed by event title. These are
+# distance-readable summaries of what the event involves — distinct
+# from the brochure's prose "About" paragraph. Items listed under
+# `hi` render larger and bolder (the things we want to advertise
+# loudest from across the room).
+POSTER_EXPECT = {
+    "Personality Day": {
+        "items": [
+            "Hymns & Devotional",
+            "Personality Test",
+            "Group Matchups",
+        ],
+        "hi": [
+            "Games",
+            "Scavenger Hunt",
+        ],
+        "tail": [
+            "Zupas Dinner",
+            "Vespers & Close",
+        ],
+    },
+}
+
+
+def render_poster_expect(ev: dict) -> str:
+    spec = POSTER_EXPECT.get(ev["title"])
+    if not spec:
+        # fallback: just list the activities, no highlighting
+        return "\n".join(f'<li>{a}</li>' for _, a in ev["times"])
+    parts = []
+    for item in spec.get("items", []):
+        parts.append(f'<li>{item}</li>')
+    for item in spec.get("hi", []):
+        parts.append(f'<li class="hi">{item}</li>')
+    for item in spec.get("tail", []):
+        parts.append(f'<li>{item}</li>')
+    return "\n".join(parts)
+
+
 def render_inside_rows(events: list) -> str:
     """Paired schedule+about table rows for the brochure inside face.
 
@@ -277,10 +350,18 @@ def main():
     else:
         title_upper_cover = data["title"].upper()
 
+    # Poster pulls the first (next-up) event so the band reads as the
+    # specific gathering being advertised.
+    poster_ev = events[0] if events else None
+    poster_date = poster_ev["date"].upper() if poster_ev else ""
+    poster_title = poster_ev["title"] if poster_ev else ""
+    poster_loc = f'at {poster_ev["location"]}' if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
+
     html = (
         template
         .replace("{{TITLE}}", data["title"])
         .replace("{{TITLE_UPPER}}", title_upper_cover)
+        .replace("{{GROUP_NAME_UPPER}}", data["title"].upper())
         .replace("{{SUBTITLE}}", data["subtitle"])
         .replace("{{SCRIPTURE}}", data["scripture"])
         .replace("{{SCRIPTURE_CITE}}", data["scripture_cite"])
@@ -289,6 +370,11 @@ def main():
         .replace("{{MISSION}}", mission_html)
         .replace("{{EVENTS}}", render_events_schedule(events))
         .replace("{{INSIDE_ROWS}}", render_inside_rows(events))
+        .replace("{{EVENT_DATE}}", poster_date)
+        .replace("{{EVENT_TITLE}}", poster_title)
+        .replace("{{EVENT_LOCATION}}", poster_loc)
+        .replace("{{SCHEDULE_ROWS}}", render_poster_schedule(poster_ev) if poster_ev else "")
+        .replace("{{EXPECT_BULLETS}}", render_poster_expect(poster_ev) if poster_ev else "")
     )
     cfg["html_out"].write_text(html, encoding="utf-8")
     print(f"wrote {cfg['html_out'].name}")
@@ -305,7 +391,7 @@ def main():
     print(f"rendered {cfg['pdf_out'].name} ({len(doc.pages)} page{'s' if len(doc.pages) != 1 else ''})")
 
     if len(doc.pages) != expected_pages:
-        print(f"  ⚠ expected {expected_pages} page(s), got {len(doc.pages)}")
+        print(f"  WARNING: expected {expected_pages} page(s), got {len(doc.pages)}")
         sys.exit(1)
 
 
