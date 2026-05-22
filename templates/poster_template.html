@@ -8,20 +8,19 @@
 <body class="bg-pink text-teal font-body">
 
 <!-- ============================================================ -->
-<!-- ONE-PAGE LANDSCAPE POSTER                                    -->
-<!--   Sized for legibility from ~15 feet.                        -->
-<!--   Layout: [ header band ] [ event band ] [ schedule | expect ] -->
+<!-- ONE-PAGE LANDSCAPE POSTER — v2                                -->
+<!--   Hero advertises the EVENT and the FIRST-EVER framing,      -->
+<!--   not the group brand. Scripture pullquote + free-dinner     -->
+<!--   callout sit beneath as twin emotional + practical anchors.  -->
+<!--   Schedule lives in a compact footer strip.                  -->
 <!-- ============================================================ -->
 <div class="poster-page">
 
-  <!-- HEADER: name centered, QR locked top-right -->
+  <!-- HEADER STRIP: group identity left, QR right -->
   <header class="poster-header">
-    <div class="poster-name-block">
-      <h1 class="poster-name">
-        <span class="poster-name-l1">Lutheran</span>
-        <span class="poster-name-l2">Young Adults</span>
-      </h1>
-      <div class="poster-tagline">{{SUBTITLE}}</div>
+    <div class="poster-id">
+      <div class="poster-id-name">{{GROUP_NAME_UPPER}}</div>
+      <div class="poster-id-tag">{{SUBTITLE}}</div>
     </div>
     <div class="poster-qr-block">
       <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="poster-qr">
@@ -29,31 +28,36 @@
     </div>
   </header>
 
-  <!-- EVENT BAND: date + title + location, second-loudest line -->
-  <div class="poster-event-band">
-    <span class="poster-event-date">{{EVENT_DATE}}</span>
-    <span class="poster-event-dot">·</span>
-    <span class="poster-event-title">{{EVENT_TITLE}}</span>
-    <span class="poster-event-dot">·</span>
-    <span class="poster-event-loc">{{EVENT_LOCATION}}</span>
-  </div>
+  <!-- HERO: eyebrow → event title → date/location -->
+  <section class="poster-hero">
+    <div class="poster-eyebrow">
+      <span class="rule"></span>
+      <span class="eyebrow-text">{{EYEBROW}}</span>
+      <span class="rule"></span>
+    </div>
+    <h1 class="poster-hero-title">{{EVENT_TITLE_BIG}}</h1>
+    <div class="poster-hero-meta">{{EVENT_META_LINE}}</div>
+  </section>
 
-  <!-- BODY: two columns, schedule left, expect center -->
-  <main class="poster-body">
-    <section class="poster-col poster-col-schedule">
-      <h2 class="poster-col-title">Event Schedule</h2>
-      <ul class="poster-schedule-list">
-        {{SCHEDULE_ROWS}}
-      </ul>
-    </section>
+  <!-- ANCHOR ROW: scripture pullquote (left) + free-dinner callout (right) -->
+  <section class="poster-anchors">
+    <blockquote class="poster-scripture">
+      <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
+      <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
+    </blockquote>
+    <aside class="poster-callout">
+      <div class="callout-eyebrow">{{CALLOUT_EYEBROW}}</div>
+      <div class="callout-headline">{{CALLOUT_HEADLINE}}</div>
+      <div class="callout-sub">{{CALLOUT_SUB}}</div>
+    </aside>
+  </section>
 
-    <section class="poster-col poster-col-expect">
-      <h2 class="poster-col-title">What to Expect</h2>
-      <ul class="poster-expect-list">
-        {{EXPECT_BULLETS}}
-      </ul>
-    </section>
-  </main>
+  <!-- SCHEDULE FOOTER STRIP -->
+  <footer class="poster-schedule-strip">
+    <ul class="strip-rows">
+      {{SCHEDULE_ROWS_POSTER}}
+    </ul>
+  </footer>
 
 </div>
 

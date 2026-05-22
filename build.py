@@ -243,56 +243,91 @@ def _compact_time(t: str) -> str:
     return f"{start}–{end} {ap}".strip()
 
 
-def render_poster_schedule(ev: dict) -> str:
-    """Schedule rows for the poster — each <li> is a time/activity pair.
+def _strip_time(t: str) -> str:
+    """Compact start-only time for the poster's schedule strip:
+    "2:00 PM - 2:30 PM" -> "2:00 PM". The strip is supplementary info,
+    not the main event, so end times can be inferred from the next row."""
+    m = re.match(r"^(\d{1,2}:\d{2})\s*(AM|PM)?\s*[-–]\s*\d{1,2}:\d{2}\s*(AM|PM)?$", t)
+    if not m:
+        return t
+    start, start_ap, end_ap = m.group(1), m.group(2), m.group(3)
+    ap = start_ap or end_ap or ""
+    return f"{start} {ap}".strip()
 
-    Reuses the same time strings as the brochure but in a big, readable
-    list rather than the dense 3-column event block, since the poster is
-    sized to be readable from across a room.
+
+# Short activity labels for the strip — the source markdown has fuller
+# names ("Vicar-led Devotional") which crowd a 4-column footer. These
+# overrides keep the strip tight and scannable.
+POSTER_ACT_SHORT = {
+    "Vicar-led Devotional": "Devotional",
+    "Introduction": "Intro",
+    "Personality Test": "Personality Test",
+    "Activity": "Group Activity",
+    "Open Time": "Open Time",
+    "Dinner (Zupas)": "Dinner",
+    "Vespers and Close": "Vespers",
+}
+
+
+def render_poster_schedule(ev: dict) -> str:
+    """Schedule rows for the poster's footer strip — a 4-column grid of
+    time/activity pairs. CSS handles the column wrap; we just emit
+    flat <li> elements in order.
     """
     return "\n".join(
-        f'<li><span class="t">{_compact_time(t)}</span><span class="a">{a}</span></li>'
+        f'<li><span class="t">{_strip_time(t)}</span>'
+        f'<span class="a">{POSTER_ACT_SHORT.get(a, a)}</span></li>'
         for t, a in ev["times"]
     )
 
 
-# Poster "What to Expect" bullets keyed by event title. These are
-# distance-readable summaries of what the event involves — distinct
-# from the brochure's prose "About" paragraph. Items listed under
-# `hi` render larger and bolder (the things we want to advertise
-# loudest from across the room).
-POSTER_EXPECT = {
+# Poster-specific copy that doesn't belong in the events markdown.
+# Keyed by event title — this is the inaugural-gathering framing and
+# the free-dinner callout, both intentionally loud on the poster.
+POSTER_HERO = {
     "Personality Day": {
-        "items": [
-            "Hymns & Devotional",
-            "Personality Test",
-            "Group Matchups",
-        ],
-        "hi": [
-            "Games",
-            "Scavenger Hunt",
-        ],
-        "tail": [
-            "Zupas Dinner",
-            "Vespers & Close",
-        ],
+        "eyebrow": "Our First Gathering",
+        "title_big": "Personality Day",
+        "scripture": (
+            "Behold, how good and how pleasant it is for brethren "
+            "to dwell together in unity!"
+        ),
+        "scripture_cite": "Psalm 133",
+        "callout_eyebrow": "Included",
+        "callout_headline": "Free<br>Dinner",
+        "callout_sub": "catered by Zupas",
     },
 }
 
 
-def render_poster_expect(ev: dict) -> str:
-    spec = POSTER_EXPECT.get(ev["title"])
-    if not spec:
-        # fallback: just list the activities, no highlighting
-        return "\n".join(f'<li>{a}</li>' for _, a in ev["times"])
-    parts = []
-    for item in spec.get("items", []):
-        parts.append(f'<li>{item}</li>')
-    for item in spec.get("hi", []):
-        parts.append(f'<li class="hi">{item}</li>')
-    for item in spec.get("tail", []):
-        parts.append(f'<li>{item}</li>')
-    return "\n".join(parts)
+def poster_meta_line(ev: dict) -> str:
+    """One-line event meta below the hero title:
+    "Saturday · 20 June · 2 – 6:30 PM · Zion".
+
+    Folds day-of-week, date, time span, and venue into a single
+    horizontally-balanced strip so the hero zone stays 3 lines tall
+    (eyebrow + title + meta) instead of 4.
+    """
+    day = ev.get("day") or "Saturday"
+    date = ev.get("date", "")
+    location = ev.get("location") or ""
+    if location.upper() == "TBD":
+        location = ""
+    times = ev.get("times") or []
+    span = ""
+    if times:
+        first_t = times[0][0]
+        last_t = times[-1][0]
+        m_start = re.match(r"^(\d{1,2}:\d{2})", first_t)
+        m_end = re.search(r"[-–]\s*(\d{1,2}:\d{2})\s*(AM|PM)?$", last_t)
+        if m_start and m_end:
+            ap = m_end.group(2) or "PM"
+            # drop ":00" minutes for compactness in the hero strip
+            start_t = m_start.group(1).replace(":00", "")
+            end_t = m_end.group(1)
+            span = f"{start_t} – {end_t} {ap}"
+    parts = [p for p in [day, date.title() if date else "", span, location] if p]
+    return " · ".join(parts)
 
 
 def render_inside_rows(events: list) -> str:
@@ -350,18 +385,18 @@ def main():
     else:
         title_upper_cover = data["title"].upper()
 
-    # Poster pulls the first (next-up) event so the band reads as the
-    # specific gathering being advertised.
+    # Poster pulls the first (next-up) event and pairs it with hardcoded
+    # hero copy (eyebrow framing, scripture pullquote, free-dinner callout)
+    # that doesn't belong in the recurring events markdown.
     poster_ev = events[0] if events else None
-    poster_date = poster_ev["date"].upper() if poster_ev else ""
-    poster_title = poster_ev["title"] if poster_ev else ""
-    poster_loc = f'at {poster_ev["location"]}' if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
+    poster_hero = POSTER_HERO.get(poster_ev["title"], {}) if poster_ev else {}
+    poster_loc_line = poster_ev["location"] if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
 
     html = (
         template
         .replace("{{TITLE}}", data["title"])
         .replace("{{TITLE_UPPER}}", title_upper_cover)
-        .replace("{{GROUP_NAME_UPPER}}", data["title"].upper())
+        .replace("{{GROUP_NAME_UPPER}}", data["title"])
         .replace("{{SUBTITLE}}", data["subtitle"])
         .replace("{{SCRIPTURE}}", data["scripture"])
         .replace("{{SCRIPTURE_CITE}}", data["scripture_cite"])
@@ -370,11 +405,16 @@ def main():
         .replace("{{MISSION}}", mission_html)
         .replace("{{EVENTS}}", render_events_schedule(events))
         .replace("{{INSIDE_ROWS}}", render_inside_rows(events))
-        .replace("{{EVENT_DATE}}", poster_date)
-        .replace("{{EVENT_TITLE}}", poster_title)
-        .replace("{{EVENT_LOCATION}}", poster_loc)
-        .replace("{{SCHEDULE_ROWS}}", render_poster_schedule(poster_ev) if poster_ev else "")
-        .replace("{{EXPECT_BULLETS}}", render_poster_expect(poster_ev) if poster_ev else "")
+        .replace("{{EYEBROW}}", poster_hero.get("eyebrow", ""))
+        .replace("{{EVENT_TITLE_BIG}}", poster_hero.get("title_big", poster_ev["title"] if poster_ev else ""))
+        .replace("{{EVENT_META_LINE}}", poster_meta_line(poster_ev) if poster_ev else "")
+        .replace("{{EVENT_LOCATION_LINE}}", poster_loc_line)
+        .replace("{{SCRIPTURE_PULLQUOTE}}", poster_hero.get("scripture", ""))
+        .replace("{{SCRIPTURE_CITE_POSTER}}", poster_hero.get("scripture_cite", ""))
+        .replace("{{CALLOUT_EYEBROW}}", poster_hero.get("callout_eyebrow", ""))
+        .replace("{{CALLOUT_HEADLINE}}", poster_hero.get("callout_headline", ""))
+        .replace("{{CALLOUT_SUB}}", poster_hero.get("callout_sub", ""))
+        .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
     )
     cfg["html_out"].write_text(html, encoding="utf-8")
     print(f"wrote {cfg['html_out'].name}")
