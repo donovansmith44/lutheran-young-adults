@@ -43,20 +43,22 @@ html, body { margin: 0; padding: 0; }
 /* tight axis, so the hero meta line stays compact.              */
 /* ============================================================ */
 :root {
-  --t-id-name:     14pt;
-  --t-id-tag:      10pt;
+  --t-id-name:     22pt;
+  --t-id-tag:      11pt;
   --t-qr-cap:      9pt;
-  --t-eyebrow:     12pt;
-  --t-hero-title:  52pt;
-  --t-hero-meta:   14.5pt;
-  --t-scripture:   15pt;
-  --t-scripture-cite: 10.5pt;
-  --t-callout-eyebrow: 9.5pt;
-  --t-callout-headline: 36pt;
-  --t-callout-sub: 12pt;
-  --t-sched-title: 11pt;
-  --t-sched-time:  12pt;
-  --t-sched-act:   12pt;
+  --t-eyebrow:     17pt;
+  --t-hero-title:  44pt;
+  --t-hero-meta:   13.5pt;
+  --t-scripture:   14pt;
+  --t-scripture-cite: 10pt;
+  --t-callout-eyebrow: 9pt;
+  --t-callout-headline: 32pt;
+  --t-callout-sub: 11pt;
+  --t-sched-title: 10.5pt;
+  --t-sched-time:  11pt;
+  --t-sched-act:   11pt;
+  --t-footer:      10.5pt;
+  --t-footer-addr: 11pt;
 }
 
 @layer components {
@@ -97,7 +99,7 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-display);
     font-weight: 800;
     font-size: var(--t-id-name);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-teal);
     line-height: 1;
@@ -161,7 +163,7 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-display);
     font-weight: 700;
     font-size: var(--t-eyebrow);
-    letter-spacing: 0.4em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--color-teal);
     white-space: nowrap;
@@ -292,6 +294,49 @@ html, body { margin: 0; padding: 0; }
     border-bottom: 0.6pt solid rgba(1, 64, 79, 0.16);
   }
   .sched-rows li:last-child { border-bottom: none; }
+
+  /* ============================================================ */
+  /* FOOTER — venue address + organizer contact                    */
+  /* ============================================================ */
+  .poster-footer {
+    margin-top: 0.18in;
+    padding-top: 10pt;
+    border-top: 0.8pt solid rgba(1, 64, 79, 0.45);
+    text-align: center;
+    color: var(--color-teal);
+  }
+  .footer-addr {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--t-footer-addr);
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    margin: 0;
+  }
+  .footer-addr .venue {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-right: 8pt;
+  }
+  .footer-addr .street {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .footer-contact {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--t-footer);
+    letter-spacing: 0.04em;
+    margin-top: 5pt;
+    opacity: 0.85;
+  }
+  .footer-contact .dot {
+    margin: 0 8pt;
+    opacity: 0.55;
+  }
   .sched-rows .t {
     font-family: var(--font-display);
     font-weight: 700;
