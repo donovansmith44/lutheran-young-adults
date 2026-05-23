@@ -40,20 +40,20 @@ html, body { margin: 0; padding: 0; }
 /* TYPE SCALE                                                    */
 /* ============================================================ */
 :root {
-  --t-banner-title:   28pt;
-  --t-banner-tag:     11.5pt;
-  --t-hero-eyebrow:   10.5pt;
-  --t-hero-title:     54pt;
-  --t-hero-meta:      13pt;
-  --t-hero-bonus:     12pt;
-  --t-col-title:      11pt;
-  --t-sched-time:     11pt;
-  --t-sched-act:      12pt;
-  --t-scripture:      13pt;
-  --t-scripture-cite: 9.5pt;
-  --t-rsvp-cap:       8.5pt;
-  --t-contact:        9.5pt;
-  --t-contact-label:  8.5pt;
+  --t-banner-title:    28pt;
+  --t-banner-tag:      11.5pt;
+  --t-hero-eyebrow:    10.5pt;
+  --t-hero-title:      54pt;
+  --t-hero-meta:       13pt;
+  --t-hero-bonus:      12pt;
+  --t-col-title:       11pt;
+  --t-about-headline:  13.5pt;
+  --t-about-blurb:     12pt;
+  --t-scripture:       13pt;
+  --t-scripture-cite:  9.5pt;
+  --t-rsvp-cap:        8.5pt;
+  --t-contact:         9.5pt;
+  --t-contact-label:   8.5pt;
 }
 
 @layer components {
@@ -67,16 +67,26 @@ html, body { margin: 0; padding: 0; }
   }
 
   /* Letter portrait, cream stock — built to print cheaply on a parish
-     office printer. No solid color blocks; only teal text on cream. */
+     office printer. No solid color blocks; only teal text on cream.
+     Generous 0.75in padding keeps every element inside a 7×9.5in safe
+     area so cheap inkjets / parish copiers (which reserve ~0.25" of
+     unprintable margin) never clip the design. */
   .poster-page {
     width: 8.5in;
     height: 11in;
     background: var(--color-cream);
-    padding: 0.55in 0.7in 0.5in 0.7in;
+    padding: 0.75in 0.75in 0.75in 0.75in;
     display: flex;
     flex-direction: column;
     page-break-after: auto;
     overflow: hidden;
+  }
+  .poster-mid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.34in;
   }
 
   /* ============================================================ */
@@ -131,7 +141,6 @@ html, body { margin: 0; padding: 0; }
   /* ============================================================ */
   .hero {
     text-align: center;
-    margin-bottom: 0.32in;
   }
   .hero-eyebrow {
     font-family: var(--font-display);
@@ -174,13 +183,13 @@ html, body { margin: 0; padding: 0; }
   }
 
   /* ============================================================ */
-  /* SCHEDULE                                                      */
+  /* WHAT TO EXPECT — editorial blurb pulled in from the brochure  */
   /* ============================================================ */
-  .schedule {
-    flex: 1;
-    max-width: 5.2in;
+  .about {
+    max-width: 5.4in;
     margin: 0 auto;
     width: 100%;
+    text-align: center;
   }
   .col-title {
     font-family: var(--font-display);
@@ -190,40 +199,29 @@ html, body { margin: 0; padding: 0; }
     text-transform: uppercase;
     color: var(--color-teal);
     text-align: center;
-    margin: 0 0 0.16in 0;
+    margin: 0 0 0.18in 0;
     padding-bottom: 7pt;
     border-bottom: 1pt solid var(--color-teal);
   }
-  .sched-rows {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .sched-rows li {
-    display: grid;
-    grid-template-columns: 1.7in 1fr;
-    column-gap: 16pt;
-    align-items: baseline;
-    padding: 6pt 6pt;
-    border-bottom: 0.5pt solid rgba(1, 64, 79, 0.16);
-  }
-  .sched-rows li:last-child { border-bottom: none; }
-  .sched-rows .t {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--t-sched-time);
-    color: var(--color-teal);
-    white-space: nowrap;
-    letter-spacing: 0.02em;
-    text-align: right;
-  }
-  .sched-rows .a {
+  .about-headline {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-sched-act);
+    font-size: var(--t-about-headline);
     color: var(--color-teal);
+    opacity: 0.85;
     line-height: 1.3;
+    margin: 0 0 0.16in 0;
+  }
+  .about-blurb {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--t-about-blurb);
+    color: var(--color-teal);
+    line-height: 1.55;
+    margin: 0;
+    letter-spacing: 0.005em;
   }
 
   /* ============================================================ */
@@ -232,7 +230,7 @@ html, body { margin: 0; padding: 0; }
   .scripture-line {
     text-align: center;
     color: var(--color-teal);
-    margin: 0.28in auto 0;
+    margin: 0 auto;
     max-width: 5.6in;
     padding: 0;
   }
@@ -261,7 +259,6 @@ html, body { margin: 0; padding: 0; }
   /* FOOTER — RSVP QR (left) + contact rows (right)                */
   /* ============================================================ */
   .poster-footer {
-    margin-top: 0.28in;
     padding-top: 11pt;
     border-top: 1pt solid var(--color-teal);
     display: grid;

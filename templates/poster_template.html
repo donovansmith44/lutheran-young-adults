@@ -28,27 +28,31 @@
     </div>
   </header>
 
-  <!-- ========== HERO (this event) ========== -->
-  <section class="hero">
-    <div class="hero-eyebrow">{{EYEBROW}}</div>
-    <h1 class="hero-title">{{EVENT_TITLE_BIG}}</h1>
-    <div class="hero-meta">{{EVENT_META_LINE}}</div>
-    <div class="hero-bonus">{{CALLOUT_HEADLINE}} &middot; {{CALLOUT_SUB}}</div>
-  </section>
+  <!-- mid section: vertically centered between banner and footer -->
+  <div class="poster-mid">
 
-  <!-- ========== SCHEDULE ========== -->
-  <section class="schedule">
-    <h2 class="col-title">The Afternoon</h2>
-    <ul class="sched-rows">
-      {{SCHEDULE_ROWS_POSTER}}
-    </ul>
-  </section>
+    <!-- ========== HERO (this event) ========== -->
+    <section class="hero">
+      <div class="hero-eyebrow">{{EYEBROW}}</div>
+      <h1 class="hero-title">{{EVENT_TITLE_BIG}}</h1>
+      <div class="hero-meta">{{EVENT_META_LINE}}</div>
+      <div class="hero-bonus">{{CALLOUT_HEADLINE}} &middot; {{CALLOUT_SUB}}</div>
+    </section>
 
-  <!-- ========== SCRIPTURE LINE ========== -->
-  <blockquote class="scripture-line">
-    <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
-    <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
-  </blockquote>
+    <!-- ========== WHAT TO EXPECT ========== -->
+    <section class="about">
+      <h2 class="col-title">What to Expect</h2>
+      <p class="about-headline">{{ABOUT_HEADLINE}}</p>
+      <p class="about-blurb">{{ABOUT_BLURB}}</p>
+    </section>
+
+    <!-- ========== SCRIPTURE LINE ========== -->
+    <blockquote class="scripture-line">
+      <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
+      <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
+    </blockquote>
+
+  </div>
 
   <!-- ========== RSVP + CONTACT FOOTER ========== -->
   <footer class="poster-footer">

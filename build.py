@@ -401,6 +401,8 @@ def main():
         .replace("{{CALLOUT_HEADLINE}}", poster_hero.get("callout_headline", ""))
         .replace("{{CALLOUT_SUB}}", poster_hero.get("callout_sub", ""))
         .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
+        .replace("{{ABOUT_HEADLINE}}", poster_ev["headline"] if poster_ev else "")
+        .replace("{{ABOUT_BLURB}}", poster_ev["about"] if poster_ev else "")
     )
     cfg["html_out"].write_text(html, encoding="utf-8")
     print(f"wrote {cfg['html_out'].name}")
