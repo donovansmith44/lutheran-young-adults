@@ -5,70 +5,67 @@
 <title>{{TITLE}} — Poster</title>
 <link rel="stylesheet" href="poster.css">
 </head>
-<body class="bg-pink text-teal font-body">
+<body class="bg-cream text-teal font-body">
 
 <!-- ============================================================ -->
 <!-- ONE-PAGE PORTRAIT POSTER                                     -->
-<!--   Vertical stack:                                            -->
-<!--     [ masthead + QR ]                                        -->
-<!--     [ hero: eyebrow + title + meta ]                         -->
-<!--     [ scripture pullquote, centered ]                        -->
-<!--     [ FREE DINNER band, full width ]                         -->
-<!--     [ vertical schedule agenda ]                             -->
+<!--   Built for cheap parish-office printing: cream stock, no    -->
+<!--   solid color blocks, teal text only. Banner / hero / sched- -->
+<!--   ule / scripture / RSVP / contact footer.                   -->
 <!-- ============================================================ -->
 <div class="poster-page">
 
-  <header class="poster-header">
-    <div class="poster-id">
-      <div class="poster-id-name">{{GROUP_NAME_UPPER}}</div>
-      <div class="poster-id-tag">{{SUBTITLE}}</div>
+  <!-- ========== TOP BANNER ========== -->
+  <header class="banner">
+    <div class="banner-title">
+      <div class="t1">{{GROUP_NAME_UPPER}}</div>
+      <div class="t2">{{SUBTITLE}}</div>
     </div>
-    <div class="poster-qr-block">
-      <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="poster-qr">
-      <div class="poster-qr-cap">Scan to RSVP</div>
+    <div class="banner-logo">
+      <span class="rule"></span>
+      <img src="assets/logo.png" alt="" class="logo">
+      <span class="rule"></span>
     </div>
   </header>
 
-  <section class="poster-hero">
-    <div class="poster-eyebrow">
-      <span class="rule"></span>
-      <span class="eyebrow-text">{{EYEBROW}}</span>
-      <span class="rule"></span>
-    </div>
-    <h1 class="poster-hero-title">{{EVENT_TITLE_BIG}}</h1>
-    <div class="poster-hero-meta">{{EVENT_META_LINE}}</div>
+  <!-- ========== HERO (this event) ========== -->
+  <section class="hero">
+    <div class="hero-eyebrow">{{EYEBROW}}</div>
+    <h1 class="hero-title">{{EVENT_TITLE_BIG}}</h1>
+    <div class="hero-meta">{{EVENT_META_LINE}}</div>
+    <div class="hero-bonus">{{CALLOUT_HEADLINE}} &middot; {{CALLOUT_SUB}}</div>
   </section>
 
-  <blockquote class="poster-scripture">
-    <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
-    <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
-  </blockquote>
-
-  <aside class="poster-callout">
-    <div class="callout-eyebrow">{{CALLOUT_EYEBROW}}</div>
-    <div class="callout-headline">{{CALLOUT_HEADLINE}}</div>
-    <div class="callout-sub">{{CALLOUT_SUB}}</div>
-  </aside>
-
-  <section class="poster-schedule">
-    <h2 class="sched-title">The Afternoon</h2>
+  <!-- ========== SCHEDULE ========== -->
+  <section class="schedule">
+    <h2 class="col-title">The Afternoon</h2>
     <ul class="sched-rows">
       {{SCHEDULE_ROWS_POSTER}}
     </ul>
   </section>
 
+  <!-- ========== SCRIPTURE LINE ========== -->
+  <blockquote class="scripture-line">
+    <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
+    <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
+  </blockquote>
+
+  <!-- ========== RSVP + CONTACT FOOTER ========== -->
   <footer class="poster-footer">
-    <p class="footer-addr">
-      <span class="venue">Zion Evangelical Lutheran Church</span>
-      <span class="street">766 S High St, Columbus, OH</span>
-    </p>
-    <p class="footer-contact">
-      Donovan Smith
-      <span class="dot">·</span>
-      (614) 556-0607
-      <span class="dot">·</span>
-      donovan.smith44@gmail.com
-    </p>
+    <div class="rsvp-block">
+      <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="rsvp-qr">
+      <div class="rsvp-cap">Scan to RSVP</div>
+    </div>
+    <div class="contact-block">
+      <div class="contact-row contact-row-venue">
+        <span class="contact-label">Venue</span>
+        <span class="contact-val">Zion Evangelical Lutheran Church &middot; 766 S High St, Columbus, OH</span>
+      </div>
+      <div class="contact-row contact-row-org">
+        <span class="contact-label">Organizer</span>
+        <span class="contact-val">Donovan Smith &middot; (614) 556-0607 &middot; donovan.smith44@gmail.com</span>
+      </div>
+    </div>
   </footer>
 
 </div>

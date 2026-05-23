@@ -255,28 +255,14 @@ def _strip_time(t: str) -> str:
     return f"{start} {ap}".strip()
 
 
-# Short activity labels for the strip — the source markdown has fuller
-# names ("Vicar-led Devotional") which crowd a 4-column footer. These
-# overrides keep the strip tight and scannable.
-POSTER_ACT_SHORT = {
-    "Vicar-led Devotional": "Devotional",
-    "Introduction": "Intro",
-    "Personality Test": "Personality Test",
-    "Activity": "Group Activity",
-    "Open Time": "Open Time",
-    "Dinner (Zupas)": "Dinner",
-    "Vespers and Close": "Vespers",
-}
-
-
 def render_poster_schedule(ev: dict) -> str:
-    """Schedule rows for the poster's footer strip — a 4-column grid of
-    time/activity pairs. CSS handles the column wrap; we just emit
-    flat <li> elements in order.
+    """Schedule rows for the poster's left-column agenda — full time
+    ranges (compacted from "2:00 PM - 2:30 PM" to "2:00–2:30 PM") and
+    the full activity label from the markdown.
     """
     return "\n".join(
-        f'<li><span class="t">{_strip_time(t)}</span>'
-        f'<span class="a">{POSTER_ACT_SHORT.get(a, a)}</span></li>'
+        f'<li><span class="t">{_compact_time(t)}</span>'
+        f'<span class="a">{a}</span></li>'
         for t, a in ev["times"]
     )
 

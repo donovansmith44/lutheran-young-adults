@@ -5,76 +5,73 @@
 <title>Lutheran Young Adults — Poster</title>
 <link rel="stylesheet" href="poster.css">
 </head>
-<body class="bg-pink text-teal font-body">
+<body class="bg-cream text-teal font-body">
 
 <!-- ============================================================ -->
 <!-- ONE-PAGE PORTRAIT POSTER                                     -->
-<!--   Vertical stack:                                            -->
-<!--     [ masthead + QR ]                                        -->
-<!--     [ hero: eyebrow + title + meta ]                         -->
-<!--     [ scripture pullquote, centered ]                        -->
-<!--     [ FREE DINNER band, full width ]                         -->
-<!--     [ vertical schedule agenda ]                             -->
+<!--   Built for cheap parish-office printing: cream stock, no    -->
+<!--   solid color blocks, teal text only. Banner / hero / sched- -->
+<!--   ule / scripture / RSVP / contact footer.                   -->
 <!-- ============================================================ -->
 <div class="poster-page">
 
-  <header class="poster-header">
-    <div class="poster-id">
-      <div class="poster-id-name">Lutheran Young Adults</div>
-      <div class="poster-id-tag">Connecting Confessional Lutherans</div>
+  <!-- ========== TOP BANNER ========== -->
+  <header class="banner">
+    <div class="banner-title">
+      <div class="t1">Lutheran Young Adults</div>
+      <div class="t2">Connecting Confessional Lutherans</div>
     </div>
-    <div class="poster-qr-block">
-      <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="poster-qr">
-      <div class="poster-qr-cap">Scan to RSVP</div>
+    <div class="banner-logo">
+      <span class="rule"></span>
+      <img src="assets/logo.png" alt="" class="logo">
+      <span class="rule"></span>
     </div>
   </header>
 
-  <section class="poster-hero">
-    <div class="poster-eyebrow">
-      <span class="rule"></span>
-      <span class="eyebrow-text">Our First Gathering</span>
-      <span class="rule"></span>
-    </div>
-    <h1 class="poster-hero-title">Personality Day</h1>
-    <div class="poster-hero-meta">Saturday · 20 June · 2 – 6:30 PM · Zion</div>
+  <!-- ========== HERO (this event) ========== -->
+  <section class="hero">
+    <div class="hero-eyebrow">Our First Gathering</div>
+    <h1 class="hero-title">Personality Day</h1>
+    <div class="hero-meta">Saturday · 20 June · 2 – 6:30 PM · Zion</div>
+    <div class="hero-bonus">Free Dinner &middot; catered by Zupas</div>
   </section>
 
-  <blockquote class="poster-scripture">
+  <!-- ========== SCHEDULE ========== -->
+  <section class="schedule">
+    <h2 class="col-title">The Afternoon</h2>
+    <ul class="sched-rows">
+      <li><span class="t">2:00–2:30 PM</span><span class="a">Vicar-led Devotional</span></li>
+<li><span class="t">2:30–2:45 PM</span><span class="a">Introduction</span></li>
+<li><span class="t">2:45–3:30 PM</span><span class="a">Personality Test</span></li>
+<li><span class="t">3:30–4:30 PM</span><span class="a">Activity</span></li>
+<li><span class="t">4:30–5:15 PM</span><span class="a">Open Time</span></li>
+<li><span class="t">5:15–6:00 PM</span><span class="a">Dinner (Zupas)</span></li>
+<li><span class="t">6:00–6:30 PM</span><span class="a">Vespers and Close</span></li>
+    </ul>
+  </section>
+
+  <!-- ========== SCRIPTURE LINE ========== -->
+  <blockquote class="scripture-line">
     <p class="quote-text">&ldquo;Behold, how good and how pleasant it is for brethren to dwell together in unity!&rdquo;</p>
     <cite>Psalm 133</cite>
   </blockquote>
 
-  <aside class="poster-callout">
-    <div class="callout-eyebrow">Included with the event</div>
-    <div class="callout-headline">Free Dinner</div>
-    <div class="callout-sub">catered by Zupas</div>
-  </aside>
-
-  <section class="poster-schedule">
-    <h2 class="sched-title">The Afternoon</h2>
-    <ul class="sched-rows">
-      <li><span class="t">2:00 PM</span><span class="a">Devotional</span></li>
-<li><span class="t">2:30 PM</span><span class="a">Intro</span></li>
-<li><span class="t">2:45 PM</span><span class="a">Personality Test</span></li>
-<li><span class="t">3:30 PM</span><span class="a">Group Activity</span></li>
-<li><span class="t">4:30 PM</span><span class="a">Open Time</span></li>
-<li><span class="t">5:15 PM</span><span class="a">Dinner</span></li>
-<li><span class="t">6:00 PM</span><span class="a">Vespers</span></li>
-    </ul>
-  </section>
-
+  <!-- ========== RSVP + CONTACT FOOTER ========== -->
   <footer class="poster-footer">
-    <p class="footer-addr">
-      <span class="venue">Zion Evangelical Lutheran Church</span>
-      <span class="street">766 S High St, Columbus, OH</span>
-    </p>
-    <p class="footer-contact">
-      Donovan Smith
-      <span class="dot">·</span>
-      (614) 556-0607
-      <span class="dot">·</span>
-      donovan.smith44@gmail.com
-    </p>
+    <div class="rsvp-block">
+      <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="rsvp-qr">
+      <div class="rsvp-cap">Scan to RSVP</div>
+    </div>
+    <div class="contact-block">
+      <div class="contact-row contact-row-venue">
+        <span class="contact-label">Venue</span>
+        <span class="contact-val">Zion Evangelical Lutheran Church &middot; 766 S High St, Columbus, OH</span>
+      </div>
+      <div class="contact-row contact-row-org">
+        <span class="contact-label">Organizer</span>
+        <span class="contact-val">Donovan Smith &middot; (614) 556-0607 &middot; donovan.smith44@gmail.com</span>
+      </div>
+    </div>
   </footer>
 
 </div>
