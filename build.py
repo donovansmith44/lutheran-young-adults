@@ -377,6 +377,9 @@ def main():
     poster_ev = events[0] if events else None
     poster_hero = POSTER_HERO.get(poster_ev["title"], {}) if poster_ev else {}
     poster_loc_line = poster_ev["location"] if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
+    # Schedule-column event head: day-of-week + long date ("Saturday", "20 June").
+    poster_day = (poster_ev.get("day") or "Saturday") if poster_ev else ""
+    poster_date_long = poster_ev["date"].title() if (poster_ev and poster_ev["date"]) else ""
 
     html = (
         template
@@ -395,6 +398,8 @@ def main():
         .replace("{{EVENT_TITLE_BIG}}", poster_hero.get("title_big", poster_ev["title"] if poster_ev else ""))
         .replace("{{EVENT_META_LINE}}", poster_meta_line(poster_ev) if poster_ev else "")
         .replace("{{EVENT_LOCATION_LINE}}", poster_loc_line)
+        .replace("{{EVENT_DAY}}", poster_day)
+        .replace("{{EVENT_DATE_LONG}}", poster_date_long)
         .replace("{{SCRIPTURE_PULLQUOTE}}", poster_hero.get("scripture", ""))
         .replace("{{SCRIPTURE_CITE_POSTER}}", poster_hero.get("scripture_cite", ""))
         .replace("{{CALLOUT_EYEBROW}}", poster_hero.get("callout_eyebrow", ""))

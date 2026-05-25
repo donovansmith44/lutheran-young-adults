@@ -5,72 +5,88 @@
 <title>Lutheran Young Adults — Poster</title>
 <link rel="stylesheet" href="poster.css">
 </head>
-<body class="bg-cream text-teal font-body">
+<body class="bg-white text-teal font-body">
 
 <!-- ============================================================ -->
-<!-- ONE-PAGE PORTRAIT POSTER                                     -->
-<!--   Built for cheap parish-office printing: cream stock, no    -->
-<!--   solid color blocks, teal text only. Banner / hero / sched- -->
-<!--   ule / scripture / RSVP / contact footer.                   -->
+<!-- ONE-PAGE LANDSCAPE POSTER                                    -->
+<!--   A flattened, unfoldable version of the brochure for parish  -->
+<!--   offices to photocopy and hand out. White stock, teal ink    -->
+<!--   only — no solid color blocks, cheap to print.               -->
+<!--                                                               -->
+<!--   Masthead:  [logo]      LUTHERAN YOUNG ADULTS     [contact]   -->
+<!--   Columns:   Schedule  |  What to Expect  |  Our Mission       -->
 <!-- ============================================================ -->
 <div class="poster-page">
 
-  <!-- ========== TOP BANNER ========== -->
-  <header class="banner">
-    <div class="banner-title">
+  <!-- ========== MASTHEAD ========== -->
+  <header class="masthead">
+    <img src="assets/logo.png" alt="" class="mast-logo">
+
+    <div class="mast-title">
       <div class="t1">Lutheran Young Adults</div>
       <div class="t2">Connecting Confessional Lutherans</div>
     </div>
-    <div class="banner-logo">
-      <span class="rule"></span>
-      <img src="assets/logo.png" alt="" class="logo">
-      <span class="rule"></span>
-    </div>
+
+    <aside class="mast-contact">
+      <div class="contact-eyebrow">Contact</div>
+      <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="contact-qr">
+      <div class="contact-rsvp">Scan to RSVP</div>
+      <div class="contact-tally">tally.so/r/Ek8QeA</div>
+      <div class="contact-line contact-phone">(614) 556-0607</div>
+      <div class="contact-line contact-email">donovan.smith44@gmail.com</div>
+    </aside>
   </header>
 
-  <!-- mid section: vertically centered between banner and footer -->
-  <div class="poster-mid">
+  <!-- ========== THREE PANELS ========== -->
+  <div class="panels">
 
-    <!-- ========== HERO (this event) ========== -->
-    <section class="hero">
-      <div class="hero-eyebrow">Our First Gathering</div>
-      <h1 class="hero-title">Personality Day</h1>
-      <div class="hero-meta">Saturday · 20 June · 2 – 6:30 PM · Zion</div>
-      <div class="hero-bonus">Free Dinner &middot; catered by Zupas</div>
+    <!-- ---------- LEFT: EVENT SCHEDULE ---------- -->
+    <section class="panel panel-schedule">
+      <h2 class="col-title">Event Schedule</h2>
+      <div class="sched-head">
+        <div class="sched-eyebrow">Our First Gathering</div>
+        <h3 class="sched-event">Personality Day</h3>
+        <div class="sched-meta">Saturday &middot; 20 June &middot; Zion</div>
+      </div>
+      <ul class="sched-times">
+        <li><span class="t">2:00–2:30 PM</span><span class="a">Vicar-led Devotional</span></li>
+<li><span class="t">2:30–2:45 PM</span><span class="a">Introduction</span></li>
+<li><span class="t">2:45–3:30 PM</span><span class="a">Personality Test</span></li>
+<li><span class="t">3:30–4:30 PM</span><span class="a">Activity</span></li>
+<li><span class="t">4:30–5:15 PM</span><span class="a">Open Time</span></li>
+<li><span class="t">5:15–6:00 PM</span><span class="a">Dinner (Zupas)</span></li>
+<li><span class="t">6:00–6:30 PM</span><span class="a">Vespers and Close</span></li>
+      </ul>
+      <div class="sched-callout">Free Dinner &middot; catered by Zupas</div>
     </section>
 
-    <!-- ========== WHAT TO EXPECT ========== -->
-    <section class="about">
+    <!-- ---------- MIDDLE: WHAT TO EXPECT ---------- -->
+    <section class="panel panel-expect">
       <h2 class="col-title">What to Expect</h2>
-      <p class="about-headline">Learn something about yourself and others</p>
-      <p class="about-blurb">After opening with some hymns and a devotional, we'll all take a personality test and be matched with groups where everyone has tested as having either similar or opposite traits from yourself. This will be an opportunity for us all to get better acquainted, play games, take part in a scavenger hunt, and enjoy a catered meal from Zupas!</p>
+      <p class="expect-headline">Learn something about yourself and others</p>
+      <p class="expect-blurb">After opening with some hymns and a devotional, we'll all take a personality test and be matched with groups where everyone has tested as having either similar or opposite traits from yourself. This will be an opportunity for us all to get better acquainted, play games, take part in a scavenger hunt, and enjoy a catered meal from Zupas!</p>
+      <blockquote class="expect-scripture">
+        <p class="quote-text">&ldquo;Behold, how good and how pleasant it is for brethren to dwell together in unity!&rdquo;</p>
+        <cite>Psalm 133</cite>
+      </blockquote>
     </section>
 
-    <!-- ========== SCRIPTURE LINE ========== -->
-    <blockquote class="scripture-line">
-      <p class="quote-text">&ldquo;Behold, how good and how pleasant it is for brethren to dwell together in unity!&rdquo;</p>
-      <cite>Psalm 133</cite>
-    </blockquote>
+    <!-- ---------- RIGHT: OUR MISSION / CONNECTION ---------- -->
+    <section class="panel panel-mission">
+      <h2 class="col-title">Our Mission</h2>
+      <blockquote class="mission-scripture">
+        <p class="quote-text">&ldquo;And let us consider one another to provoke unto love and to good works: Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching.&rdquo;</p>
+        <cite>(Hbr. 10:24-25, KJV)</cite>
+      </blockquote>
+      <div class="mission-divider"></div>
+      <div class="mission-body">
+        <p class="mission-salutation">Brothers and sisters in Christ,</p>
+        <p>The words of Paul remind us of the importance of regular gathering within the Church. As Paul was encouraged by the faith of the Ephesians and the Philippians, we ought to be encouraged by the faith of one another. This truth is especially poignant today, now that many young adults are leaving Confessional Lutheranism in search of community and fellowship in church bodies that have more young adults than we do.</p>
+<p>This is why this group has been organized: to serve Confessional Lutherans who desire real connection with the members of their synod. Please prayerfully consider taking part in this growth of the bond of fellowship shared by Lutherans in central Ohio.</p>
+      </div>
+    </section>
 
   </div>
-
-  <!-- ========== RSVP + CONTACT FOOTER ========== -->
-  <footer class="poster-footer">
-    <div class="rsvp-block">
-      <img src="assets/qr-rsvp.svg" alt="RSVP QR code" class="rsvp-qr">
-      <div class="rsvp-cap">Scan to RSVP</div>
-    </div>
-    <div class="contact-block">
-      <div class="contact-row contact-row-venue">
-        <span class="contact-label">Venue</span>
-        <span class="contact-val">Zion Evangelical Lutheran Church &middot; 766 S High St, Columbus, OH</span>
-      </div>
-      <div class="contact-row contact-row-org">
-        <span class="contact-label">Organizer</span>
-        <span class="contact-val">Donovan Smith &middot; (614) 556-0607 &middot; donovan.smith44@gmail.com</span>
-      </div>
-    </div>
-  </footer>
 
 </div>
 

@@ -29,7 +29,7 @@
 }
 
 @page {
-  size: letter portrait;
+  size: letter landscape;
   margin: 0;
 }
 
@@ -40,20 +40,32 @@ html, body { margin: 0; padding: 0; }
 /* TYPE SCALE                                                    */
 /* ============================================================ */
 :root {
-  --t-banner-title:    28pt;
-  --t-banner-tag:      11.5pt;
-  --t-hero-eyebrow:    10.5pt;
-  --t-hero-title:      54pt;
-  --t-hero-meta:       13pt;
-  --t-hero-bonus:      12pt;
-  --t-col-title:       11pt;
-  --t-about-headline:  13.5pt;
-  --t-about-blurb:     12pt;
-  --t-scripture:       13pt;
-  --t-scripture-cite:  9.5pt;
-  --t-rsvp-cap:        8.5pt;
-  --t-contact:         9.5pt;
-  --t-contact-label:   8.5pt;
+  --t-mast-title:     26pt;
+  --t-mast-tag:       12.5pt;
+  --t-contact-eye:    8pt;
+  --t-contact-rsvp:   7.5pt;
+  --t-contact-tally:  8.5pt;
+  --t-contact-phone:  11pt;
+  --t-contact-email:  9pt;
+
+  --t-col-title:      11pt;
+
+  --t-sched-eye:      8pt;
+  --t-sched-event:    19pt;
+  --t-sched-meta:     9.5pt;
+  --t-sched-time:     8.5pt;
+  --t-sched-act:      9pt;
+  --t-sched-callout:  11.5pt;
+
+  --t-expect-head:    13.5pt;
+  --t-expect-blurb:   11pt;
+  --t-expect-scrip:   11.5pt;
+  --t-expect-cite:    9pt;
+
+  --t-mission-scrip:  10.5pt;
+  --t-mission-cite:   9.5pt;
+  --t-mission-sal:    11pt;
+  --t-mission-body:   9pt;
 }
 
 @layer components {
@@ -63,262 +75,354 @@ html, body { margin: 0; padding: 0; }
     font-weight: 400;
     color: var(--color-teal);
     font-size: 10pt;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
-  /* Letter portrait, cream stock — built to print cheaply on a parish
-     office printer. No solid color blocks; only teal text on cream.
-     Generous 0.75in padding keeps every element inside a 7×9.5in safe
-     area so cheap inkjets / parish copiers (which reserve ~0.25" of
-     unprintable margin) never clip the design. */
+  /* Letter LANDSCAPE, white stock. A flattened, unfoldable brochure
+     for parish offices to photocopy and hand out. Teal ink on white —
+     no solid color blocks. The page reserves a 1/4in margin at the
+     bottom (per the brief) and a slightly larger top/side breathing
+     margin so cheap copiers don't clip the masthead or column rules. */
   .poster-page {
-    width: 8.5in;
-    height: 11in;
-    background: var(--color-cream);
-    padding: 0.75in 0.75in 0.75in 0.75in;
+    width: 11in;
+    height: 8.5in;
+    background: #fff;
+    padding: 0.4in 0.5in 0.25in 0.5in;
     display: flex;
     flex-direction: column;
-    page-break-after: auto;
     overflow: hidden;
-  }
-  .poster-mid {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.34in;
+    page-break-after: auto;
   }
 
   /* ============================================================ */
-  /* TOP BANNER — title + tagline above, logo flanked by rules    */
+  /* MASTHEAD — logo (left) · centered title · contact/QR (right)  */
+  /*   Title is page-centered; logo and contact block are pinned   */
+  /*   to the corners so the title stays optically centered        */
+  /*   regardless of their differing widths.                       */
   /* ============================================================ */
-  .banner {
-    text-align: center;
+  .masthead {
+    position: relative;
+    flex: 0 0 auto;
+    height: 1.95in;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0.16in;
-    margin-bottom: 0.32in;
+    justify-content: center;
+    border-bottom: 1.25pt solid var(--color-teal);
+    margin-bottom: 0.16in;
   }
-  .banner-title { line-height: 1.05; }
-  .banner-title .t1 {
+  .mast-logo {
+    position: absolute;
+    left: 0.05in;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.05in;
+    height: 1.05in;
+  }
+  .mast-title {
+    text-align: center;
+    margin: 0 auto;
+    /* keep the centered title clear of the corner blocks */
+    max-width: 7in;
+  }
+  .mast-title .t1 {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: var(--t-banner-title);
-    letter-spacing: 0.10em;
+    font-size: var(--t-mast-title);
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--color-teal);
+    line-height: 1;
+    white-space: nowrap;
   }
-  .banner-title .t2 {
+  .mast-title .t2 {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-banner-tag);
+    font-size: var(--t-mast-tag);
     color: var(--color-teal);
     opacity: 0.85;
-    margin-top: 6pt;
-    letter-spacing: 0.04em;
-  }
-  .banner-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.18in;
-    width: 100%;
-    max-width: 5.8in;
-  }
-  .banner-logo .rule {
-    flex: 1;
-    height: 1.4pt;
-    background: var(--color-teal);
-  }
-  .banner-logo .logo {
-    width: 0.85in;
-    height: 0.85in;
+    letter-spacing: 0.03em;
+    margin-top: 8pt;
   }
 
-  /* ============================================================ */
-  /* HERO — event focus block                                      */
-  /* ============================================================ */
-  .hero {
+  .mast-contact {
+    position: absolute;
+    right: 0;
+    top: 0.02in;
+    width: 1.8in;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2pt;
   }
-  .hero-eyebrow {
+  .contact-eyebrow {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: var(--t-hero-eyebrow);
-    letter-spacing: 0.40em;
+    font-size: var(--t-contact-eye);
+    letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--color-teal);
-    opacity: 0.78;
-    margin-bottom: 10pt;
+    opacity: 0.8;
+    margin-bottom: 1pt;
   }
-  .hero-title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: var(--t-hero-title);
-    color: var(--color-teal);
-    line-height: 0.98;
-    letter-spacing: -0.005em;
-    margin: 0;
+  .contact-qr {
+    width: 0.85in;
+    height: 0.85in;
+    background: #fff;
+    display: block;
   }
-  .hero-meta {
+  .contact-rsvp {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: var(--t-hero-meta);
-    color: var(--color-teal);
-    letter-spacing: 0.10em;
+    font-size: var(--t-contact-rsvp);
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    margin-top: 12pt;
+    color: var(--color-teal);
+    margin-top: 2pt;
   }
-  .hero-bonus {
+  .contact-tally {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-hero-bonus);
+    font-size: var(--t-contact-tally);
     color: var(--color-teal);
-    opacity: 0.82;
-    margin-top: 5pt;
+    opacity: 0.85;
+    margin-bottom: 3pt;
+  }
+  .contact-line {
+    font-family: var(--font-display);
+    color: var(--color-teal);
+    line-height: 1.25;
+  }
+  .contact-phone {
+    font-weight: 700;
+    font-size: var(--t-contact-phone);
+    letter-spacing: 0.02em;
+  }
+  .contact-email {
+    font-weight: 500;
+    font-size: var(--t-contact-email);
     letter-spacing: 0.01em;
   }
 
   /* ============================================================ */
-  /* WHAT TO EXPECT — editorial blurb pulled in from the brochure  */
+  /* THREE PANELS — schedule · what to expect · mission           */
+  /*   Equal thirds. Column headers share one top line (the rule   */
+  /*   under each .col-title lands at the same y) and the block     */
+  /*   fills down to the 1/4in bottom margin.                       */
   /* ============================================================ */
-  .about {
-    max-width: 5.4in;
-    margin: 0 auto;
+  /* Table layout (not flex/grid) — WeasyPrint renders tables reliably,
+     whereas nested flex stretch / auto-margins mis-position content. The
+     three cells auto-equalize to the tallest column (Mission), so the
+     divider rules run full height and every column header sits on the
+     same top line. Content flows top-down (vertical-align:top). */
+  .panels {
+    flex: 1 1 auto;
+    display: table;
+    table-layout: fixed;
     width: 100%;
-    text-align: center;
+    border-collapse: collapse;
   }
+  .panel {
+    display: table-cell;
+    width: 33.333%;
+    vertical-align: top;
+    padding: 0 0.36in;
+  }
+  .panel + .panel {
+    border-left: 1px solid color-mix(in srgb, var(--color-teal) 22%, transparent);
+  }
+
   .col-title {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: var(--t-col-title);
-    letter-spacing: 0.40em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--color-teal);
     text-align: center;
-    margin: 0 0 0.18in 0;
+    margin: 0 0 0.16in 0;
     padding-bottom: 7pt;
     border-bottom: 1pt solid var(--color-teal);
   }
-  .about-headline {
+
+  /* ---------- SCHEDULE ---------- */
+  .sched-head {
+    text-align: center;
+    margin-bottom: 0.2in;
+  }
+  .sched-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--t-sched-eye);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    opacity: 0.72;
+  }
+  .sched-event {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-about-headline);
+    font-size: var(--t-sched-event);
+    color: var(--color-teal);
+    line-height: 1;
+    margin: 5pt 0 6pt 0;
+  }
+  .sched-meta {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--t-sched-meta);
+    letter-spacing: 0.03em;
     color: var(--color-teal);
     opacity: 0.85;
+  }
+  .sched-times {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sched-times li {
+    display: grid;
+    grid-template-columns: 1.05in 1fr;
+    column-gap: 9pt;
+    padding: 5.5pt 0;
+    align-items: baseline;
+  }
+  .sched-times .t {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--t-sched-time);
+    color: var(--color-teal);
+    white-space: nowrap;
+  }
+  .sched-times .a {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--t-sched-act);
+    color: var(--color-teal);
+  }
+  .sched-callout {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--t-sched-callout);
+    color: var(--color-teal);
+    text-align: center;
+    margin-top: 0.2in;
+    padding-top: 11pt;
+    border-top: 1px solid color-mix(in srgb, var(--color-teal) 35%, transparent);
+  }
+
+  /* ---------- WHAT TO EXPECT ---------- */
+  .expect-headline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--t-expect-head);
+    color: var(--color-teal);
+    opacity: 0.85;
+    text-align: center;
     line-height: 1.3;
     margin: 0 0 0.16in 0;
   }
-  .about-blurb {
+  .expect-blurb {
     font-family: var(--font-serif);
     font-style: normal;
     font-weight: 400;
-    font-size: var(--t-about-blurb);
+    font-size: var(--t-expect-blurb);
     color: var(--color-teal);
-    line-height: 1.55;
+    line-height: 1.7;
+    letter-spacing: 0.003em;
     margin: 0;
-    letter-spacing: 0.005em;
   }
-
-  /* ============================================================ */
-  /* SCRIPTURE LINE — single centered verse, no panel              */
-  /* ============================================================ */
-  .scripture-line {
+  .expect-scripture {
     text-align: center;
     color: var(--color-teal);
-    margin: 0 auto;
-    max-width: 5.6in;
-    padding: 0;
+    margin: 0.22in 0 0 0;
+    padding-top: 0.16in;
+    border-top: 1px solid color-mix(in srgb, var(--color-teal) 35%, transparent);
   }
-  .scripture-line .quote-text {
+  .expect-scripture .quote-text {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-scripture);
+    font-size: var(--t-expect-scrip);
+    color: var(--color-teal);
     line-height: 1.4;
     margin: 0;
-    color: var(--color-teal);
   }
-  .scripture-line cite {
+  .expect-scripture cite {
     display: block;
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-scripture-cite);
+    font-size: var(--t-expect-cite);
     color: var(--color-teal);
-    opacity: 0.78;
+    opacity: 0.75;
     margin-top: 5pt;
-    letter-spacing: 0;
   }
 
-  /* ============================================================ */
-  /* FOOTER — RSVP QR (left) + contact rows (right)                */
-  /* ============================================================ */
-  .poster-footer {
-    padding-top: 11pt;
-    border-top: 1pt solid var(--color-teal);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 0.32in;
-    align-items: center;
-  }
-  .rsvp-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4pt;
-  }
-  .rsvp-qr {
-    width: 1.1in;
-    height: 1.1in;
-    background: var(--color-cream);
-    padding: 0;
-    display: block;
-  }
-  .rsvp-cap {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--t-rsvp-cap);
-    letter-spacing: 0.30em;
-    text-transform: uppercase;
+  /* ---------- OUR MISSION / CONNECTION ---------- */
+  .mission-scripture {
+    text-align: center;
     color: var(--color-teal);
+    margin: 0;
   }
-  .contact-block {
-    display: flex;
-    flex-direction: column;
-    gap: 5pt;
-  }
-  .contact-row {
-    display: grid;
-    grid-template-columns: 0.95in 1fr;
-    column-gap: 0.2in;
-    align-items: baseline;
-  }
-  .contact-label {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--t-contact-label);
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
-    color: var(--color-teal);
-    opacity: 0.85;
-  }
-  .contact-val {
+  .mission-scripture .quote-text {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-contact);
+    font-size: var(--t-mission-scrip);
     color: var(--color-teal);
-    line-height: 1.35;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .mission-scripture cite {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--t-mission-cite);
+    color: var(--color-teal);
+    opacity: 0.8;
+    margin-top: 7pt;
+  }
+  .mission-divider {
+    width: 1.1in;
+    height: 1pt;
+    background: var(--color-teal);
+    opacity: 0.45;
+    margin: 0.13in auto;
+  }
+  .mission-body {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--t-mission-body);
+    color: var(--color-teal);
+    line-height: 1.45;
+    text-align: left;
+  }
+  .mission-salutation {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--t-mission-sal);
+    text-align: center;
+    margin: 0 0 9pt 0;
+  }
+  .mission-body p {
+    margin: 0 0 7pt 0;
+    letter-spacing: -0.008em;
+  }
+  .mission-body p:last-child {
+    margin-bottom: 0;
   }
 }
 
 @layer utilities {
-  .bg-cream { background-color: var(--color-cream); }
+  .bg-white { background-color: #fff; }
   .text-teal { color: var(--color-teal); }
   .font-body { font-family: var(--font-body); }
 }
