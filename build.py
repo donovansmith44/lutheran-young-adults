@@ -318,6 +318,8 @@ def render_poster_upcoming(upcoming: list) -> str:
         short_date = _short_date(ev["date"]) if ev.get("date") else ""
         start_time = _start_time(ev["times"][0][0]) if ev.get("times") else ""
         place = ev["location"] if ev.get("location") else ""
+        if place == "TBD":
+            place = "Location TBD"
         meta = " · ".join(p for p in [short_date, start_time, place] if p)
         items.append(
             f'<li class="up-item"><span class="up-title">{ev["title"]}</span>'
@@ -442,6 +444,9 @@ def main():
     poster_ev = events[0] if events else None
     poster_hero = POSTER_HERO.get(poster_ev["title"], {}) if poster_ev else {}
     poster_loc_line = poster_ev["location"] if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
+    # Zion is the standing venue — show its street address on the poster.
+    if poster_loc_line == "Zion":
+        poster_loc_line = "Zion at 766 S. High St"
     # Schedule-column event head: day-of-week + long date ("Saturday", "20 June").
     poster_day = (poster_ev.get("day") or "Saturday") if poster_ev else ""
     poster_date_long = poster_ev["date"].title() if (poster_ev and poster_ev["date"]) else ""
@@ -471,7 +476,7 @@ def main():
         .replace("{{CALLOUT_HEADLINE}}", poster_hero.get("callout_headline", ""))
         .replace("{{CALLOUT_SUB}}", poster_hero.get("callout_sub", ""))
         .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
-        .replace("{{UPCOMING_EVENTS}}", render_poster_upcoming(data["events"][1:]) if data["events"] else "")
+        .replace("{{UPCOMING_EVENTS}}", render_poster_upcoming(data["events"][1:3]) if data["events"] else "")
         .replace("{{ABOUT_HEADLINE}}", poster_ev["headline"] if poster_ev else "")
         .replace("{{ABOUT_BLURB}}", poster_ev["about"] if poster_ev else "")
     )
