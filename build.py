@@ -427,11 +427,11 @@ def render_poster_event(ev: dict, callout: str = "", featured: bool = False,
     blurb_html = f'<p class="event-blurb">{blurb}</p>' if blurb else ""
     itinerary_html = ""
     if show_itinerary and times and not is_tba:
-        rows = "\n".join(
-            f'<li><span class="t">{_itinerary_time(t)}</span><span class="a">{a}</span></li>'
+        rows = "".join(
+            f'<span class="t">{_itinerary_time(t)}</span><span class="a">{a}</span>'
             for t, a in times
         )
-        itinerary_html = f'<ul class="event-times">{rows}</ul>'
+        itinerary_html = f'<div class="event-times">{rows}</div>'
     # Poster date: drop the leading zero ("01 August" -> "1 August") so the
     # day number stays compact and the right-aligned title keeps enough
     # width to sit on one line (e.g. "Clippers Game"). Optionally abbreviate

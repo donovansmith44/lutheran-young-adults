@@ -375,23 +375,22 @@ html, body { margin: 0; padding: 0; }
     letter-spacing: 0.003em;
     margin: 0;
   }
-  /* Short agenda rows beneath the featured event's blurb. */
+  /* Short agenda rows beneath the featured event's blurb. One shared grid
+     (not a grid per row) so the time column sizes to the widest entry and
+     every activity label starts at the same x. */
   .event-times {
-    list-style: none;
-    margin: 9pt 0 0 0;
-    padding: 0;
-  }
-  .event-times li {
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 8pt;
-    padding: 2pt 0;
+    column-gap: 6pt;
+    row-gap: 4pt;
     align-items: baseline;
+    margin: 9pt 0 0 0;
+    padding: 0;
   }
   .event-times .t {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 8.5pt;
+    font-size: 8pt;
     color: var(--color-teal);
     white-space: nowrap;
   }
