@@ -369,10 +369,19 @@ def render_poster_event(ev: dict, callout: str = "") -> str:
     callout_html = f'<div class="event-callout">{callout}</div>' if callout else ""
     blurb = ev.get("about") or ""
     blurb_html = f'<p class="event-blurb">{blurb}</p>' if blurb else ""
+    # Poster date: drop the leading zero ("01 August" -> "1 August") so the
+    # day number stays compact and the right-aligned title keeps enough
+    # width to sit on one line (e.g. "Clippers Game").
+    parts = ev.get("date", "").split(None, 1)
+    if len(parts) == 2:
+        num = parts[0].lstrip("0") or parts[0]
+        date_html = f'<span class="d-num">{num}</span><span class="d-mo">{parts[1]}</span>'
+    else:
+        date_html = f'<span class="d-num">{ev.get("date", "")}</span>'
     return (
         '<section class="event">'
         '<div class="event-head">'
-        f'<div class="date">{_date_html(ev)}</div>'
+        f'<div class="date">{date_html}</div>'
         f'<div class="title-line">{loc_html}{time_html}{title}</div>'
         '</div>'
         f'{callout_html}'
