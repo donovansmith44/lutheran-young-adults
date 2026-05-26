@@ -32,7 +32,7 @@ The words of Paul remind us of the importance of regular gathering within the Ch
 ---
 
 ### 04 july — America's 250th
-**Location:** 6258 Bale Kenyon Rd
+**Location:** Bale Kenyon Family Farms
 **Headline:** Celebrate the gift of country
 **About:** This will be a laid back get-together to enjoy fellowship, barbecue, and hymn-singing! Bring a lawnchair to relax around the bonfire and a snack to share!
 

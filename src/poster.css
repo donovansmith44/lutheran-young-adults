@@ -66,7 +66,7 @@ html, body { margin: 0; padding: 0; }
   --t-mission-scrip:  10.5pt;
   --t-mission-cite:   9.5pt;
   --t-mission-sal:    11pt;
-  --t-mission-body:   9pt;
+  --t-mission-body:   10.5pt;  /* matches the "Our First Gathering" blurb (.sched-blurb) */
 }
 
 @layer components {
@@ -291,7 +291,7 @@ html, body { margin: 0; padding: 0; }
     font-weight: 400;
     font-size: var(--t-mission-body);
     color: var(--color-teal);
-    line-height: 1.45;
+    line-height: 1.5;
     text-align: left;
   }
   .mission-salutation {
@@ -299,12 +299,12 @@ html, body { margin: 0; padding: 0; }
     font-style: normal;
     font-weight: 400;
     font-size: var(--t-mission-sal);
-    text-align: center;
+    text-align: left;
     margin: 0 0 9pt 0;
   }
   .mission-body p {
     margin: 0 0 7pt 0;
-    letter-spacing: -0.008em;
+    letter-spacing: 0.003em;
   }
   .mission-body p:last-child {
     margin-bottom: 0;
