@@ -267,6 +267,71 @@ def render_poster_schedule(ev: dict) -> str:
     )
 
 
+_MONTH_ABBR = {
+    "january": "Jan", "february": "Feb", "march": "Mar", "april": "Apr",
+    "may": "May", "june": "Jun", "july": "Jul", "august": "Aug",
+    "september": "Sep", "october": "Oct", "november": "Nov", "december": "Dec",
+}
+
+
+def _short_date(date: str) -> str:
+    """Compact a long date for the upcoming list: "04 july" -> "Jul 4".
+    Falls back to the title-cased raw date if it can't be parsed."""
+    parts = date.split()
+    if len(parts) == 2 and parts[0].lstrip("0").isdigit():
+        day = parts[0].lstrip("0")
+        mon = _MONTH_ABBR.get(parts[1].lower())
+        if mon:
+            return f"{mon} {day}"
+    return date.title()
+
+
+def _start_time(t: str) -> str:
+    """Start clock time only, ":00" minutes dropped, AM/PM kept:
+    "5:00 PM - 5:45 PM" -> "5 PM"; "7:05 PM - whenever" -> "7:05 PM";
+    "11:30 AM - 12:00 PM" -> "11:30 AM"."""
+    m = re.match(r"^(\d{1,2}:\d{2})\s*(AM|PM)?", t)
+    if not m:
+        return t
+    start = m.group(1).replace(":00", "")
+    ap = m.group(2) or ""
+    return f"{start} {ap}".strip()
+
+
+def render_poster_upcoming(upcoming: list) -> str:
+    """Compact <li> list of the upcoming (non-featured) events for the
+    poster — one item per event with title + a "date · time · place"
+    meta line."""
+    def _is_tba(ev):
+        return (not ev["title"]) or ev["title"].upper() == "TBD"
+
+    # Peel off the trailing run of fully-unscheduled (TBD) events and collapse
+    # them into ONE "to be announced" line (e.g. "Nov 7 · Dec 5") rather than
+    # repeating an identical entry per month — cleaner and saves space.
+    concrete = list(upcoming)
+    tba = []
+    while concrete and _is_tba(concrete[-1]):
+        tba.insert(0, concrete.pop())
+
+    items = []
+    for ev in concrete:
+        short_date = _short_date(ev["date"]) if ev.get("date") else ""
+        start_time = _start_time(ev["times"][0][0]) if ev.get("times") else ""
+        place = ev["location"] if ev.get("location") else ""
+        meta = " · ".join(p for p in [short_date, start_time, place] if p)
+        items.append(
+            f'<li class="up-item"><span class="up-title">{ev["title"]}</span>'
+            f'<span class="up-meta">{meta}</span></li>'
+        )
+    if tba:
+        dates = " · ".join(_short_date(ev["date"]) for ev in tba if ev.get("date"))
+        items.append(
+            f'<li class="up-item up-tba"><span class="up-title">To be announced</span>'
+            f'<span class="up-meta">{dates}</span></li>'
+        )
+    return "\n".join(items)
+
+
 # Poster-specific copy that doesn't belong in the events markdown.
 # Keyed by event title — this is the inaugural-gathering framing and
 # the free-dinner callout, both intentionally loud on the poster.
@@ -406,6 +471,7 @@ def main():
         .replace("{{CALLOUT_HEADLINE}}", poster_hero.get("callout_headline", ""))
         .replace("{{CALLOUT_SUB}}", poster_hero.get("callout_sub", ""))
         .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
+        .replace("{{UPCOMING_EVENTS}}", render_poster_upcoming(data["events"][1:]) if data["events"] else "")
         .replace("{{ABOUT_HEADLINE}}", poster_ev["headline"] if poster_ev else "")
         .replace("{{ABOUT_BLURB}}", poster_ev["about"] if poster_ev else "")
     )

@@ -14,7 +14,7 @@
 <!--   only — no solid color blocks, cheap to print.               -->
 <!--                                                               -->
 <!--   Masthead:  [logo]      LUTHERAN YOUNG ADULTS     [contact]   -->
-<!--   Columns:   Schedule  |  What to Expect  |  Our Mission       -->
+<!--   Columns:   Our Mission  |  Event Schedule  |  What to Expect -->
 <!-- ============================================================ -->
 <div class="poster-page">
 
@@ -40,34 +40,12 @@
   <!-- ========== THREE PANELS ========== -->
   <div class="panels">
 
-    <!-- ---------- LEFT: EVENT SCHEDULE ---------- -->
-    <section class="panel panel-schedule">
-      <h2 class="col-title">Event Schedule</h2>
-      <div class="sched-head">
-        <div class="sched-eyebrow">{{EYEBROW}}</div>
-        <h3 class="sched-event">{{EVENT_TITLE_BIG}}</h3>
-        <div class="sched-meta">{{EVENT_DAY}} &middot; {{EVENT_DATE_LONG}} &middot; {{EVENT_LOCATION_LINE}}</div>
-      </div>
-      <ul class="sched-times">
-        {{SCHEDULE_ROWS_POSTER}}
-      </ul>
-      <div class="sched-callout">{{CALLOUT_HEADLINE}} &middot; {{CALLOUT_SUB}}</div>
-    </section>
-
-    <!-- ---------- MIDDLE: WHAT TO EXPECT ---------- -->
-    <section class="panel panel-expect">
-      <h2 class="col-title">What to Expect</h2>
-      <p class="expect-headline">{{ABOUT_HEADLINE}}</p>
-      <p class="expect-blurb">{{ABOUT_BLURB}}</p>
-      <blockquote class="expect-scripture">
-        <p class="quote-text">&ldquo;{{SCRIPTURE_PULLQUOTE}}&rdquo;</p>
-        <cite>{{SCRIPTURE_CITE_POSTER}}</cite>
-      </blockquote>
-    </section>
-
-    <!-- ---------- RIGHT: OUR MISSION / CONNECTION ---------- -->
+    <!-- ---------- LEFT: OUR MISSION / CONNECTION ---------- -->
     <section class="panel panel-mission">
-      <h2 class="col-title">Our Mission</h2>
+      <div class="col-head">
+        <div class="col-eyebrow">Our Mission</div>
+        <div class="col-name">Connection</div>
+      </div>
       <blockquote class="mission-scripture">
         <p class="quote-text">&ldquo;{{SCRIPTURE}}&rdquo;</p>
         <cite>({{SCRIPTURE_CITE}})</cite>
@@ -77,6 +55,37 @@
         <p class="mission-salutation">{{SALUTATION}}</p>
         {{MISSION}}
       </div>
+    </section>
+
+    <!-- ---------- MIDDLE: EVENT SCHEDULE ---------- -->
+    <section class="panel panel-schedule">
+      <div class="col-head">
+        <div class="col-name">Event Schedule</div>
+      </div>
+      <div class="sched-head">
+        <h3 class="sched-event">{{EVENT_TITLE_BIG}}</h3>
+        <div class="sched-meta">{{EVENT_DAY}} &middot; {{EVENT_DATE_LONG}} &middot; {{EVENT_LOCATION_LINE}}</div>
+      </div>
+      <ul class="sched-times">
+        {{SCHEDULE_ROWS_POSTER}}
+      </ul>
+      <div class="sched-callout">{{CALLOUT_HEADLINE}} &middot; {{CALLOUT_SUB}}</div>
+
+      <div class="upcoming">
+        <div class="upcoming-label">Upcoming Gatherings</div>
+        <ul class="upcoming-list">
+          {{UPCOMING_EVENTS}}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---------- RIGHT: WHAT TO EXPECT ---------- -->
+    <section class="panel panel-expect">
+      <div class="col-head">
+        <div class="col-name">What to Expect</div>
+      </div>
+      <p class="expect-headline">{{ABOUT_HEADLINE}}</p>
+      <p class="expect-blurb">{{ABOUT_BLURB}}</p>
     </section>
 
   </div>
