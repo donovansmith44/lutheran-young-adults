@@ -87,6 +87,16 @@ FORMATS = {
     },
 }
 
+# Pink-background variants of the two posters: identical content, just the
+# `.pink` page modifier swapping the white stock for the brand blush wash.
+# Derived from the base configs so they stay in sync automatically.
+for _base, _variant in (("poster", "poster-pink"), ("poster-next", "poster-next-pink")):
+    _cfg = dict(FORMATS[_base])
+    _cfg["html_out"] = ROOT / f"{_variant}.html"
+    _cfg["pdf_out"] = ROOT / f"{_variant}.pdf"
+    _cfg["page_modifier"] = "pink"
+    FORMATS[_variant] = _cfg
+
 
 def parse_markdown(text: str) -> dict:
     """Parse the event-series markdown into a structured dict."""
@@ -622,6 +632,7 @@ def main():
         .replace("{{GATHERING_LABEL}}", cfg.get("gathering_label", ""))
         .replace("{{TALLY_TEXT}}", cfg.get("tally_text", ""))
         .replace("{{QR_SRC}}", cfg.get("qr_src", "assets/qr-rsvp.svg"))
+        .replace("{{PAGE_MODIFIER}}", cfg.get("page_modifier", ""))
         .replace("{{ABOUT_HEADLINE}}", poster_ev["headline"] if poster_ev else "")
         .replace("{{ABOUT_BLURB}}", poster_ev["about"] if poster_ev else "")
     )

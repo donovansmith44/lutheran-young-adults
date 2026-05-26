@@ -92,6 +92,13 @@ html, body { margin: 0; padding: 0; }
     overflow: hidden;
     page-break-after: auto;
   }
+  /* Pink-background variant — soft blush wash lifting to cream toward the
+     center, matching the brochure / Facebook cover. Teal ink reads cleanly
+     on it; the QR keeps its white quiet-zone box for scannability. */
+  .poster-page.pink {
+    background:
+      radial-gradient(120% 130% at 50% 42%, var(--color-cream) 0%, #fde2dc 50%, var(--color-pink) 100%);
+  }
 
   /* ============================================================ */
   /* MASTHEAD — logo (left) · centered title · contact/QR (right)  */
