@@ -311,8 +311,8 @@ def poster_time_span(ev: dict) -> str:
     start, start_ap = m_start.group(1), m_start.group(2) or ""
     end, end_ap = m_end.group(1), m_end.group(2) or start_ap
     if start_ap and start_ap == end_ap:
-        return f"{start} – {end} {end_ap}"
-    return f"{start} {start_ap} – {end} {end_ap}".strip()
+        return f"{start}–{end} {end_ap}"
+    return f"{start} {start_ap}–{end} {end_ap}".strip()
 
 
 def render_poster_upcoming(upcoming: list) -> str:

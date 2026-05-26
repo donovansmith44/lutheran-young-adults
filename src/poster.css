@@ -50,8 +50,8 @@ html, body { margin: 0; padding: 0; }
   --t-col-eyebrow:    8.5pt;
   --t-col-name:       11pt;
 
-  --t-event-title:    14pt;   /* shared by featured + upcoming event titles */
-  --t-sched-meta:     9.5pt;
+  --t-event-title:    12.5pt;  /* shared by featured + upcoming event titles */
+  --t-meta:           7.5pt;   /* shared meta line: date · time · place (fits one line) */
   --t-sched-time:     8.5pt;
   --t-sched-act:      9pt;
   --t-sched-callout:  11.5pt;
@@ -315,14 +315,6 @@ html, body { margin: 0; padding: 0; }
     text-align: left;
     margin-bottom: 0.12in;
   }
-  /* Title + hours on one baseline-aligned row: event name left, span right. */
-  .sched-titlerow {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.18in;
-    margin-bottom: 4pt;
-  }
   .sched-event {
     font-family: var(--font-serif);
     font-style: italic;
@@ -330,25 +322,17 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-event-title);
     color: var(--color-teal);
     line-height: 1.1;
-    margin: 0;
+    margin: 0 0 4pt 0;
   }
+  /* Meta line — "date · time · place" kept to one line; shared sizing with the
+     upcoming column so the two columns' info lines match. */
   .sched-meta {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: var(--t-sched-meta);
-    letter-spacing: 0.03em;
+    font-size: var(--t-meta);
+    letter-spacing: 0;
     color: var(--color-teal);
     opacity: 0.85;
-    white-space: nowrap;   /* keep "20 June · Zion at 766 S. High St" on one line */
-  }
-  /* Hours, set beside the event title — smaller sans, baseline-aligned. */
-  .sched-hours {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 10pt;
-    letter-spacing: 0.02em;
-    color: var(--color-teal);
-    opacity: 0.9;
     white-space: nowrap;
   }
   /* Featured event's "what to expect" description (moved in from the right). */
@@ -440,10 +424,11 @@ html, body { margin: 0; padding: 0; }
   .up-meta {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 9pt;
-    letter-spacing: 0.03em;
+    font-size: var(--t-meta);
+    letter-spacing: 0;
     color: var(--color-teal);
     opacity: 0.85;
+    white-space: nowrap;
     margin: 0 0 5pt 0;
   }
   .up-blurb {
