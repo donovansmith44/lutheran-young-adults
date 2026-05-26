@@ -36,7 +36,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 ### 04 july — America's 250th
 **Location:** 6258 Bale Kenyon Rd
 **Headline:** Celebrate the gift of country
-**About:** This will be a laid back get-together to enjoy fellowship, barbecue, and hymn-singing! Bring a chair to relax around the bonfire.
+**About:** This will be a laid back get-together to enjoy fellowship, barbecue, and hymn-singing! Bring a lawnchair to relax around the bonfire and a snack to share!
 
 | Time | Activity |
 |---|---|
