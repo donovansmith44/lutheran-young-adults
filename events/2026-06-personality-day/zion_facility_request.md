@@ -16,7 +16,7 @@ Zion office.
 | Group name | Lutheran Young Adults |
 | Primary contact | Donovan Smith |
 | Phone number | (614) 556-0607 |
-| Email | donovan.smith44@gmail.com |
+| Email | donovan@lcmsyoungadults.org |
 | Day and date(s) requested | Saturday, June 20, 2026 |
 | Alternate day and date(s) | Saturday, July 18, 2026 |
 

@@ -34,7 +34,7 @@ form:
   notifications:
     email_on_submission:
       enabled: true
-      recipient: donovan.smith44@gmail.com
+      recipient: donovan@lcmsyoungadults.org
       subject_template: "New LYA RSVP — {{ name }}"
 
   questions:

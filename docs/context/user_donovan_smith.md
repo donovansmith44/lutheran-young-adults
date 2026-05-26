@@ -24,7 +24,7 @@ etc.).
   (`age1aewj3d6xdyffe3vksj37m5q6f8wltkajzga4vtft2vmqh92ew9yslqa26j`) is
   a dev-laptop-generated placeholder; Donovan replaces or appends with
   his own.
-- Email: `donovan.smith44@gmail.com`.
+- Email: `donovan@lcmsyoungadults.org`.
 - Primary repo: `https://github.com/mlaine1/lya-event-planner` (private).
   Note: the repo is under `mlaine1` as an artifact of initial setup;
   Donovan has admin collaborator rights.
