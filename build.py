@@ -341,6 +341,46 @@ def render_poster_upcoming(upcoming: list) -> str:
     return "\n".join(items)
 
 
+def _event_time(ev: dict) -> str:
+    """Time shown above the event name on a poster event card: the full
+    span when both ends are real clock times ("2:00–6:30 PM"), otherwise
+    just the start time ("5:00 PM") for events that run until "whenever"."""
+    span = poster_time_span(ev)
+    if span:
+        return span
+    times = ev.get("times") or []
+    return _start_time(times[0][0]) if times else ""
+
+
+def render_poster_event(ev: dict, callout: str = "") -> str:
+    """Brochure-style event card for the poster's middle/right columns:
+    a big date paired with a location/time stack above the event name,
+    a rule beneath the head, then the "what to expect" blurb (in place of
+    the brochure's itinerary). `callout` is an optional emphasis line
+    (e.g. the free-dinner note) shown only on the featured event."""
+    is_tba = (not ev.get("title")) or ev["title"].upper() == "TBD"
+    title = "To be announced" if is_tba else ev["title"]
+    location = "" if is_tba else (ev.get("location") or "")
+    if location.upper() == "TBD":
+        location = "Location TBD"
+    time = "" if is_tba else _event_time(ev)
+    loc_html = f'<span class="event-location">{location}</span>' if location else ""
+    time_html = f'<span class="event-time">{time}</span>' if time else ""
+    callout_html = f'<div class="event-callout">{callout}</div>' if callout else ""
+    blurb = ev.get("about") or ""
+    blurb_html = f'<p class="event-blurb">{blurb}</p>' if blurb else ""
+    return (
+        '<section class="event">'
+        '<div class="event-head">'
+        f'<div class="date">{_date_html(ev)}</div>'
+        f'<div class="title-line">{loc_html}{time_html}{title}</div>'
+        '</div>'
+        f'{callout_html}'
+        f'{blurb_html}'
+        '</section>'
+    )
+
+
 # Poster-specific copy that doesn't belong in the events markdown.
 # Keyed by event title — this is the inaugural-gathering framing and
 # the free-dinner callout, both intentionally loud on the poster.
@@ -454,6 +494,11 @@ def main():
     # Schedule-column event head: day-of-week + long date ("Saturday", "20 June").
     poster_day = (poster_ev.get("day") or "Saturday") if poster_ev else ""
     poster_date_long = poster_ev["date"].title() if (poster_ev and poster_ev["date"]) else ""
+    # Featured-event emphasis line (free-dinner callout) — only the
+    # inaugural gathering carries one, sourced from POSTER_HERO.
+    poster_callout = " · ".join(
+        p for p in [poster_hero.get("callout_headline", ""), poster_hero.get("callout_sub", "")] if p
+    ) if poster_ev else ""
 
     html = (
         template
@@ -481,7 +526,8 @@ def main():
         .replace("{{CALLOUT_HEADLINE}}", poster_hero.get("callout_headline", ""))
         .replace("{{CALLOUT_SUB}}", poster_hero.get("callout_sub", ""))
         .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
-        .replace("{{UPCOMING_EVENTS}}", render_poster_upcoming(data["events"][1:3]) if data["events"] else "")
+        .replace("{{FEATURED_EVENT}}", render_poster_event(poster_ev, poster_callout) if poster_ev else "")
+        .replace("{{UPCOMING_EVENTS}}", "\n".join(render_poster_event(ev) for ev in data["events"][1:3]) if data["events"] else "")
         .replace("{{ABOUT_HEADLINE}}", poster_ev["headline"] if poster_ev else "")
         .replace("{{ABOUT_BLURB}}", poster_ev["about"] if poster_ev else "")
     )
