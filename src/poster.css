@@ -50,7 +50,7 @@ html, body { margin: 0; padding: 0; }
   --t-col-eyebrow:    8.5pt;
   --t-col-name:       11pt;
 
-  --t-sched-event:    14pt;
+  --t-event-title:    14pt;   /* shared by featured + upcoming event titles */
   --t-sched-meta:     9.5pt;
   --t-sched-time:     8.5pt;
   --t-sched-act:      9pt;
@@ -315,14 +315,22 @@ html, body { margin: 0; padding: 0; }
     text-align: left;
     margin-bottom: 0.12in;
   }
+  /* Title + hours on one baseline-aligned row: event name left, span right. */
+  .sched-titlerow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.18in;
+    margin-bottom: 4pt;
+  }
   .sched-event {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-sched-event);
+    font-size: var(--t-event-title);
     color: var(--color-teal);
-    line-height: 1.05;
-    margin: 0 0 4pt 0;
+    line-height: 1.1;
+    margin: 0;
   }
   .sched-meta {
     font-family: var(--font-display);
@@ -333,14 +341,15 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.85;
     white-space: nowrap;   /* keep "20 June · Zion at 766 S. High St" on one line */
   }
-  /* Hours header — replaces the itemized itinerary with the overall span. */
+  /* Hours, set beside the event title — smaller sans, baseline-aligned. */
   .sched-hours {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 12pt;
-    letter-spacing: 0.04em;
+    font-weight: 600;
+    font-size: 10pt;
+    letter-spacing: 0.02em;
     color: var(--color-teal);
-    margin: 2pt 0 5pt 0;
+    opacity: 0.9;
+    white-space: nowrap;
   }
   /* Featured event's "what to expect" description (moved in from the right). */
   .sched-blurb {
@@ -423,7 +432,7 @@ html, body { margin: 0; padding: 0; }
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: 13pt;
+    font-size: var(--t-event-title);   /* matches the featured event title */
     color: var(--color-teal);
     line-height: 1.1;
     margin: 0 0 3pt 0;
