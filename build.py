@@ -451,9 +451,6 @@ def main():
     poster_ev = events[0] if events else None
     poster_hero = POSTER_HERO.get(poster_ev["title"], {}) if poster_ev else {}
     poster_loc_line = poster_ev["location"] if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
-    # Zion is the standing venue — show its street address on the poster.
-    if poster_loc_line == "Zion":
-        poster_loc_line = "Zion at 766 S. High St"
     # Schedule-column event head: day-of-week + long date ("Saturday", "20 June").
     poster_day = (poster_ev.get("day") or "Saturday") if poster_ev else ""
     poster_date_long = poster_ev["date"].title() if (poster_ev and poster_ev["date"]) else ""

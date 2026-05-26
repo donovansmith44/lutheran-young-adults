@@ -17,7 +17,7 @@ This is why this group has been organized: to serve Confessional Lutherans who d
 ## Schedule
 
 ### 20 june — Personality Day
-**Location:** Zion
+**Location:** Zion at 766 S. High St
 **Headline:** Learn something about yourself and others
 **About:** After opening with some hymns and a devotional, we'll all take a personality test and be matched with groups where everyone has tested as having either similar or opposite traits from yourself. This will be an opportunity for us all to get better acquainted, play games, take part in a scavenger hunt, and enjoy a catered meal from Zupas!
 
