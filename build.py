@@ -56,6 +56,33 @@ FORMATS = {
         "css_in": ROOT / "src" / "poster.css",
         "css_out": ROOT / "poster.css",
         "pdf_out": ROOT / "poster.pdf",
+        "gathering_label": "Our First Gathering",
+        "tally_text": "tally.so/r/Ek8QeA",
+        "qr_src": "assets/qr-rsvp.svg",
+        "rsvp_url": RSVP_URL,
+        "qr_out": ROOT / "assets" / "qr-rsvp.svg",
+        "featured_index": 0,   # Personality Day
+        "upcoming": (1, 3),    # America's 250th + Clippers Game
+    },
+    # Post-first-event variant: America's 250th becomes the next gathering,
+    # Personality Day (now past) is dropped, Clippers moves up and the
+    # September event joins the upcoming list. The QR points at a fresh
+    # Tally form. Shares the poster template + stylesheet with "poster".
+    "poster-next": {
+        "template": ROOT / "templates" / "poster_template.html",
+        "html_out": ROOT / "poster-next.html",
+        "css_in": ROOT / "src" / "poster.css",
+        "css_out": ROOT / "poster.css",
+        "pdf_out": ROOT / "poster-next.pdf",
+        "gathering_label": "Our Next Gathering",
+        "tally_text": "tally.so/r/LZ64ej",
+        "qr_src": "assets/qr-rsvp-next.svg",
+        "rsvp_url": "https://tally.so/r/LZ64ej",
+        "qr_out": ROOT / "assets" / "qr-rsvp-next.svg",
+        "featured_index": 1,   # America's 250th
+        "upcoming": (2, 4),    # Clippers Game + Community Service Day
+        "abbrev_months": True, # "September" would otherwise crowd its title
+        "tbd_time": ("Community Service Day",),  # September time not yet set
     },
 }
 
@@ -352,18 +379,33 @@ def _event_time(ev: dict) -> str:
     return _start_time(times[0][0]) if times else ""
 
 
-def render_poster_event(ev: dict, callout: str = "") -> str:
+def render_poster_event(ev: dict, callout: str = "", featured: bool = False,
+                        abbrev_month: bool = False, time_tbd: bool = False) -> str:
     """Brochure-style event card for the poster's middle/right columns:
     a big date paired with a location/time stack above the event name,
     a rule beneath the head, then the "what to expect" blurb (in place of
     the brochure's itinerary). `callout` is an optional emphasis line
-    (e.g. the free-dinner note) shown only on the featured event."""
+    (e.g. the free-dinner note) shown only on the featured event.
+
+    The featured card shows the full time span; upcoming cards use the
+    compact start time. `abbrev_month` shortens the date's month to three
+    letters ("September" -> "Sep") so a long month + long title still fit
+    one event head (used on the post-first-event poster). `time_tbd` shows
+    "Time TBD" for an event whose time isn't finalized yet."""
     is_tba = (not ev.get("title")) or ev["title"].upper() == "TBD"
     title = "To be announced" if is_tba else ev["title"]
     location = "" if is_tba else (ev.get("location") or "")
     if location.upper() == "TBD":
         location = "Location TBD"
-    time = "" if is_tba else _event_time(ev)
+    times = ev.get("times") or []
+    if time_tbd:
+        time = "Time TBD"
+    elif is_tba or not times:
+        time = ""
+    elif featured:
+        time = _event_time(ev)
+    else:
+        time = _start_time(times[0][0])
     loc_html = f'<span class="event-location">{location}</span>' if location else ""
     time_html = f'<span class="event-time">{time}</span>' if time else ""
     callout_html = f'<div class="event-callout">{callout}</div>' if callout else ""
@@ -371,11 +413,13 @@ def render_poster_event(ev: dict, callout: str = "") -> str:
     blurb_html = f'<p class="event-blurb">{blurb}</p>' if blurb else ""
     # Poster date: drop the leading zero ("01 August" -> "1 August") so the
     # day number stays compact and the right-aligned title keeps enough
-    # width to sit on one line (e.g. "Clippers Game").
+    # width to sit on one line (e.g. "Clippers Game"). Optionally abbreviate
+    # the month so a long month doesn't crowd the title off the head.
     parts = ev.get("date", "").split(None, 1)
     if len(parts) == 2:
         num = parts[0].lstrip("0") or parts[0]
-        date_html = f'<span class="d-num">{num}</span><span class="d-mo">{parts[1]}</span>'
+        mon = _MONTH_ABBR.get(parts[1].lower(), parts[1].title()) if abbrev_month else parts[1]
+        date_html = f'<span class="d-num">{num}</span><span class="d-mo">{mon}</span>'
     else:
         date_html = f'<span class="d-num">{ev.get("date", "")}</span>'
     return (
@@ -471,13 +515,17 @@ def main():
 
     events = data["events"] if args.all else data["events"][: args.max]
 
-    # Regenerate the RSVP QR code every build so swapping RSVP_URL just works.
-    QR_OUT.parent.mkdir(parents=True, exist_ok=True)
-    segno.make(RSVP_URL, error="m").save(
-        str(QR_OUT), kind="svg", scale=10, border=0,
+    # Regenerate the RSVP QR code every build so swapping the URL just works.
+    # Each format may point at its own RSVP target / QR file (the post-first-
+    # event poster uses a different Tally form); defaults keep the shared one.
+    rsvp_url = cfg.get("rsvp_url", RSVP_URL)
+    qr_out = cfg.get("qr_out", QR_OUT)
+    qr_out.parent.mkdir(parents=True, exist_ok=True)
+    segno.make(rsvp_url, error="m").save(
+        str(qr_out), kind="svg", scale=10, border=0,
         dark="#01404f", light=None, omitsize=True,
     )
-    print(f"wrote {QR_OUT.relative_to(ROOT)}")
+    print(f"wrote {qr_out.relative_to(ROOT)}")
 
     template = cfg["template"].read_text(encoding="utf-8")
     mission_html = "\n".join(f"<p>{p}</p>" for p in data["mission"])
@@ -494,10 +542,15 @@ def main():
     else:
         title_upper_cover = data["title"].upper()
 
-    # Poster pulls the first (next-up) event and pairs it with hardcoded
-    # hero copy (eyebrow framing, scripture pullquote, free-dinner callout)
-    # that doesn't belong in the recurring events markdown.
-    poster_ev = events[0] if events else None
+    # Poster pulls its featured ("next") event and a slice of upcoming
+    # events by index (configurable per format), and pairs the featured one
+    # with any hardcoded hero copy (e.g. the free-dinner callout) keyed off
+    # its title. Indices run against the full event list, not the --max slice.
+    all_events = data["events"]
+    featured_index = cfg.get("featured_index", 0)
+    up_start, up_end = cfg.get("upcoming", (1, 3))
+    poster_ev = all_events[featured_index] if len(all_events) > featured_index else None
+    upcoming_events = all_events[up_start:up_end]
     poster_hero = POSTER_HERO.get(poster_ev["title"], {}) if poster_ev else {}
     poster_loc_line = poster_ev["location"] if (poster_ev and poster_ev["location"] and poster_ev["location"] != "TBD") else ""
     # Schedule-column event head: day-of-week + long date ("Saturday", "20 June").
@@ -508,6 +561,8 @@ def main():
     poster_callout = " · ".join(
         p for p in [poster_hero.get("callout_headline", ""), poster_hero.get("callout_sub", "")] if p
     ) if poster_ev else ""
+    abbrev = cfg.get("abbrev_months", False)
+    tbd_titles = set(cfg.get("tbd_time", ()))
 
     html = (
         template
@@ -535,8 +590,15 @@ def main():
         .replace("{{CALLOUT_HEADLINE}}", poster_hero.get("callout_headline", ""))
         .replace("{{CALLOUT_SUB}}", poster_hero.get("callout_sub", ""))
         .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
-        .replace("{{FEATURED_EVENT}}", render_poster_event(poster_ev, poster_callout) if poster_ev else "")
-        .replace("{{UPCOMING_EVENTS}}", "\n".join(render_poster_event(ev) for ev in data["events"][1:3]) if data["events"] else "")
+        .replace("{{FEATURED_EVENT}}", render_poster_event(
+            poster_ev, poster_callout, featured=True, abbrev_month=abbrev,
+            time_tbd=poster_ev["title"] in tbd_titles) if poster_ev else "")
+        .replace("{{UPCOMING_EVENTS}}", "\n".join(
+            render_poster_event(ev, abbrev_month=abbrev, time_tbd=ev["title"] in tbd_titles)
+            for ev in upcoming_events))
+        .replace("{{GATHERING_LABEL}}", cfg.get("gathering_label", ""))
+        .replace("{{TALLY_TEXT}}", cfg.get("tally_text", ""))
+        .replace("{{QR_SRC}}", cfg.get("qr_src", "assets/qr-rsvp.svg"))
         .replace("{{ABOUT_HEADLINE}}", poster_ev["headline"] if poster_ev else "")
         .replace("{{ABOUT_BLURB}}", poster_ev["about"] if poster_ev else "")
     )
