@@ -56,35 +56,28 @@
       </div>
     </section>
 
-    <!-- ---------- MIDDLE: EVENT SCHEDULE ---------- -->
+    <!-- ---------- MIDDLE: EVENT SCHEDULE (featured event) ---------- -->
     <section class="panel panel-schedule">
       <div class="col-head">
         <div class="col-name">Event Schedule</div>
       </div>
       <div class="sched-head">
         <h3 class="sched-event">{{EVENT_TITLE_BIG}}</h3>
+        <div class="sched-hours">{{EVENT_TIME_SPAN}}</div>
         <div class="sched-meta">{{EVENT_DATE_LONG}} &middot; {{EVENT_LOCATION_LINE}}</div>
       </div>
       <div class="sched-callout">{{CALLOUT_HEADLINE}} &middot; {{CALLOUT_SUB}}</div>
-      <ul class="sched-times">
-        {{SCHEDULE_ROWS_POSTER}}
-      </ul>
-
-      <div class="upcoming">
-        <div class="upcoming-label">Upcoming Gatherings</div>
-        <ul class="upcoming-list">
-          {{UPCOMING_EVENTS}}
-        </ul>
-      </div>
+      <p class="sched-blurb">{{ABOUT_BLURB}}</p>
     </section>
 
-    <!-- ---------- RIGHT: WHAT TO EXPECT ---------- -->
-    <section class="panel panel-expect">
+    <!-- ---------- RIGHT: UPCOMING GATHERINGS ---------- -->
+    <section class="panel panel-upcoming">
       <div class="col-head">
-        <div class="col-name">What to Expect</div>
+        <div class="col-name">Upcoming Gatherings</div>
       </div>
-      <p class="expect-headline">{{ABOUT_HEADLINE}}</p>
-      <p class="expect-blurb">{{ABOUT_BLURB}}</p>
+      <ul class="upcoming-list">
+        {{UPCOMING_EVENTS}}
+      </ul>
     </section>
 
   </div>
