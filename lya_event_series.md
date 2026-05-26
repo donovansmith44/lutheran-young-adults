@@ -54,7 +54,8 @@ The words of Paul remind us of the importance of regular gathering within the Ch
 ---
 
 ### 06 september — Community Service
-**Location:** Zion
+**Location:** TBD
+**About:** We'll begin our meeting with a devotional, and then split into two groups to serve on community service projects in Ohio. We'll reconvene afterwards for Vespers, dinner, and just hanging out! More details to come before August.
 
 | Time | Activity |
 |---|---|
