@@ -39,9 +39,7 @@ The words of Paul remind us of the importance of regular gathering within the Ch
 | Time | Activity |
 |---|---|
 | 5:00 PM - 5:45 PM | Vicar-led Devotional |
-| 5:45 PM - 7:00 PM | Cookout and Dinner |
-| 7:00 PM - 7:30 PM | Compline |
-| 7:30 PM - whenever | Bonfire |
+| 5:45 PM - whenever | Fun and Fellowship |
 
 ---
 
@@ -55,7 +53,7 @@ The words of Paul remind us of the importance of regular gathering within the Ch
 
 ---
 
-### 06 september — Community Service Day
+### 06 september — Community Service
 **Location:** Zion
 
 | Time | Activity |

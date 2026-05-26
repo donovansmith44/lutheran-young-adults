@@ -82,7 +82,8 @@ FORMATS = {
         "featured_index": 1,   # America's 250th
         "upcoming": (2, 4),    # Clippers Game + Community Service Day
         "abbrev_months": True, # "September" would otherwise crowd its title
-        "tbd_time": ("Community Service Day",),  # September time not yet set
+        "tbd_time": ("Community Service",),  # September time not yet set
+        "featured_itinerary": True,  # show America's 250th's short agenda
     },
 }
 
@@ -270,6 +271,17 @@ def _compact_time(t: str) -> str:
     return f"{start}–{end} {ap}".strip()
 
 
+def _itinerary_time(t: str) -> str:
+    """Compact, en-dashed time for a poster itinerary row. Falls back to a
+    plain hyphen->en-dash swap for open-ended rows like "5:45 PM - whenever"
+    -> "5:45 PM–whenever" so they read consistently with the closed ranges."""
+    compact = _compact_time(t)
+    if compact != t:
+        return compact
+    m = re.match(r"^(.*?)\s*-\s*(.*)$", t)
+    return f"{m.group(1)}–{m.group(2)}" if m else t
+
+
 def _strip_time(t: str) -> str:
     """Compact start-only time for the poster's schedule strip:
     "2:00 PM - 2:30 PM" -> "2:00 PM". The strip is supplementary info,
@@ -380,7 +392,8 @@ def _event_time(ev: dict) -> str:
 
 
 def render_poster_event(ev: dict, callout: str = "", featured: bool = False,
-                        abbrev_month: bool = False, time_tbd: bool = False) -> str:
+                        abbrev_month: bool = False, time_tbd: bool = False,
+                        show_itinerary: bool = False) -> str:
     """Brochure-style event card for the poster's middle/right columns:
     a big date paired with a location/time stack above the event name,
     a rule beneath the head, then the "what to expect" blurb (in place of
@@ -391,7 +404,8 @@ def render_poster_event(ev: dict, callout: str = "", featured: bool = False,
     compact start time. `abbrev_month` shortens the date's month to three
     letters ("September" -> "Sep") so a long month + long title still fit
     one event head (used on the post-first-event poster). `time_tbd` shows
-    "Time TBD" for an event whose time isn't finalized yet."""
+    "Time TBD" for an event whose time isn't finalized yet. `show_itinerary`
+    appends the event's (compacted) agenda rows beneath the blurb."""
     is_tba = (not ev.get("title")) or ev["title"].upper() == "TBD"
     title = "To be announced" if is_tba else ev["title"]
     location = "" if is_tba else (ev.get("location") or "")
@@ -411,6 +425,13 @@ def render_poster_event(ev: dict, callout: str = "", featured: bool = False,
     callout_html = f'<div class="event-callout">{callout}</div>' if callout else ""
     blurb = ev.get("about") or ""
     blurb_html = f'<p class="event-blurb">{blurb}</p>' if blurb else ""
+    itinerary_html = ""
+    if show_itinerary and times and not is_tba:
+        rows = "\n".join(
+            f'<li><span class="t">{_itinerary_time(t)}</span><span class="a">{a}</span></li>'
+            for t, a in times
+        )
+        itinerary_html = f'<ul class="event-times">{rows}</ul>'
     # Poster date: drop the leading zero ("01 August" -> "1 August") so the
     # day number stays compact and the right-aligned title keeps enough
     # width to sit on one line (e.g. "Clippers Game"). Optionally abbreviate
@@ -430,6 +451,7 @@ def render_poster_event(ev: dict, callout: str = "", featured: bool = False,
         '</div>'
         f'{callout_html}'
         f'{blurb_html}'
+        f'{itinerary_html}'
         '</section>'
     )
 
@@ -592,7 +614,8 @@ def main():
         .replace("{{SCHEDULE_ROWS_POSTER}}", render_poster_schedule(poster_ev) if poster_ev else "")
         .replace("{{FEATURED_EVENT}}", render_poster_event(
             poster_ev, poster_callout, featured=True, abbrev_month=abbrev,
-            time_tbd=poster_ev["title"] in tbd_titles) if poster_ev else "")
+            time_tbd=poster_ev["title"] in tbd_titles,
+            show_itinerary=cfg.get("featured_itinerary", False)) if poster_ev else "")
         .replace("{{UPCOMING_EVENTS}}", "\n".join(
             render_poster_event(ev, abbrev_month=abbrev, time_tbd=ev["title"] in tbd_titles)
             for ev in upcoming_events))
