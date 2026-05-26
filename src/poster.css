@@ -292,14 +292,14 @@ html, body { margin: 0; padding: 0; }
     font-size: var(--t-mission-body);
     color: var(--color-teal);
     line-height: 1.5;
-    text-align: left;
+    text-align: center;
   }
   .mission-salutation {
     font-family: var(--font-serif);
     font-style: normal;
     font-weight: 400;
     font-size: var(--t-mission-sal);
-    text-align: left;
+    text-align: center;
     margin: 0 0 9pt 0;
   }
   .mission-body p {
