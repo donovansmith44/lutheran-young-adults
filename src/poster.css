@@ -333,6 +333,26 @@ html, body { margin: 0; padding: 0; }
     opacity: 0.85;
     white-space: nowrap;   /* keep "20 June · Zion at 766 S. High St" on one line */
   }
+  /* Hours header — replaces the itemized itinerary with the overall span. */
+  .sched-hours {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12pt;
+    letter-spacing: 0.04em;
+    color: var(--color-teal);
+    margin: 2pt 0 5pt 0;
+  }
+  /* Featured event's "what to expect" description (moved in from the right). */
+  .sched-blurb {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 10.5pt;
+    color: var(--color-teal);
+    line-height: 1.5;
+    letter-spacing: 0.003em;
+    text-align: left;
+    margin: 0;
+  }
   .sched-times {
     list-style: none;
     margin: 0;
@@ -390,29 +410,41 @@ html, body { margin: 0; padding: 0; }
     margin: 0;
     padding: 0;
   }
+  /* Each upcoming event mirrors the featured event in the middle column:
+     italic title, meta line, then its descriptive blurb. */
   .up-item {
     text-align: left;
-    padding: 3pt 0;
+    margin-bottom: 0.22in;
+  }
+  .up-item:last-child {
+    margin-bottom: 0;
   }
   .up-title {
-    display: block;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--t-up-title);
-    letter-spacing: 0.01em;
-    color: var(--color-teal);
-    line-height: 1.2;
-  }
-  .up-meta {
-    display: block;
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-up-meta);
+    font-size: 13pt;
     color: var(--color-teal);
-    opacity: 0.8;
-    line-height: 1.25;
-    margin-top: 1pt;
+    line-height: 1.1;
+    margin: 0 0 3pt 0;
+  }
+  .up-meta {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 9pt;
+    letter-spacing: 0.03em;
+    color: var(--color-teal);
+    opacity: 0.85;
+    margin: 0 0 5pt 0;
+  }
+  .up-blurb {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 10pt;
+    color: var(--color-teal);
+    line-height: 1.45;
+    letter-spacing: 0.003em;
+    margin: 0;
   }
 
   /* ---------- WHAT TO EXPECT ---------- */

@@ -298,38 +298,45 @@ def _start_time(t: str) -> str:
     return f"{start} {ap}".strip()
 
 
+def poster_time_span(ev: dict) -> str:
+    """Overall start–end for the featured event, e.g. "2:00 – 6:30 PM".
+    Replaces the itemized itinerary on the poster with a single hours line."""
+    times = ev.get("times") or []
+    if not times:
+        return ""
+    m_start = re.match(r"^(\d{1,2}:\d{2})\s*(AM|PM)?", times[0][0])
+    m_end = re.search(r"[-–]\s*(\d{1,2}:\d{2})\s*(AM|PM)?\s*$", times[-1][0])
+    if not (m_start and m_end):
+        return ""
+    start, start_ap = m_start.group(1), m_start.group(2) or ""
+    end, end_ap = m_end.group(1), m_end.group(2) or start_ap
+    if start_ap and start_ap == end_ap:
+        return f"{start} – {end} {end_ap}"
+    return f"{start} {start_ap} – {end} {end_ap}".strip()
+
+
 def render_poster_upcoming(upcoming: list) -> str:
-    """Compact <li> list of the upcoming (non-featured) events for the
-    poster — one item per event with title + a "date · time · place"
-    meta line."""
-    def _is_tba(ev):
-        return (not ev["title"]) or ev["title"].upper() == "TBD"
-
-    # Peel off the trailing run of fully-unscheduled (TBD) events and collapse
-    # them into ONE "to be announced" line (e.g. "Nov 7 · Dec 5") rather than
-    # repeating an identical entry per month — cleaner and saves space.
-    concrete = list(upcoming)
-    tba = []
-    while concrete and _is_tba(concrete[-1]):
-        tba.insert(0, concrete.pop())
-
+    """Upcoming events for the poster's right column — each rendered like the
+    featured event in the middle column: title, a "date · time · place" meta
+    line, and its descriptive blurb."""
     items = []
-    for ev in concrete:
+    for ev in upcoming:
+        is_tba = (not ev["title"]) or ev["title"].upper() == "TBD"
+        title = "To be announced" if is_tba else ev["title"]
         short_date = _short_date(ev["date"]) if ev.get("date") else ""
         start_time = _start_time(ev["times"][0][0]) if ev.get("times") else ""
-        place = ev["location"] if ev.get("location") else ""
+        place = "" if is_tba else (ev["location"] if ev.get("location") else "")
         if place == "TBD":
             place = "Location TBD"
         meta = " · ".join(p for p in [short_date, start_time, place] if p)
+        blurb = ev.get("about") or ""
+        blurb_html = f'<p class="up-blurb">{blurb}</p>' if blurb else ""
         items.append(
-            f'<li class="up-item"><span class="up-title">{ev["title"]}</span>'
-            f'<span class="up-meta">{meta}</span></li>'
-        )
-    if tba:
-        dates = " · ".join(_short_date(ev["date"]) for ev in tba if ev.get("date"))
-        items.append(
-            f'<li class="up-item up-tba"><span class="up-title">To be announced</span>'
-            f'<span class="up-meta">{dates}</span></li>'
+            f'<li class="up-item">'
+            f'<div class="up-title">{title}</div>'
+            f'<div class="up-meta">{meta}</div>'
+            f'{blurb_html}'
+            f'</li>'
         )
     return "\n".join(items)
 
@@ -470,6 +477,7 @@ def main():
         .replace("{{EVENT_LOCATION_LINE}}", poster_loc_line)
         .replace("{{EVENT_DAY}}", poster_day)
         .replace("{{EVENT_DATE_LONG}}", poster_date_long)
+        .replace("{{EVENT_TIME_SPAN}}", poster_time_span(poster_ev) if poster_ev else "")
         .replace("{{SCRIPTURE_PULLQUOTE}}", poster_hero.get("scripture", ""))
         .replace("{{SCRIPTURE_CITE_POSTER}}", poster_hero.get("scripture_cite", ""))
         .replace("{{CALLOUT_EYEBROW}}", poster_hero.get("callout_eyebrow", ""))
