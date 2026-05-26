@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lutheran Young Adults — Facebook Cover</title>
+<style>
+  @font-face {
+    font-family: "Montserrat";
+    src: url("../assets/fonts/Montserrat-variable.ttf") format("truetype-variations");
+    font-weight: 100 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Cormorant";
+    src: url("../assets/fonts/CormorantGaramond-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  /* Facebook cover: rendered at 8.51in x 3.15in, rasterized at 200dpi
+     -> 1702 x 630 px (2x the 851x315 display size). */
+  @page { size: 8.51in 3.15in; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --pink: #fad5cd;
+    --cream: #fff8f2;
+    --teal: #01404f;
+  }
+
+  .cover {
+    width: 8.51in;
+    height: 3.15in;
+    /* soft pink wash, lifting to cream toward the center for depth */
+    background:
+      radial-gradient(120% 150% at 50% 40%, var(--cream) 0%, #fde2dc 46%, var(--pink) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo {
+    width: 1.22in;
+    height: 1.22in;
+    display: block;
+  }
+
+  /* Title stacked "LUTHERAN" / "YOUNG ADULTS" (matching the brochure front
+     cover) so it stays inside Facebook's mobile-safe center crop. */
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 31pt;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--teal);
+    line-height: 1.04;
+    text-align: center;
+    margin: 0.13in 0 0 0;
+  }
+
+  /* short flanked rule + tagline */
+  .tagline-row {
+    display: flex;
+    align-items: center;
+    gap: 0.18in;
+    margin-top: 0.12in;
+  }
+  .tagline-row .rule {
+    width: 0.62in;
+    height: 1pt;
+    background: var(--teal);
+    opacity: 0.55;
+  }
+  .tagline {
+    font-family: "Cormorant", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17pt;
+    letter-spacing: 0.02em;
+    color: var(--teal);
+    opacity: 0.92;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <img src="assets/logo.png" alt="" class="logo">
+    <h1 class="title">Lutheran<br>Young&nbsp;Adults</h1>
+    <div class="tagline-row">
+      <span class="rule"></span>
+      <span class="tagline">Connecting Confessional Lutherans</span>
+      <span class="rule"></span>
+    </div>
+  </div>
+</body>
+</html>
