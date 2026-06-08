@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+  Lutheran Young Adults — bulletin insert (5×8 half-sheet).
+
+  Rebuilt as an editable source so the copy can be changed without redrawing
+  the whole card. Renders to bulletin-instert.png via render_bulletin.py.
+
+  Palette:  navy #163d63 (wordmark + inline emphasis) · teal #467885 (link)
+  Type:     Montserrat
+  Assets:   assets/lya-wordmark.png (the LYA rose wordmark, lifted from the
+            original card) · assets/qr-bulletin.svg (navy RSVP QR -> Tally form)
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: "Montserrat";
+    src: url("assets/fonts/Montserrat-variable.ttf");
+    font-weight: 100 900;
+  }
+
+  @page { size: 482px 769px; margin: 0; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: "Montserrat", sans-serif;
+    color: #111;
+    width: 482px;
+    height: 769px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    position: absolute;
+    top: 5px; left: 6px; right: 6px; bottom: 7px;
+    border: 1px solid #9a9a9a;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 14px;
+  }
+
+  .wordmark {
+    width: 452px;
+    margin-top: 38px;
+  }
+
+  .lead {
+    text-align: center;
+    font-size: 15.5px;
+    font-weight: 700;
+    margin: 52px 0 0 0;
+  }
+
+  .body {
+    text-align: justify;
+    text-align-last: center;
+    font-size: 15.5px;
+    font-weight: 600;
+    line-height: 1.55;
+    margin: 16px 4px 0 4px;
+  }
+
+  .accent { color: #163d63; font-weight: 700; }
+
+  .rsvp {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 44px;
+  }
+
+  .qr {
+    width: 125px;
+    height: 125px;
+    margin-top: 18px;
+  }
+
+  .url {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 18px;
+  }
+  .url a { color: #467885; text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="wordmark" src="assets/lya-wordmark.png" alt="Lutheran Young Adults">
+
+    <p class="lead">Join us for Fellowship, Food &amp; Fun</p>
+
+    <p class="body">at our very first <span class="accent">Lutheran Young
+      Adults</span> gathering on <span class="accent">June 20th</span>, at Zion
+      Evangelical Lutheran Church, 766 S. High St., Columbus, OH.</p>
+
+    <p class="rsvp">RSVP via the QR code</p>
+
+    <img class="qr" src="assets/qr-bulletin.svg" alt="RSVP QR code">
+
+    <p class="url">or at <a href="https://tally.so/r/Ek8QeA">https://tally.so/r/Ek8QeA</a>.</p>
+  </div>
+</body>
+</html>
