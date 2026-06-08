@@ -12,6 +12,7 @@
 - Automatically sort attendees into two activity groups (**scavenger hunt** / **games**) based on their personality, revealed on a timer.
 - Give the organizer (admin) a durable, cross-device page to manage test "sessions".
 - Match the LYA brochure's look: teal `#01404f`, pink `#fad5cd`, pink-deep `#f5bbb0`, cream `#fff8f2`; **Montserrat** for UI, **Cormorant Garamond** italic for grace notes. Modern, soft, rounded — explicitly not sharp gray panels.
+- **Doctrinal soundness:** keep "Christ for you" in view. No question should lead a taker to reflect in a manner displeasing to God as confessed in the three ecumenical creeds (Apostles', Nicene, Athanasian) and the Lutheran Confessions (Book of Concord). Items that do are reworded (preferred) or excluded — see §7.
 
 ## 2. Non-goals (this spec)
 
@@ -90,6 +91,24 @@ Document id = normalized username (trimmed, lowercased).
 - Each item maps to one axis with a direction; scoring sums each axis (8–40, midpoint 24) and picks the letter by which side of the midpoint the sum falls. The exact item list and per-item scoring key (from the OEJTS source) will be transcribed into a scoring table during implementation.
 - The four letters concatenate to `type`.
 
+### Doctrinal review of the item pool
+
+Per the §1 principle, the 32 OEJTS items are reviewed against the three ecumenical creeds and the Lutheran Confessions, keeping "Christ for you" in view.
+
+**Process — flag and confirm:** Claude flags candidate items with a written rationale; **the user (and/or their pastor/vicar) approves the final treatment before implementation.** No item is changed or removed without that confirmation.
+
+**Default handling — reword, not delete:** a flagged item is **reworded** to strip the objectionable framing while preserving the trait it measures, so each axis keeps its 8 items and OEJTS scoring stays intact (midpoint 24). An item is only *excluded* if it can't be salvaged by rewording; in that case the affected axis is rescaled to its remaining item count (midpoint = 3 × items on that axis).
+
+**Currently flagged candidates (pending confirmation):**
+
+| # | Original poles | Concern | Proposed reword |
+|---|---|---|---|
+| 3 | "skeptical" ↔ "wants to believe" | Frames *believing* as a temperament/wish; faith is the Spirit's gift, not self-summoned (Small Catechism, Third Article). The clearest flag. | "questions new claims until they're proven" ↔ "readily embraces new ideas" |
+| 27 | "bases morality on justice" ↔ "bases morality on compassion" | Locates the *basis* of morality in a personal inclination rather than God's revealed Word. For consideration. | "weighs choices by fairness and logic" ↔ "weighs choices by empathy and others' feelings" |
+| 23 | "follows the heart" ↔ "follows the head" | "The heart is deceitful" (Jer. 17:9); "follow your heart" trope. Borderline — really about decision style. | "decides with feelings" ↔ "decides with logic" |
+
+The remaining 29 items are judged doctrinally neutral. Final wording is subject to the user's confirmation.
+
 ## 8. Group assignment
 
 ### Se ranking (confirmed)
@@ -155,6 +174,7 @@ From the admin page, the admin can move any individual between groups at any tim
 
 - One `active` session at a time (flag if concurrent sessions are ever needed).
 - Exact OEJTS item text + per-item scoring direction to be transcribed from the source during implementation.
+- Final doctrinal treatment of the flagged items (§7) awaits the user's / pastor's confirmation before implementation.
 - Username collisions: entering an existing username *is* that user (resume), consistent with username-only re-entry; distinct usernames are encouraged.
 
 ## 12. Later: marketing-site integration
