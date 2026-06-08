@@ -13,11 +13,30 @@ Usage:
 """
 
 import argparse
+import os
 import pathlib
 import re
 import subprocess
 import sys
 import segno
+
+# On Windows, WeasyPrint loads GTK DLLs whose transitive dependencies live in the
+# GTK bin dir. Python 3.8+ ignores PATH for DLL dependency resolution, so register
+# that dir explicitly via os.add_dll_directory *before* importing weasyprint —
+# otherwise the import dies with "cannot load library ... error 0x7e". Honors
+# WEASYPRINT_DLL_DIRECTORIES if set, then falls back to ~/gtk3/bin.
+if sys.platform == "win32":
+    _gtk_dirs = [
+        d
+        for d in [
+            *os.environ.get("WEASYPRINT_DLL_DIRECTORIES", "").split(os.pathsep),
+            str(pathlib.Path.home() / "gtk3" / "bin"),
+        ]
+        if d and os.path.isdir(d)
+    ]
+    for _d in _gtk_dirs:
+        os.add_dll_directory(_d)
+
 import weasyprint
 
 ROOT = pathlib.Path(__file__).parent
