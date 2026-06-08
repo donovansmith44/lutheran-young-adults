@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "takers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "sessionId", "order": "ASCENDING" },
+        { "fieldPath": "sharing", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
