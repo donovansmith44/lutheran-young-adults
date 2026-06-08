@@ -1,0 +1,13 @@
+/// <reference types="vitest/config" />
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./test/setup.ts'],
+    // domain tests need no DOM; emulator tests are opt-in via filename
+  },
+})
