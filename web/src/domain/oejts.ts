@@ -35,7 +35,7 @@ export const OEJTS_ITEMS: OejtsItem[] = [
   { id: 23, axis: 'IE', left: 'stays at home', right: 'goes out on the town', rightLetter: 'E', reworded: false },
   { id: 24, axis: 'SN', left: 'wants the big picture', right: 'wants the details', rightLetter: 'S', reworded: false },
   { id: 25, axis: 'JP', left: 'improvises', right: 'prepares', rightLetter: 'J', reworded: false },
-  { id: 26, axis: 'TF', left: 'weighs choices by facts and logic', right: 'weighs choices by empathy and others’ feelings', rightLetter: 'F', reworded: true },
+  { id: 26, axis: 'TF', left: 'weighs choices by logic and consistency', right: 'weighs choices by values and harmony', rightLetter: 'F', reworded: true },
   { id: 27, axis: 'IE', left: 'finds it difficult to yell very loudly', right: 'yelling to others when they are far away comes naturally', rightLetter: 'E', reworded: false },
   { id: 28, axis: 'SN', left: 'theoretical', right: 'empirical', rightLetter: 'S', reworded: false },
   { id: 29, axis: 'JP', left: 'works hard', right: 'plays hard', rightLetter: 'P', reworded: false },
