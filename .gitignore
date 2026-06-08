@@ -24,6 +24,10 @@ __pycache__/
 web/node_modules/
 web/dist/
 web/.env.local
+web/*-debug.log
+web/firebase-debug.log
+web/firestore-debug.log
+web/ui-debug.log
 .superpowers/
 # ...but keep the committed env template (root .env.* rule would hide it)
 !web/.env.example
