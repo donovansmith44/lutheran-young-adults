@@ -1,4 +1,5 @@
-import { signInAnonymously, onAuthStateChanged, User } from 'firebase/auth'
+import { signInAnonymously, onAuthStateChanged } from 'firebase/auth'
+import type { User } from 'firebase/auth'
 import { auth } from '../firebase'
 
 /** Ensures every taker device is an (anonymous) authenticated client. */

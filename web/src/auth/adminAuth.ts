@@ -1,4 +1,5 @@
-import { GoogleAuthProvider, signInWithPopup, signOut, User } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import type { User } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import { isAdminEmail } from '../data/admins'
 

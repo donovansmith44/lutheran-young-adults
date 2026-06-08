@@ -8,6 +8,10 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./test/setup.ts'],
-    // domain tests need no DOM; emulator tests are opt-in via filename
+    // domain tests need no DOM; emulator tests are opt-in via filename.
+    // Run test files sequentially: the emulator-backed data tests share one
+    // Firestore emulator, and each file's clearFirestore() in beforeEach would
+    // otherwise wipe a concurrently-running file's data mid-test.
+    fileParallelism: false,
   },
 })
